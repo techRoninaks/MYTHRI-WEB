@@ -1,92 +1,45 @@
 <html><head></head><body>
 
 <style type="text/css">
-.hovereffect {
-  width: 240px;
-  height: 20%;
-  /*float: left;*/
-  overflow: hidden;
-  position: relative;
-  text-align: center;
-  cursor: default;
-}
 
-.hovereffect .overlay {
+.container1 {
+  position: relative;
   width: 100%;
-  height: 100%;
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  background-color: rgba(75,75,75,0.7);
-  -webkit-transition: all 0.4s  cubic-bezier(0.88,-0.99, 0, 1.81);
-  transition: all 0.4s  cubic-bezier(0.88,-0.99, 0, 1.81);
 }
 
-.hovereffect:hover .overlay {
-  background-color: rgba(48, 152, 157, 0);
-}
-
-.hovereffect img {
+.image {
   display: block;
-  position: relative;
+  width: 350px;
+  height: 225px;
 }
 
-.hovereffect h2 {
-  text-transform: uppercase;
-  color: #fff;
-  text-align:center;
-  position: relative;
-    margin-top: 23px;
-    margin-bottom: 10px;
-
-  font-size: 15px;
-  padding: 8px;
-  background: rgba(0, 0, 0, 0.6);
-  -webkit-transform: translateY(45px);
-  -ms-transform: translateY(45px);
-  transform: translateY(45px);
-  -webkit-transition: all 0.4s  cubic-bezier(0.88,-0.99, 0, 1.81);
-  transition: all 0.4s  cubic-bezier(0.88,-0.99, 0, 1.81);
-}
-
-
-.hovereffect:hover h2 {
-  -webkit-transform: translateY(5px);
-  -ms-transform: translateY(5px);
-  transform: translateY(5px);
-}
-
-.hovereffect a.info {
-  display: inline-block;
-  text-decoration: none;
-  padding: 7px 14px;
-  text-transform: uppercase;
-  color: #fff;
-  border: 1px solid #fff;
-  background-color: transparent;
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  /*width: 256px;*/
   opacity: 0;
-  filter: alpha(opacity=0);
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  -webkit-transition: all 0.4s  cubic-bezier(0.88,-0.99, 0, 1.81);
-  transition: all 0.4s  cubic-bezier(0.88,-0.99, 0, 1.81);
-  font-weight: normal;
-  margin: -52px 0 0 0;
-  padding: 62px 100px;
+  transition: .5s ease0;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-.hovereffect:hover a.info {
+.container1:hover .overlay {
   opacity: 1;
-  filter: alpha(opacity=100);
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
 }
 
-.hovereffect a.info:hover {
-  box-shadow: 0 0 5px #fff;
+.text1 {
+  color: white;
+  font-size: 17px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 hr {
     margin-top: 69px;
@@ -154,14 +107,15 @@ hr {
 <a href="#">INITIATIVE</a>
 
 </ul>
-<hr  style="    background-color: #000000;
+<hr  style="    background-color: #716666;
     border-width: 0;
-    color: #000000;
+    color: #645d5d;
     height: 1px;
     line-height: 0;
     text-align: left;
     width: 75%;
     color: #7c8288;
+    opacity: 0.82;
     margin-top: -19px;">
 
       
@@ -230,7 +184,7 @@ a:hover {
 <div class="col-md-3"></div>
 <div class="col-md-3">
 
-  <div class="pagination" align="right"> 
+  <div class="pagination" style="padding-left: 15px" align="right"> 
     <a href="#" class="previous square">&#8249;</a>
     
     <a href="#" style="color:rgba(0,0,0,82%);">1</a> 
@@ -248,15 +202,35 @@ a:hover {
 <div class="row">
   <div class=col-sm-12>
         <div class="col-sm-3">
-
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\elders.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-                <h2>DONATE</h2> 
-
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\elders.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
+      <br>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
+          <font color="grey" size="-16";>
+          <h6>date,place</h6></font>
+            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+          
+            </p> 
         </div>
+          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
+              <div class="progressbar">
+      <div class="progressbarx">
+    </div>
+    
       </div>
+        </div><div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\2.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
       <br>
         <div class="text" align="left" style="margin-top:">          
           <font-size="20px" ;><strong>Home for elderly</strong></font>
@@ -274,19 +248,17 @@ a:hover {
     
       </div>
         </div>
-         <div class="col-sm-3">
 
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\2.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px;width: 240px;">
-                <h2>DONATE</h2>
-
-        
-        </div>
-      </div>
+        <div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\3.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
           <font color="grey" size="-16";>
           <h6>date,place</h6></font>
             <p style="width:240px;height:60px;"><font size="-18" color="grey";>
@@ -300,21 +272,16 @@ a:hover {
     </div>
     
       </div>
-        </div>
-         <div class="col-sm-3">
-
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\3.jpg alt="sample" style="width: 350px;height: 150px;">
-       <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-                <h2>DONATE</h2> 
-
-
-        </div>
-      </div>
+        </div><div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\4.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
           <font color="grey" size="-16";>
           <h6>date,place</h6></font>
             <p style="width:240px;height:60px;"><font size="-18" color="grey";>
@@ -329,19 +296,40 @@ a:hover {
     
       </div>
         </div>
-         <div class="col-sm-3">
 
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\4.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-               <h2>DONATE</h2>
-
+           <div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\elders.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
+      <br>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
+          <font color="grey" size="-16";>
+          <h6>date,place</h6></font>
+            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+          
+            </p> 
         </div>
+          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
+              <div class="progressbar">
+      <div class="progressbarx">
+    </div>
+    
       </div>
-       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
+        </div><div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\2.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
+      <br>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
           <font color="grey" size="-16";>
           <h6>date,place</h6></font>
             <p style="width:240px;height:60px;"><font size="-18" color="grey";>
@@ -356,20 +344,40 @@ a:hover {
     
       </div>
         </div>
-         <div class="col-sm-3">
 
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\elders.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-               <h2>
-               DONATE</h2>
-
+        <div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\3.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
+      <br>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
+          <font color="grey" size="-16";>
+          <h6>date,place</h6></font>
+            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+          
+            </p> 
         </div>
+          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
+              <div class="progressbar">
+      <div class="progressbarx">
+    </div>
+    
       </div>
-       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
+        </div><div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\4.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
+      <br>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
           <font color="grey" size="-16";>
           <h6>date,place</h6></font>
             <p style="width:240px;height:60px;"><font size="-18" color="grey";>
@@ -384,19 +392,40 @@ a:hover {
     
       </div>
         </div>
-         <div class="col-sm-3">
 
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\2.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-                <h2>DONATE</h2>
-
+           <div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\elders.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
+      <br>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
+          <font color="grey" size="-16";>
+          <h6>date,place</h6></font>
+            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+          
+            </p> 
         </div>
+          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
+              <div class="progressbar">
+      <div class="progressbarx">
+    </div>
+    
       </div>
-       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
+        </div><div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\2.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
+      <br>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
           <font color="grey" size="-16";>
           <h6>date,place</h6></font>
             <p style="width:240px;height:60px;"><font size="-18" color="grey";>
@@ -411,19 +440,17 @@ a:hover {
     
       </div>
         </div>
-         <div class="col-sm-3">
 
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\3.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-                <h2>DONATE</h2> 
-
-        </div>
-      </div>
-       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
+        <div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\3.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
+      <br>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
           <font color="grey" size="-16";>
           <h6>date,place</h6></font>
             <p style="width:240px;height:60px;"><font size="-18" color="grey";>
@@ -437,20 +464,16 @@ a:hover {
     </div>
     
       </div>
-        </div>
-         <div class="col-sm-3">
-
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\4.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-                <h2>DONATE</h2>
-
-        </div>
-      </div>
-       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
+        </div><div class="col-sm-3">
+          <div class="container1">
+              <img class="img-responsive" src=C:\xampp\htdocs\mythri\4.jpg alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+               <div class="text1">DONATE</div>
+                  </div>
+                </div>
+      <br>
+        <div class="text" align="left" style="margin-top:">          
+          <font-size="20px" ;><strong>Home for elderly</strong></font>
           <font color="grey" size="-16";>
           <h6>date,place</h6></font>
             <p style="width:240px;height:60px;"><font size="-18" color="grey";>
@@ -464,117 +487,6 @@ a:hover {
     </div>
     
       </div>
-        </div>
-         <div class="col-sm-3">
-
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\elders.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-               <h2>DONATE</h2> 
-
-        </div>
-      </div>
-       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div>
-         <div class="col-sm-3">
-
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\2.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-                <h2>
-                DONATE</h2> 
-
-        </div>
-      </div>
-       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div>
-         <div class="col-sm-3">
-
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\3.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-               <h2>DONATE</h2>
-
-        </div>
-      </div>
-       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div>
-         <div class="col-sm-3">
-
-    <div class="hovereffect">
-        <img class="img-responsive" src=C:\xampp\htdocs\mythri\4.jpg alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -105px
-;width: 240px;">
-               <h2>DONATE</h2>
-
-        </div>
-      </div>
-       <br>
-        <div class="text" align="left">
-          <font-size="20px";><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-
-      
         </div>
 <center>
   <div class="pagination"> 
