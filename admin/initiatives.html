@@ -30,39 +30,66 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
-    <style>
-/* unvisited link */
-a:link {
-  color: red;
+ <style>
+        
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-/* visited link */
-a:visited {
-  color: green;
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
 
-/* mouse over link */
-a:hover {
-  color: hotpink;
+tr:nth-child(even) {
+  
 }
+   </style>
 
-/* selected link */
-a:active {
-  color: blue;
-}
 
-.row {
-    margin-right: -501px;
-    margin-left: 9px;
-}
-
-button {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    margin-left: 315px;
-}
-</style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script>
+         function functionConfirm(msg, myYes, myNo) {
+            var confirmBox = $("#confirm");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes,.no").unbind().click(function() {
+               confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.find(".no").click(myNo);
+            confirmBox.show();
+         }
+      </script>
+      <style>
+         #confirm {
+            display: none;
+            background-color: lightgrey;
+            border: 1px solid #aaa;
+            position: fixed;
+            width: 250px;
+            left: 50%;
+            margin-left: -100px;
+            padding: 6px 8px 8px;
+            box-sizing: border-box;
+            text-align: center;
+         }
+         #confirm button {
+            background-color: white;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 5px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+         }
+         #confirm .message {
+            text-align: left;
+         }
+      </style>
 </head>
 <body>
 
@@ -86,7 +113,7 @@ button {
                         <p>Dashboard</p>
                     </a>
                 </li>
-            <li>
+                <li>
                     <a href="user.html">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
@@ -122,10 +149,10 @@ button {
                         <p>Notifications</p>
                     </a>
                 </li>
-                    <li class="active">
+                <li class="active">
                     <a href="initiatives.html">
                         <i class="fa fa-asterisk"></i>
-                        <p>Initiatives</p>
+                         <p>Initiatives</p>
                     </a>
                 </li>
 				<li class="active-pro">
@@ -220,39 +247,260 @@ button {
         </nav>
 
 
-        <div class="content">
+<script type="text/javascript">
+    function switchVisible() {
+            if (document.getElementById('Div1')) {
+
+                if (document.getElementById('Div1').style.display == 'none') {
+                    document.getElementById('Div1').style.display = 'block';
+                    document.getElementById('Div2').style.display = 'none';
+                }
+                else {
+                    document.getElementById('Div1').style.display = 'none';
+                    document.getElementById('Div2').style.display = 'block';
+                }
+            }
+}
+</script>
+
+<style type="text/css">
+    #Div2 {
+  display: none;
+}
+</style>
+
+<div id="Div2">
+    
+
+
+<table border="0" width="580px" cellpadding="0" cellpadding="0" align="center" >
+    
+<tr>
+    <td align="left" style="border:0px;padding:-5px">Category:</td>
+    <td style="border:0px;padding:-5px">
+    <select>
+        <option>CHOOSE</option>
+        <option>JANA NANMA</option>
+        <option>DONATE</option>
+        <option>VOLUNTEER</option>
+    </select>
+</td></tr>
+<tr><td style="border:0px;padding:-5px">&nbsp;</td></tr>
+
+<tr >
+    
+        <td align="left" style="border:0px;padding:-5px">Enter the Name:</td>
+        <td style="border:0px;padding:-5px"><input type="text"></td>
+        </tr>
+<tr><td style="border:0px;padding:-5px">&nbsp;</td></tr>
+
+<tr>
+        <td align="left" style="border:0px;padding:-5px">Enter the Headline:</td>
+        <td style="border:0px;padding:-5px"><input type="text"></td>
+        </tr>
+<tr><td style="border:0px;padding:-5px">&nbsp;</td></tr> 
+
+<tr>
+        <td align="left" style="border:0px;padding:-5px">Enter Caption for the Image:</td>
+        <td style="border:0px;padding:-5px"><input type="text"></td>
+        </tr>
+<tr><td style="border:0px;padding:-5px">&nbsp;</td></tr>
+
+
+<tr>
+        <td align="left" style="border:0px;padding:-5px">Enter the Description:</td>
+        <td style="border:0px;padding:-5px"><textarea></textarea></td></tr>
+<tr><td style="border:0px;padding:-5px">&nbsp;</td></tr>
+
+<!-- <table border="0" width="580px" cellpadding="0 cellpadding="0" align="left" > -->
+<tr>
+        <td align="left" style="border:0px;padding:-5px"> Upload Image:</td>
+        <td style="border:0px;padding:-5px"><input type="file"></td>
+        </tr>
+</table>
+<br>
+<div class="row">
+    <div class="col-lg-12">
+ <div class="col-lg-6">
+    <input type="submit" value="SUBMIT" style="margin-left: 70%; id="Button1" type="button" value="Click" onclick="switchVisible();"></a></td></tr>
+</div>
+
+ <div class="col-lg-6">
+  
+
+ 
+
+      
+
+   <body>
+      <div id="confirm">
+         <div class="message"></div>
+         <button class="yes">Yes</button>
+         <button class="no">No</button>
+      </div>
+      <button onclick = 'functionConfirm("Are you sure?!", function yes() {
+         alert("YES!!")
+
+      },
+      function no() {
+         alert("NO!!")
+      });'>CANCEL</button>
+   </body>
+
+
+
+
+
+
+
+</div>
+
+</div>
+</div>
+
+
+</div>
+
+
+
+
+<div id="Div1">
+ <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8">
+                  <div class="ab">
+                    <div class="col-md-9">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Initiatives </h4>
+                                <h4 class="title">Initiatives View</h4>
                             </div>
                             <div class="content">
                                 <form>
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-9">
                                             <div class="form-group">
-                                                <div class="button">
-                                            <p><b><center><a href="addinitiatives.html"><button type="button">ADD NEW INITIATIVE</button></a></center></b></p>
-                                                <br><p><b><center><a href="editinitiatives.html"><button type="button">EDIT EXISTING INITIATIVE</button></a></center></b></p>
-                                                </div>                                                   
-                                            </div>
-                                   
-                                    </div> </div>   
 
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
-        </div>
+                                              <table style="width:100%">
+                                                 <tr>
+                                                    <th>NO</th>
+                                                    <th>NAME</th> 
+                                                    <th>HEADLINE</th>
+                                                    <th>CAPTION</th>
+                                                    <th>DESCRIPTION</th>
+                                                    <th> ADD</th>  
+                                                    <th>EDIT</th>
+                                                    <th>DELETE</th>
+                                                  </tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                      <td>data1</td>
+                                                      <td>dummy data1</td>
+                                                      <td>dummy data1</td>
+                                                      <td>dummy data1</td>
+                                                      <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-plus"></i></a></td>
+                                                      <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-pencil"></i></td>
+                                                      <td><a href=" "><i class="fa fa-trash-o" ></i></a>
+                                                  </td>
+
+                                                    </tr>
+
+                                                  <tr>
+                                                        <td>2</td>
+                                                      <td>data2</td>
+                                                      <td>dummy data2</td>
+                                                      <td>dummy data2</td>
+                                                      <td>dummy data2</td>
+                                                    <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-plus"></i></a></td>                                                  
+                                                     <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-pencil"></i></td>
+                                                      <td><a href=" "><i class="fa fa-trash-o" ></i></a>
+                                                    </tr>
+
+                                                  <tr>
+                                                        <td>3</td>
+                                                      <td>data3</td>
+                                                      <td>dummy data3</td>
+                                                      <td>dummy data3</td>
+                                                      <td>dummy data3</td>
+                                                    <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-plus"></i></a></td>
+                                                         <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-pencil"></i></td>
+                                                      <td><a href=" "><i class="fa fa-trash-o" ></i></a>
+                                                    </tr>
+
+                                                  <tr>
+                                                        <td>4</td>
+                                                      <td>data4</td>
+                                                      <td>dummy data4</td>
+                                                      <td>dummy data4</td>
+                                                      <td>dummy data4</td>
+                                                      <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-plus"></i></a></td>
+                                                         <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-pencil"></i>
+                                                      <td><a href=" "><i class="fa fa-trash-o" ></i></a>
+                                                    </tr>
+
+                                                    <tr>
+                                                      <td>5</td>
+                                                      <td>data5</td>
+                                                      <td>dummy data5</td>
+                                                      <td>dummy data5</td>
+                                                      <td>dummy data5</td>
+                                                      <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-plus"></i></a></td>                                                       <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-pencil"></i>
+                                                      <td><a href=" "><i class="fa fa-trash-o" ></i></a>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>6</td>
+                                                      <td>data6</td>
+                                                      <td>dummy data6</td>
+                                                      <td>dummy data6</td>
+                                                      <td>dummy data6</td>
+                                                      <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-plus"></i></a></td>                                                       <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-pencil"></i>
+                                                      <td><a href=" "><i class="fa fa-trash-o" ></i></a>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>7</td>
+                                                      <td>data7</td>
+                                                      <td>dummy data7</td>
+                                                      <td>dummy data7</td>
+                                                      <td>dummy data7</td>
+                                                      <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-plus"></i></a></td>                                                       <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-pencil"></i>
+                                                      <td><a href=" "><i class="fa fa-trash-o" ></i></a>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>8</td>
+                                                      <td>data8</td>
+                                                      <td>dummy data8</td>
+                                                      <td>dummy data8</td>
+                                                      <td>dummy data8</td>
+                                                      <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-plus"></i></a></td>                                                       <td id="Button1" type="button" value="Click" onclick="switchVisible()"><i class="fa fa-pencil"></i>
+                                                      <td><a href=" "><i class="fa fa-trash-o" ></i></a>
+                                                    </tr>
+
+
+
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </form>
 
 
+<br>
+<br><br>
+
         <footer class="footer">
             <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+    
                 <nav class="pull-left">
                     <ul>
                         <li>
@@ -281,20 +529,22 @@ button {
                     &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
                 </p>
             </div>
+        </div>
+            </div>
         </footer>
 
-    </div>
-</div>
+    
+
 
 
 </body>
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
+    <!--  Charts Plugin -->
+    <script src="assets/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
@@ -303,9 +553,10 @@ button {
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+    <script src="assets/js/demo.js"></script>
 
 </html>
+
