@@ -1,0 +1,129 @@
+<head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/css/head1.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="3.jss" type="text/javascript"></script>
+</head>
+
+<header>
+
+<div class="nav" style="
+    height: 67px;
+">
+  <div class="nav-header">
+    <div class="nav-title">
+      <img src="assets/images/mythrissurtypographywhite-min.png" style="width:200px;height:100px;object-fit: contain;padding-bottom:50px;">
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <input type="checkbox" id="nav-check">
+  <div class="nav-links" style="right:0px; position: absolute;">
+
+    <a href="#" target="_blank" style="font-size: 15px;font-weight: 700">HOME</a>
+    <a href="#" target="_blank" style="font-size: 15px;font-weight: 700">ABOUT</a>
+    <div class="dropdown">
+        <button class="dropbtn" style="font-size: 15px;font-weight: 700">INITIATIVES</button>
+        <div class="dropdown-content">
+          <a href="#">Jana nanma</a>
+          <a href="#">Donate</a>
+          <a href="#">Volunteer</a>
+          
+        </div>
+      </div>
+
+
+    <a href="#" target="_blank" style="font-size: 15px;font-weight: 700">EVENTS</a>
+    <a href="#" target="_blank" style="font-size: 15px;font-weight: 700">CARE CENTERS</a>
+
+
+    <div class="dropdown">
+      <button class="dropbtn glyphicon glyphicon-th" style="font-size: 20px;font-weight: 700" id="icon" onclick="toggleBTN();">
+      
+      </button>
+      <div class="dropdown-content dropdown-menuCustom " id="dropmenu">
+        <a href="#">Volunteer</a>
+        <a href="#">Raise your voice</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact Us</a>
+        
+      </div>
+    </div>
+   
+
+</div>
+
+<style type="text/css">
+  .panel-default>.panel-heading {
+    color: #333;
+    background-color: #060606;
+    border-color: #ddd;
+  }
+
+ .bs-example{
+      margin: 10px;
+    
+  
+  
+  
+  border: none;
+    }
+    .panel-title .glyphicon{
+        font-size: 25px;
+           color: #808080;
+          
+
+    }
+
+
+
+
+
+</style>
+<script>
+
+  function toggleBTN(){
+    console.log("in func");
+    var element = document.getElementById('dropmenu');
+    if(element.classList.contains("show")){
+      document.getElementById('dropmenu').classList.remove("show");
+      document.getElementById('icon').classList.add("glyphicon-th");
+      document.getElementById('icon').classList.remove("glyphicon-remove");
+    }
+    else{
+      document.getElementById('dropmenu').classList.add("show");
+      document.getElementById('icon').classList.remove("glyphicon-th");
+      document.getElementById('icon').classList.add("glyphicon-remove");
+    }
+  }
+    // $(document).ready(function(){
+    //     // Add minus icon for collapse element which is open by default
+    //     $(".collapse.in").each(function(){
+    //       $(this).siblings(".panel-heading").find(".glyphicon").addClass("glyphicon-remove").removeClass("glyphicon-plus");
+    //     });
+        
+    //     // Toggle plus minus icon on show hide of collapse element
+    //     $(".collapse").on('show.bs.collapse', function(){
+    //       $(this).parent().find(".glyphicon").removeClass("glyphicon-th").addClass("glyphicon-remove");
+    //     }).on('hide.bs.collapse', function(){
+    //       $(this).parent().find(".glyphicon").removeClass("glyphicon-remove").addClass("glyphicon-th");
+    //     });
+    // });
+</script>
+</header>
+
