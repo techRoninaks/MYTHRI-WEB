@@ -1,3 +1,13 @@
+@font-face {
+    font-family: defaultBarlow;
+    src: url(fonts/barlow/Barlow-Regular.ttf);
+    font-weight: bold;
+  }
+@font-face{
+    font-family: defaultBarlowBold;
+    src: url(fonts/barlow/Barlow-SemiBold.ttf);
+    font-weight: bold;
+}
 .item1 {
     grid-area: myArea;
     background: transparent;
@@ -105,6 +115,4 @@ a:hover{
     height: 36px;
     ;
     margin: auto;
-
-
 }
