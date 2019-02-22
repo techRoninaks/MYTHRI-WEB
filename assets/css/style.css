@@ -8,6 +8,17 @@
     src: url(fonts/barlow/Barlow-SemiBold.ttf);
     font-weight: bold;
 }
+
+.spnBreadCrumbs{
+    color: #00000061;
+    font-size: .8rem initial;
+    font-family: defaultBarlowBold !important;
+    text-decoration: none;
+  }
+.spnBreadCrumbs :hover{
+    color: #00000099 !important;
+}
+
 .item1 {
     grid-area: myArea;
     background: transparent;

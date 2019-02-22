@@ -7,7 +7,8 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+  <script src="assets/js/scripts.js"></script>
 </head>
 <style type="text/css">
   /* html *
@@ -20,27 +21,20 @@
     line-height: 1.5;
     font-family: defaultBarlow !important;
   }
-  .spnBreadCrumbs{
-    color: #00000061;
-    font-size: .8rem;
-    font-family: defaultBarlowBold !important;
-    text-decoration: none;
-  }
-  .spnBreadCrumbs :hover{
-    color: #00000099;
-  }
 </style>
 
 
 <body>
-  <div id="divMaster">
-    <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%;">
-        <p class="spnBreadCrumbs"><a href="home.html" class="spnBreadCrumbs">HOME</a> > ABOUT</p>
-        <hr/>
-    </div>
+    <div w3-include-html="head1.html"></div>
+  <div id="divMaster" style="margin-top: 45px;">
+    <section>
+      <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%; vertical-align: middle;">
+          <p class="spnBreadCrumbs"><a href="home.html" class="spnBreadCrumbs">HOME</a> > ABOUT</p>
+          <hr/>
+      </div>
       <div id="divContent" style="display: grid; margin-left: 20%; margin-right: 20%;">
         <div id="divLogoImage" style="display:table-cell; vertical-align:middle; text-align:center; width: 100%;">
-          <img src="assets/images/logotext.png" height="160px">
+          <img src="assets/images/logotext.png" height="160px" style="min-height:160px;">
         </div>
         <p style="text-align: justify;">
             As we have heard that ‘Unity is oneness of purpose, not sameness of persons’, where individualities combine and forms a team with unity.   Unity created with strength, that results in progress, victory and development. <br/><br/>
@@ -60,9 +54,13 @@
           
         <p style="text-align:center;">------------</p>
       </div>
+    </section>
   </div>
-  
+  <div w3-include-html="footer.html"></div>
 </body>
+<script type="text/javascript">
+  includeHTML();
+</script>
 </html> 
 
 
