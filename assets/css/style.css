@@ -127,3 +127,57 @@ a:hover{
     ;
     margin: auto;
 }
+
+#events{
+    /* margin-left: 50px; */
+    text-align: center;
+}
+
+#more{
+    margin-left: 10px;
+}
+
+#imagepanel{
+    margin-left: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagefooter{
+    top: 55px;
+    margin-left: 28px
+}
+
+@media (max-width:1200px) {
+  #events{
+
+      margin-left: 0px;
+  }
+
+  #imagepanel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 18px;
+    }
+
+  #more{
+    margin-left: 0px;   
+    }
+#imagefooter{
+        top: 55px;
+        margin-left: 0px
+    }
+}
+
+@media (max-width:990px) {
+    #more{
+        color: red;
+        margin-left: 0px;   
+    }
+    #imagefooter{
+        height: 20%;
+        width: 20%;
+    }
+}

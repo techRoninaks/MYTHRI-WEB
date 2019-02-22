@@ -25,3 +25,18 @@ function includeHTML() {
       }
     }
 }
+
+function toggleBTN(){
+  console.log("in func");
+  var element = document.getElementById('dropmenu');
+  if(element.classList.contains("show")){
+    document.getElementById('dropmenu').classList.remove("show");
+    document.getElementById('icon').classList.add("glyphicon-th");
+    document.getElementById('icon').classList.remove("glyphicon-remove");
+  }
+  else{
+    document.getElementById('dropmenu').classList.add("show");
+    document.getElementById('icon').classList.remove("glyphicon-th");
+    document.getElementById('icon').classList.add("glyphicon-remove");
+  }
+}
