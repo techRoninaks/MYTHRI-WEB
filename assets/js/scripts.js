@@ -40,3 +40,7 @@ function toggleBTN(){
     document.getElementById('icon').classList.add("glyphicon-remove");
   }
 }
+
+function getQueryString(){
+  return document.URL.split('?')[1].split('&');
+}

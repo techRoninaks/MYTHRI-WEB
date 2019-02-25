@@ -1,76 +1,26 @@
-<html><head></head><body>
-
-<style type="text/css">
-
-.container1 {
-  position: relative;
-  width: 100%;
-}
-
-.image {
-  display: block;
-  width: 350px;
-  height: 150px;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 150px;
-  /*width: 350px;*/
-  opacity: 0;
-  transition: .5s ease0;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.container1:hover .overlay {
-  opacity: 1;
-}
-
-.text1 {
-  color: white;
-  font-size: 17px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-hr {
-    margin-top: 69px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #333;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: inset;
-  border-width: 10px;
-} 
-</style></body></html>
-
-
-
-
 <html lang="en">
 <head>
 
-  <title>Bootstrap Example</title>
-  <link rel="stylesheet" href="asset/css/gridex.css">
+  <title id="title">Category Listing</title>
+  <link rel="stylesheet" href="assets/css/gridex.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/head1.css">
+  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <style>
-  .breadcrumb a
+  /* .breadcrumb a
   {
    color:rgba(0,0,0,38%);
+  } */
+  body {
+    font-family: defaultBarlowBold !important;
   }
   .ol a
   {
@@ -80,439 +30,562 @@ hr {
   {
   color:rgba(0,0,0,54%);
   }
+  .container1 
+  {
+    position: relative;
+    width: 100%;
+  }
     
+  .image {
+    display: block;
+    width: 350px;
+    height: 150px;
+  }
+    
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    /*width: 350px;*/
+    opacity: 0;
+    transition: .5s ease0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+    
+  .container1:hover .overlay {
+    opacity: 1;
+  }
+    
+  .text1 {
+    color: white;
+    font-size: 17px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 7px 0px;;
+    font-weight:bold; 
+    color: #7c8288;
+  }
+
+  /* a:hover {
+    color: black;
+  } */
+
+  .previous {
+    background-color: #f1f1f1;
+    color: black;
+  }
+
+  .next {
+    background-color: #f1f1f1;
+    color: black;
+  }
+
+  .round {
+    border-radius: 50%;
+  }
+  .tabs{
+    color: #00000066;
+  }
+  .active{
+    color: #000000;
+  }
+  .dropbtn_cate{
+    background-color:#f1f1f1;;
+    color: #808080;
+    padding: 16px;
+    font-size: 25px;
+    border: none;
+  }
   </style>
 
   
 </head>
+
 <body>
-<ul class="breadcrumb" >
-<center> <h4><STRONG>
-  <font color="black">
-<a href="#">JANA NANMA &nbsp</a>
-  <a href="#" style="color:rgba(0,0,0,82%);">DONATE &nbsp</a>
-    <a href="#">VOLUNTEER &nbsp</a>
-  
-  </h4>
-</STRONG>
-</font>
-</center>
-</ul>
-
-
-  <br>
-<ul class="ol">
-
-  <a href="#">HOME >><a>
-<a href="#">INITIATIVE</a>
-
-</ul>
-<hr  style="    background-color: #716666;
-    border-width: 0;
-    color: #645d5d;
-    height: 1px;
-    line-height: 0;
-    text-align: left;
-    width: 75%;
-    color: #7c8288;
-    opacity: 0.82;
-    margin-top: -19px;">
-
-      
-    </hr>
-    
-<style>
-  a {
-  text-decoration: none;
-  display: inline-block;
- padding: 7px 0px;;
-   font-weight:bold; 
-   color: #7c8288;
-}
-
-a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.previous {
-  background-color: #f1f1f1;
-  color: black;
-}
-
-.next {
-  background-color: #f1f1f1;
-  color: black;
-}
-
-.round {
-  border-radius: 50%;
-</style>
-
+  <div w3-include-html="head1.html"></div>
+  <ul class="breadcrumb" style="margin-top: 24px;">
+    <center> 
+      <h4 id="tabTitle"><STRONG>
+        <font color="black">
+          <a href="cate_listing.html?cat_type=janananma&pg_no=1" id="tabJana" class="tabs">JANA NANMA &nbsp</a>
+          <a href="cate_listing.html?cat_type=donate&pg_no=1" class="active" id="tabDonate">DONATE &nbsp</a>
+          <a href="cate_listing.html?cat_type=volunteer&pg_no=1" id="tabVolunteer" class="tabs">VOLUNTEER &nbsp</a>
+        </font>
+      </STRONG>
+      </h4>
+    </center>
+  </ul>
+  <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%; vertical-align: middle; margin-top: 0px;">
+      <p class="spnBreadCrumbs"><a href="home.html" class="spnBreadCrumbs">HOME</a> > INITIATIVES</p>
+      <hr/>
+  </div>
+<!-- <hr  style="background-color: #716666; border-width: 0; color: #645d5d; height: 1px; line-height: 0; text-align: left; width: 75%; color: #7c8288; opacity: 0.82; margin-top: -19px;"/> -->
 <br>
 <br>
 
 <div class="container">
   <div class="row">
-  <div class=col-sm-12>
-        <div class="col-sm-3">
+    <div class=col-sm-12>
+      <div class="col-sm-3">
+        <div class="dropdown" >
+          <button class="dropbtn_cate">
+            <centre>
+              <font size="-20">
+                <strong>CATEGORY
+                  <span>(SELECT)
+                  </span>
+                </strong>
+              </font>
+              <font size="-20">
+                  <i class="fa fa-caret-down" style="margin-left: 100px;"></i>
+              </font>
+            </centre>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
           <div class="dropdown" >
-  <button class="dropbtn" style="width:270px; height:35px;"><centre><font size="-20"><strong>CATEGORY<span style=" color:rgba(0,0,0,38%);";>(SELECT)</span></centre><i class="fa fa-caret-down" style="margin-left: 100px;"></i></button></strong></font>
-  
-
-  <div class="dropdown-content">
-  <a href="#">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
+              <button class="dropbtn_cate">
+                <centre>
+                  <font size="-20">
+                    <strong>Budget
+                    </strong>
+                  </font>
+                  <font size="-20">
+                      <i class="fa fa-caret-down" style="margin-left: 100px;"></i>
+                  </font>
+                </centre>
+              </button>
+              <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+        <div class="pagination" style="padding-left: 15px" align="right"> 
+          <a href="#" class="previous square">&#8249;</a>
+          <a href="#" style="color:rgba(0,0,0,82%);">1</a> 
+          <a href="#">2</a> 
+          <a href="#">3</a> 
+          <a href="#">4</a> 
+          <a href="#">......</a> 
+          <a href="#">10</a> 
+          <a href="#" class="next square">&#8250;</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+</br>
+<div class="container">
+  <div class="row">
+    <div class=col-sm-12>
+      <div class="col-sm-3">
+        <div class="container1">
+          <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
+            <div class="overlay">
+              <div class="text1">DONATE
+              </div>
+            </div>
+        </div>
+        <br>
+        <div class="text" align="left">          
+          <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+          <font color="grey" size="-16";>
+            <h6>date,place</h6>
+          </font>
+          <p style="width:240px;height:60px;">
+            <font size="-18" color="grey";>
+              Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+            </font>
+          </p> 
+        </div>
+        <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+        <div class="progressbar">
+          <div class="progressbarx">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="container1">
+            <img class="img-responsive" src="assets/images/2.jpg" alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+                <div class="text1">DONATE
+                </div>
+              </div>
+          </div>
+          <br>
+          <div class="text" align="left">          
+            <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+            <font color="grey" size="-16";>
+              <h6>date,place</h6>
+            </font>
+            <p style="width:240px;height:60px;">
+              <font size="-18" color="grey";>
+                Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+              </font>
+            </p> 
+          </div>
+          <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+          <div class="progressbar">
+            <div class="progressbarx">
+            </div>
+          </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="container1">
+            <img class="img-responsive" src="assets/images/3.jpg" alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+                <div class="text1">DONATE
+                </div>
+              </div>
+          </div>
+          <br>
+          <div class="text" align="left">          
+            <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+            <font color="grey" size="-16";>
+              <h6>date,place</h6>
+            </font>
+            <p style="width:240px;height:60px;">
+              <font size="-18" color="grey";>
+                Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+              </font>
+            </p> 
+          </div>
+          <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+          <div class="progressbar">
+            <div class="progressbarx">
+            </div>
+          </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="container1">
+            <img class="img-responsive" src="assets/images/4.jpg" alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+                <div class="text1">DONATE
+                </div>
+              </div>
+          </div>
+          <br>
+          <div class="text" align="left">          
+            <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+            <font color="grey" size="-16";>
+              <h6>date,place</h6>
+            </font>
+            <p style="width:240px;height:60px;">
+              <font size="-18" color="grey";>
+                Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+              </font>
+            </p> 
+          </div>
+          <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+          <div class="progressbar">
+            <div class="progressbarx">
+            </div>
+          </div>
+      </div>
+    </div>
+    </div>
+  <div class="row">
+      <div class=col-sm-12>
+        <div class="col-sm-3">
+          <div class="container1">
+            <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+                <div class="text1">DONATE
+                </div>
+              </div>
+          </div>
+          <br>
+          <div class="text" align="left">          
+            <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+            <font color="grey" size="-16";>
+              <h6>date,place</h6>
+            </font>
+            <p style="width:240px;height:60px;">
+              <font size="-18" color="grey";>
+                Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+              </font>
+            </p> 
+          </div>
+          <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+          <div class="progressbar">
+            <div class="progressbarx">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="container1">
+              <img class="img-responsive" src="assets/images/2.jpg" alt="sample" style="width: 350px;height: 150px;">
+                <div class="overlay">
+                  <div class="text1">DONATE
+                  </div>
+                </div>
+            </div>
+            <br>
+            <div class="text" align="left">          
+              <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+              <font color="grey" size="-16";>
+                <h6>date,place</h6>
+              </font>
+              <p style="width:240px;height:60px;">
+                <font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+                </font>
+              </p> 
+            </div>
+            <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+            <div class="progressbar">
+              <div class="progressbarx">
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="container1">
+              <img class="img-responsive" src="assets/images/3.jpg" alt="sample" style="width: 350px;height: 150px;">
+                <div class="overlay">
+                  <div class="text1">DONATE
+                  </div>
+                </div>
+            </div>
+            <br>
+            <div class="text" align="left">          
+              <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+              <font color="grey" size="-16";>
+                <h6>date,place</h6>
+              </font>
+              <p style="width:240px;height:60px;">
+                <font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+                </font>
+              </p> 
+            </div>
+            <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+            <div class="progressbar">
+              <div class="progressbarx">
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="container1">
+              <img class="img-responsive" src="assets/images/4.jpg" alt="sample" style="width: 350px;height: 150px;">
+                <div class="overlay">
+                  <div class="text1">DONATE
+                  </div>
+                </div>
+            </div>
+            <br>
+            <div class="text" align="left">          
+              <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+              <font color="grey" size="-16";>
+                <h6>date,place</h6>
+              </font>
+              <p style="width:240px;height:60px;">
+                <font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+                </font>
+              </p> 
+            </div>
+            <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+            <div class="progressbar">
+              <div class="progressbarx">
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="row">
+      <div class=col-sm-12>
+        <div class="col-sm-3">
+          <div class="container1">
+            <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay">
+                <div class="text1">DONATE
+                </div>
+              </div>
+          </div>
+          <br>
+          <div class="text" align="left">          
+            <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+            <font color="grey" size="-16";>
+              <h6>date,place</h6>
+            </font>
+            <p style="width:240px;height:60px;">
+              <font size="-18" color="grey";>
+                Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+              </font>
+            </p> 
+          </div>
+          <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+          <div class="progressbar">
+            <div class="progressbarx">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="container1">
+              <img class="img-responsive" src="assets/images/2.jpg" alt="sample" style="width: 350px;height: 150px;">
+                <div class="overlay">
+                  <div class="text1">DONATE
+                  </div>
+                </div>
+            </div>
+            <br>
+            <div class="text" align="left">          
+              <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+              <font color="grey" size="-16";>
+                <h6>date,place</h6>
+              </font>
+              <p style="width:240px;height:60px;">
+                <font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+                </font>
+              </p> 
+            </div>
+            <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+            <div class="progressbar">
+              <div class="progressbarx">
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="container1">
+              <img class="img-responsive" src="assets/images/3.jpg" alt="sample" style="width: 350px;height: 150px;">
+                <div class="overlay">
+                  <div class="text1">DONATE
+                  </div>
+                </div>
+            </div>
+            <br>
+            <div class="text" align="left">          
+              <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+              <font color="grey" size="-16";>
+                <h6>date,place</h6>
+              </font>
+              <p style="width:240px;height:60px;">
+                <font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+                </font>
+              </p> 
+            </div>
+            <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+            <div class="progressbar">
+              <div class="progressbarx">
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="container1">
+              <img class="img-responsive" src="assets/images/4.jpg" alt="sample" style="width: 350px;height: 150px;">
+                <div class="overlay">
+                  <div class="text1">DONATE
+                  </div>
+                </div>
+            </div>
+            <br>
+            <div class="text" align="left">          
+              <font style="font-size: 14;"><strong>Home for elderly</strong></font>
+              <font color="grey" size="-16";>
+                <h6>date,place</h6>
+              </font>
+              <p style="width:240px;height:60px;">
+                <font size="-18" color="grey";>
+                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .              
+                </font>
+              </p> 
+            </div>
+            <font size="-16"><strong>Need Rs.12,000 more of Rs.40,000</strong></font>
+            <div class="progressbar">
+              <div class="progressbarx">
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
 </div>
-
-<div class="col-md-3">
-
-
-    <div class="dropdown">
-  <button class="dropbtn" style="width: 180px;height: 35px;"><centre><font size="-20"><strong>BUDGET<span style=" color:rgba(0,0,0,38%);";>(SELECT)</span></centre><i class="fa fa-caret-down" style="margin-left: 40px"></i></button></strong></font>
-  <div class="dropdown-content">
-  <a href="#">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
-  </div>
-</div>
-
-</div>
-<div class="col-md-3"></div>
-<div class="col-md-3">
-
-  <div class="pagination" style="padding-left: 15px" align="right"> 
+<br>
+<br>
+<center>
+  <div class="pagination"> 
     <a href="#" class="previous square">&#8249;</a>
-    
     <a href="#" style="color:rgba(0,0,0,82%);">1</a> 
     <a href="#">2</a> 
     <a href="#">3</a> 
     <a href="#">4</a> 
     <a href="#">......</a> 
     <a href="#">10</a> 
-    <a href="#" class="next square">&#8250;</a>
+    <a href="#" class="next square" align="center">&#8250;</a>
   </div>
-</div>
-</div>
-</br>
-<div class="container">
-<div class="row">
-  <div class=col-sm-12>
-        <div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div><div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/2.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div>
-
-        <div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/3.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div><div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/4.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div>
-
-           <div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div><div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/2.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div>
-
-        <div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/3.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div><div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/4.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div>
-
-           <div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div><div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/2.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div>
-
-        <div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/3.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div><div class="col-sm-3">
-          <div class="container1">
-              <img class="img-responsive" src="asset/img/4.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay">
-               <div class="text1">DONATE</div>
-                  </div>
-                </div>
-      <br>
-        <div class="text" align="left" style="margin-top:">          
-          <font-size="20px" ;><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";>
-          <h6>date,place</h6></font>
-            <p style="width:240px;height:60px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p> 
-        </div>
-          <font size="-16"><strong>Need Rs.12,000more of Rs.40,000</strong></font>
-              <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-    
-      </div>
-        </div>
-<center>
-  <div class="pagination"> 
-    <a href="#" class="previous square">&#8249;</a>
-    
-    <a href="#" style="color:rgba(0,0,0,82%);">1</a> 
-    <a href="#">2</a> 
-    <a href="#">3</a> 
-    <a href="#">4</a> 
-    <a href="#">......</a> 
-  
-  <a href="#">10</a> 
-<a href="#" class="next square" align="center">&#8250;</a>
-</div>
 </center>
-
-  </div>
-
-</div>
-    <br>
-    <br>
-
-
+<br>
+<br>
+<div w3-include-html="footer.html" style="width: 100%;"></div>
 </body>
-</html>
-</div>
-</div>
-</body>
+<script type="text/javascript">
+  includeHTML();
+  var qryCatType = "";
+  var qryStrings = getQueryString();
+  qryStrings.forEach(element => {
+    if(element.startsWith('cat_type')){
+      qryCatType = element.split('=')[1];
+      showForm();
+    }
+  });
+
+  function showForm(){
+    switch(qryCatType){
+    case "donate":{
+      $('#title').text('Donate');
+      $('#tabJana').removeClass().addClass('tabs');
+      $('#tabDonate').removeClass().addClass('active');
+      $('#tabVolunteer').removeClass().addClass('tabs');
+      break;
+    }
+    case "care_centers":{
+      $('#title').text('Care Centers');
+      $('#tabTitle').hide();
+      break;
+    }
+    case "volunteer":{
+      $('#title').text('Volunteer');
+      $('#tabJana').removeClass().addClass('tabs');
+      $('#tabDonate').removeClass().addClass('tabs');
+      $('#tabVolunteer').removeClass().addClass('active');
+      break;
+    }
+    case "janananma":{
+      $('#title').text('Jana Nanma');
+      $('#tabJana').removeClass().addClass('active');
+      $('#tabDonate').removeClass().addClass('tabs');
+      $('#tabVolunteer').removeClass().addClass('tabs');
+      break;
+    }
+    case "events":{
+      $('#title').text('Events');
+      $('#tabTitle').hide();
+      break;
+    }
+  }
+  }
+</script>
 </html>

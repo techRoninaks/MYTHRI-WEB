@@ -8,6 +8,18 @@
     src: url(fonts/barlow/Barlow-SemiBold.ttf);
     font-weight: bold;
 }
+@font-face{
+    font-family: defaultBarlowBoldX;
+    src: url(fonts/barlow/Barlow-Bold.ttf);
+    font-weight: bold;
+}
+
+.header{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 20;
+}
 
 .spnBreadCrumbs{
     color: #00000061;
