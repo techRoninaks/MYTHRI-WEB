@@ -8,6 +8,18 @@
     src: url(fonts/barlow/Barlow-SemiBold.ttf);
     font-weight: bold;
 }
+@font-face{
+    font-family: defaultBarlowBoldX;
+    src: url(fonts/barlow/Barlow-Bold.ttf);
+    font-weight: bold;
+}
+
+.header{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 20;
+}
 
 .spnBreadCrumbs{
     color: #00000061;
@@ -127,3 +139,107 @@ a:hover{
     ;
     margin: auto;
 }
+
+#events{
+    /* margin-left: 50px; */
+    text-align: center;
+}
+
+#more{
+    margin-left: 10px;
+}
+
+#imagepanel{
+    margin-left: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagefooter{
+    top: 55px;
+    margin-left: 28px
+}
+
+.image-container{
+    background: url(../images/transparent.jpg)  no-repeat center ; 
+    /* background: rgba(0,0,0,0.1); */
+    background-size: cover;
+    position: relative;
+    height: 100%;
+}
+.image-container:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: #ffffffd8
+}
+.word-container{
+    color: #00000099; 
+    padding: 10px 20px; 
+    line-height: 35px; 
+    position: relative;
+    
+    
+}
+
+@media (max-width:1200px) {
+  #events{
+
+      margin-left: 0px;
+  }
+
+  #imagepanel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 18px;
+    }
+
+  #more{
+    margin-left: 0px;   
+    }
+#imagefooter{
+        top: 55px;
+        margin-left: 0px
+    }
+}
+
+@media (max-width:990px) {
+    #more > ul{
+        text-align: center;  
+    }
+    #init > ul{
+        text-align: center;  
+    }
+    #imagefooter{
+        position: absolute; 
+        top: 0px;
+    }
+    #footer{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    #containerfooter{
+        display: flex;
+        justify-content: center;
+    }
+    .image-container{
+        margin-top: 25px;
+    }
+    .btn{
+        margin-right: 10px;
+    }
+}
+
+@media (max-width:450px) {
+
+    #imagefooter{
+        visibility: hidden;
+    }
+}
+
