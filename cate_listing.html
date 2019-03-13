@@ -199,7 +199,7 @@
 </br>
 <div class="container">
   <div class="row">
-    <div class=col-sm-12>
+    <div class=col-sm-12 id="row1">
       <div class="col-sm-3">
         <div class="container1">
           <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
@@ -415,8 +415,8 @@
       </div>
     </div>
   <div class="row">
-      <div class=col-sm-12>
-        <div class="col-sm-3">
+      <div class=col-sm-12 href="#">
+        <div class="col-sm-3"id="temp">
           <div class="container1">
             <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
               <div class="overlay">
@@ -428,7 +428,7 @@
           <div class="text" align="left">          
             <font style="font-size: 14;"><strong>Home for elderly</strong></font>
             <font color="grey" size="-16";>
-              <h6>date,place</h6>
+              <h6>date,kochi</h6>
             </font>
             <p style="width:240px;height:60px;">
               <font size="-18" color="grey";>
@@ -440,6 +440,11 @@
           <div class="progressbar">
             <div class="progressbarx">
             </div>
+          </div>
+          <div id="overlay12">
+              <div >
+                <div class="hovertext" click="off()"><a class="hovertext" href="home.html"> Read more</a></div>
+                </div>
           </div>
         </div>
         <div class="col-sm-3">
@@ -559,11 +564,13 @@
       $('#tabJana').removeClass().addClass('tabs');
       $('#tabDonate').removeClass().addClass('active');
       $('#tabVolunteer').removeClass().addClass('tabs');
+      loadtablerole("donate",1);
       break;
     }
     case "care_centers":{
       $('#title').text('Care Centers');
       $('#tabTitle').hide();
+      loadtablerole("care",1);
       break;
     }
     case "volunteer":{
@@ -571,6 +578,7 @@
       $('#tabJana').removeClass().addClass('tabs');
       $('#tabDonate').removeClass().addClass('tabs');
       $('#tabVolunteer').removeClass().addClass('active');
+      loadtablerole("volunteer",1);
       break;
     }
     case "janananma":{
@@ -578,6 +586,7 @@
       $('#tabJana').removeClass().addClass('active');
       $('#tabDonate').removeClass().addClass('tabs');
       $('#tabVolunteer').removeClass().addClass('tabs');
+      loadtablerole("janananma",1);
       break;
     }
     case "events":{
@@ -587,5 +596,51 @@
     }
   }
   }
+  loadtablerole();
+
+  // $('#temp').hover(
+  //      function(){ $("overlay1").style.display = "block" },
+  //      function(){ $("overlay1").style.display = "none"}
+  window.onload = function() {
+	var element = document.getElementById("temp");
+	
+	// declare function for "onMouseOver" event:
+	element.onmouseover = function() {
+		// var nameOfClass = "yourClassName";
+		
+		// // Some browsers do not support "classList". So, it's necessary to write a condition to see if the current browser supports it.
+		// if (element.classList) {
+		// 	element.classList.add(nameOfClass);
+		// }
+		// else {
+		// 	// If your browser does not support it, you'll have to use "className" property. Then, you can use a Regular Expression to validate if the class name exists.
+		// 	var regExp = new RegExp('(\\s|^)' + nameOfClass + '(\\s|$)');
+		// 	// Will add class if it's not found by validating the regular expression
+		// 	if (!element.className.match(regExp)) {
+		// 		element.className += " " + nameOfClass;
+		// 	}
+    // }
+    document.getElementById("overlay1").style.display = "block";
+    // console.log('hoverOn');
+ 	}
+ 
+	// declare function for "onMouseOut" event:
+	element.onmouseout = function () {
+		// var nameOfClass = "yourClassName";
+	
+		// if (element.classList) {
+		// 	element.classList.remove(nameOfClass);
+		// }
+		// else {
+		// 	var regExp = new RegExp('(\\s|^)' + nameOfClass + '(\\s|$)');
+		// 	// Will remove class if it's found by validating the regular expression
+		// 	if (element.className.match(regExp)) {
+		// 		element.className.replace(regExp, ' ');
+		// 	}
+    // }
+    document.getElementById("overlay1").style.display = "none";
+    // console.log('hoverOff');
+	}
+}
 </script>
 </html>
