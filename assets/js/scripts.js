@@ -180,7 +180,6 @@ for(i = 1; i<array.length; i++){
   var data = array[i];
   htmltemp = htmltemp + templateJana(data, "janananma");
   }
-  
 document.getElementById('row1').innerHTML = htmltemp; 
 }
 

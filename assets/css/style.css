@@ -238,12 +238,24 @@ a:hover{
     .btn{
         margin-right: 10px;
     }
+    #donatetemp{
+        margin: 5px;
+        margin-left: 0px;
+    }
 }
 
 @media (max-width:450px) {
 
     #imagefooter{
         visibility: hidden;
+    }
+}
+
+@media (max-width:1200px) {
+
+    #donatetemp{
+        margin: 5px;
+        /* margin-left: 0px; */
     }
 }
 
@@ -332,11 +344,7 @@ a:hover{
    
 }
 
-#donatetemp{
-    margin: 5px;
 
-    margin-left: 0px;
-}
 
 #donatetemp:hover{
     -webkit-box-shadow: 0px 6px 20px 1px rgba(0,0,0,0.65);
