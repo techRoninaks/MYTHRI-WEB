@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" id="myDiv">
+<head>
+
+  <title id="title">Profile</title>
+  <!--<link rel="stylesheet" href="asset/css/gridex.css">-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--========================================== CSS ===================================================-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/head1.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/extra.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/modalBox.css">
+<!--======================================== JScript ==================================================-->
+  <script src="assets/js/scripts.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+    .hyperLinkText {
+        color:#bababa;
+        font-size:1.3rem;
+    }
+    .hyperLinkText:hover{
+        color:#9f9f9f;
+    }
+    th,td{
+        padding: 2px;
+    }
+    .btn {
+        box-shadow:#bababa;
+        background:none;
+        border:2px solid #333333;
+        font-family:defaultBarlowBold;
+        color:#333333;
+    }
+    .btn:hover {
+        background:#333333;
+        color:white;
+    }
+</style>
+
+</head>
+
+<body >
+    <div w3-include-html="head1.html"></div>
+    <div style="margin-top: 30px;">
+        <center> 
+        <h4 id="tabTitle" style = "font-family:defaultBarlowBold;color:#333333;">VOLUNTEER PROFILE</h4>
+        </center>
+    </div>
+    <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%; vertical-align: middle; margin-top: 0px; display:inline;">
+        <div class="spnBreadCrumbs" style = "float:left;margin-left:5%;"><a href="home.html" class="spnBreadCrumbs">HOME</a> > VOLUNTEER PROFILE</div>
+        <div class="spnBreadCrumbs" style = "float:right;margin-right:5%;"><a href="javascript:checkCookie(-404,-404);" class="spnBreadCrumbs">Sign Out</a></div>
+    </div>
+    <hr/>
+<!--PROFILE CARDS-->
+<div class= "container" style = "font-family: defaultBarlow;">
+    <div class = "row">
+        <div class = "col-sm-4">
+            <div class = "row">
+                <div class = "card-box">
+                    <table style="width: 100%;" id="viewCard">
+                        <tr>
+                            <th style="font-family:defaultBarlowBold;font-variant: small-caps;" id = "userName">N/A</th> 
+                            <!--username here-->
+                            <th style="text-align:right;"><a class = "hyperLinkText" href = "javascript:editProfile();">Edit Profile</a></th>
+                        </tr>
+                        <tr>
+                            <td style = "font-size:1.3rem;font-variant: small-caps;" id = "userJob">N/A</td>
+                        </tr>
+                        <tr style="font-size:1.3rem;">
+                            <td style = "font-family:defaultBarlowBold;">PHONE:</td>
+                            <td id = "userPhone">N/A</td></tr>
+                        <tr style="font-size:1.3rem;">
+                            <td style = "font-family:defaultBarlowBold;">EMAIL:</td>
+                            <td id = "userMail">N/A</td>
+                        </tr>
+                        <tr style="font-size:1.3rem;">
+                            <td style = "font-family:defaultBarlowBold;">LOCATION:</td>
+                            <td style = "font-variant: small-caps;" id = "userLoc">N/A</td>
+                        </tr>
+                    </table>
+                    
+                    <form enctype="multipart/form-data" action="javascript:updateProfile();" method="POST" style="display:none;"  id="editCard" >
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style = "font-family:defaultBarlowBold;font-size:1.3rem;">NAME:</td>
+                            <td>
+                                <input type="text" class="form-control" id="editName" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style = "font-family:defaultBarlowBold;font-size:1.3rem;">OCCUPATION:</td>
+                            <td>
+                                <input type="text" class="form-control" id="editJob" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style = "font-family:defaultBarlowBold;font-size:1.3rem;">PHONE:</td>
+                            <td>
+                                <input type="tel" class="form-control" id="editPhone" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style = "font-family:defaultBarlowBold;font-size:1.3rem;">EMAIL:</td>
+                            <td id="editMail">N/A</td>
+                        </tr>
+                        <tr>
+                            <td style = "font-family:defaultBarlowBold;font-size:1.3rem;" required>LOCATION:</td>
+                            <td>
+                                <input type="text" class="form-control" id="editLoc">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button type="submit" class="btn" style="font-size:1.3rem;">SUBMIT</button> 
+                    <button type="button" class="btn" style="font-size:1.3rem;" onclick="javascript:cancelEdit()">CANCEL</button>
+                    </form>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-sm-6" style="padding: 5px 10px 0px 0px;">
+                    <div class = "card-box" style = "text-align:center;"><p style = "font-size:5rem;font-size:defaultBarlowBold;" id = "userRating">0</p>
+                    <p style = "font-family:defaultBarlowBold;font-size:1.3rem;">RANKING</p>
+                    </div>
+                </div>
+                <div class = "col-sm-6" style="padding: 5px 0px 0px 0px;">
+                    <div class = "card-box" style = "text-align:center;"><p style = "font-size:5rem;font-size:defaultBarlowBold;">0</p>
+                    <p style = "font-family:defaultBarlowBold;font-size:1.3rem;">ACTIVITY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "col-sm-3" style = "padding:0px 0px 0px 10px;">
+            <div class = "card-box" style = "height:304px;">
+                <table style="width: 100%;">
+                    <thead class = "fixThisHeading" style="margin-top:2rem;">
+                    <tr>
+                        <th style="font-family:defaultBarlowBold;">Your Activities<br><hr style="border:1px solid #bababa;"/></th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>Activity 1</td>
+                    </tr>
+                    <tr>
+                        <td style = "font-size:1rem;">11-01-2019</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class = "col-sm-5" style = "padding:0px 0px 0px 10px;">
+            <div class = "card-box" style = "height:304px;padding-top:0;">
+                <table style="width: 100%;margin-top:2rem;">
+                    <thead class = "fixThisHeading" style="margin-top:2rem;">
+                    <tr style = "background-color:#e8e8e8;">
+                        <th class = "fixThisHeading" style="font-family:defaultBarlowBold;">
+                            <div style ="display:inline;">
+                                <div style = "float:left;">Suggestions</div>
+                                <div style = "float:right;font-family:defaultBarlow;"><a class = "hyperLinkText" href = "cate_listing.html">View More</a></div>
+                            </div><br>
+                            <hr style="border:1px solid #bababa;"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id = "sgTable"></tbody>
+                </table>
+                <div id="myModal" class="modal"><div class="modal-content"><span class="close">&times;</span><p id = "popText"></p></div></div>;
+                <p></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<!--PROFILE CARDS-->
+    
+    <div w3-include-html="footer.html" style="width: 100%;"></div>
+<script>
+    includeHTML();
+    function cancelEdit(){
+        if(confirm("Cancel Editing?")){
+            window.location.reload();
+        }
+    }
+    //setCookie("userId",1);
+    /*to create a cookie at login*/
+    checkCookie("userId");
+    /*to be included in the login page js code*/
+</script>    
+</body>
+
+</html>
