@@ -127,23 +127,12 @@
   <div w3-include-html="head1.html"></div>
   
   <?php
-  // class idException extends Exception { }
+  
   ini_set('display_errors',0);
   ini_set('display_startup_errors', 0);
   error_reporting(E_ALL);
-  $dbname = "db_mythri";
-    $username = "root";
-    $password = "";
-    $servername = "localhost";
-
-
-  // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  // Check connection
-  if ($conn->connect_error) {
-     // die("Connection failed: " . $conn->connect_error);
-  }
-
+  
+ require "init.php";
 
 
  
