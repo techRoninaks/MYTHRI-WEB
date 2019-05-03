@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" id="myDiv">
+<head>
+
+  <title id="title">Contact Us | MyThrissur</title>
+  <!--<link rel="stylesheet" href="asset/css/gridex.css">-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--========================================== CSS ===================================================-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/head1.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/extra.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/modalBox.css">
+<!--======================================== JScript ==================================================-->
+  <script src="assets/js/scripts.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+    .hyperLinkText {
+        color:#333333;
+    }
+    .hyperLinkText:hover{
+        color:#9f9f9f;
+    }
+    th,td{
+        padding: 2px;
+    }
+    .centeredDiv {
+        margin: auto;
+        /*width: 400px;*/
+        box-shadow:#9f9f9f;
+    }
+    .labelHeads {
+        font-family:defaultBarlowBold;
+        color:#333333;
+    }
+    .btn {
+        background:#333333;
+        font-family:defaultBarlowBold;
+        color:white;
+        box-shadow:#9f9f9f;
+    }
+    .btn:hover {
+        color:#9f9f9f;
+    }
+    
+</style>
+
+</head>
+
+<body >
+    <div w3-include-html="head1.html"></div>
+    <div style="margin-top: 30px;">
+        <center> 
+        <h4 id="tabTitle" style = "font-family:defaultBarlowBold;color:#333333;">CONTACT US</h4>
+        </center>
+    </div>
+    <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%; vertical-align: middle; margin-top: 0px; display:inline;">
+        <div class="spnBreadCrumbs" style = "float:left;margin-left:5%;"><a href="home.html" class="spnBreadCrumbs">HOME</a> ><div style="display:inline;" id="currentPage">&emsp;CONTACT US</div></div>
+    </div>
+    <hr/>
+    <div class= "container" style = "font-family: defaultBarlow;">
+        <div class = "row">
+            <div class = "centeredDiv">
+                <div class = "card-box" style = "padding:3rem;">
+                    <div class="col-sm-7">
+                        <div>
+                            <h4 style = "font-family:defaultBarlowBold;color:#333333;">MYTHRISSUR</h4>
+                            <p style = "font-family:defaultBarlow;color:#333333;">First floor, Civil Station, Civil Lines Rd, Kalyan Nagar, Ayyanthole, Thrissur, Kerala-680003<br><b>Telephone:</b> 0484 2322981<br><b>Fax:</b> 0484 2312981<br><b>Email:</b> contact@mythrissur.com</p>
+                        </div>
+                        <div>
+                            <form id="enquiryForm" action="">
+                                <label class="labelHeads" id="lbUsername">NAME</label>
+                                <input type="text" class="form-control" id="inpEnqUsername" required><br>
+                                <label class="labelHeads" id="lbEmail">EMAIL</label>
+                                <input type="email" class="form-control"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" id="inpEnqEmail" required><br>
+                                <label class="labelHeads" id="lbMessage">MESSAGE</label>
+                                <textarea rows="7" class="form-control formStyle" id="txtEnqNotes" required></textarea><br>
+                                <button type="submit" class="btn" style="float: right;">SUBMIT</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div>
+                            <div class="google-map"><iframe frameborder="0" style="border:0;height:520px;width:450px;" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJj1-I-i1ZpjsRqbSuOWsdHJY" allowfullscreen=""></iframe></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    
+    <div w3-include-html="footer.html" style="width: 100%;"></div>
+    
+    <script>
+        $(document).ready(function(){
+            $('#enquiryForm').submit(function(event){
+                event.preventDefault();
+                var data = [];
+                data[0] = $('#inpEnqUsername').val();
+                data[1] = $('#inpEnqEmail').val();
+                data[2] = $('#txtEnqNotes').val();
+
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: 'assets/php/enquiry.php',
+                    data: ({userName:data[0],phone:0,email:data[1],notes:data[2],enqType:'contact',evId:0}),
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            alert("Thank you for your response! We'll contact you shortly");
+                            window.location.reload();
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Oops, something went wrong! Try again later!")
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

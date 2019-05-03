@@ -1,165 +1,304 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" id="myDiv">
 <head>
-<title id="title">Registration Form</title>
-<meta content="noindex, nofollow" name="robots">
-<link href="assets\css\shide.css" rel="stylesheet">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="assets\js\frmget.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script src="assets/js/scripts.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/css/head1.css">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head>
-<body bgcolor="white">
-  <div w3-include-html="head1.html"></div>
-  <div id="main" style="width:100%;">
-	<!-- Create Div Second For Signup Form-->
-    <div id="first">
-      <center>
-        <h3 style="font-family: Arial,Helvetica,sans-serif;">SIGN UP</h3></center>
-      <div> 
-        <p id="two" style="font-family: Arial,Helvetica,sans-serif;opacity: 0.54; text-align: center">ALREADY A MEMBER? <span ><a class="signin" href="#" id="signin" style="opacity: 0.82;color:#000000; font-weight: bold;">SIGN IN</a></span></p>
-      </div><br>
-      
-      
+  <title id="title">Register Now</title>
+  <!--<link rel="stylesheet" href="asset/css/gridex.css">-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--========================================== CSS ===================================================-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/head1.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/extra.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/modalBox.css">
+<!--======================================== JScript ==================================================-->
+  <script src="assets/js/scripts.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <!-- <div class="container"> -->
-
-
-      <center>
-    <form name="qryform" id="qryform" method="post" action="" onsubmit="return(validate());" novalidate="novalidate">
-
+<style>
+    .hyperLinkText {
+        color:#333333;
+    }
+    .hyperLinkText:hover{
+        color:#9f9f9f;
+    }
+    th,td{
+        padding: 2px;
+    }
+    .centeredDiv {
+        margin: auto;
+        width: 400px;
+        box-shadow:#9f9f9f;
+    }
+    .labelHeads {
+        font-family:defaultBarlowBold;
+        color:#333333;
+    }
+    .btn {
+        background:#333333;
+        font-family:defaultBarlowBold;
+        color:white;
+        box-shadow:#9f9f9f;
+    }
+    .btn:hover {
+        color:#9f9f9f;
+    }
     
-        <div class="form-group" style="text-align: left;" id="grpName">
-          <label style="font-size:10pt;"><b>NAME</b></label>
-          <input type="text" class="form-control" id="name" name="name" >
-      </div><br>
+</style>
 
-        <div class="form-group" style="text-align: left;" id="grpEmail">
-          <label style="font-size:10pt;"><b>EMAIL</b></label>
-          <input type="text" class="form-control" id="email"  name="email" >
-        </div><br>
-        
-        <div class="form-group" style="text-align: left;" id="grpPhone">
-          <label style="font-size:10pt;"><b>PHONE</label></b>
-          <input type="text" class="form-control" id="phone"  name="phone" >
-        </div><br>
+</head>
 
-      <div class="form-group" style="text-align:left;" id="grpOccupation">
-          <label style="font-size:10pt;"><b>OCCUPATION</label></b>
-          <input type="text" class="form-control" id="occupation" name="occupation" >
-        </div><br>
-      
-      <div class="form-group" style="text-align: left;" id="grpLocation">
-          <label style="font-size:10pt;"><b>LOCATION</label></b>
-          <input type="text" class="form-control" id="location"  name="location" >
-        </div><br>
-
-        <div class="form-group" style="text-align: left;" id="grpPassword">
-      <label style="font-size:10pt;"><b>PASSWORD</label></b>
-          <input type="text" class="form-control" id="password"  name="password" >
-        </div><br>
-        
-        <div class="form-group" style="text-align: left;" id="grpConfirmPassword">
-          <label style="font-size:10pt;"><b>CONFIRMPASSWORD</label></b>
-          <input type="text" class="form-control" id="confirmpassword"  name="confirmpassword" >
-        </div><br>
-        <div style="text-align:right;">
-          <button type="submit" class="btn">SUBMIT</button>
-        </div>
-      </form>
-    </center>
-      
-    <!-- </center> -->
-    <!-- </div> -->
-    </div>
-<!-- </div> -->
-	<!-- Create Div First For Login Form -->
-    <!-- <div id="second">
-      <center>
-          <form action="" method="post" name="form">
-          <h3 style="font-family: Arial,Helvetica,sans-serif;">SIGN IN</h3>
-        <div class="form-group" style="text-align: left;">
-          <label style="font-size:10pt;"><b>EMAIL</label></b><br>
-          <input type="text" class="form-control" id="email"  name="email">
-        </div><br>
-
-        <div class="form-group" style="text-align: left">
-          <label style="font-size:10pt;"><b>PASSWORD</label></b><br>
-          <input type="password" class="form-control" id="password"  name="password">
-        </div><br>
-
-
-        <div style="text-align:right;">
-          <button type="signin" class="btn" ><center>SIGN IN</center></button>
-        </div>
-          <p id="one" style="opacity: 0.82;"><a href="#" style="font-family: Arial,Helvetica,sans-serif;color:#000000;opacity: 0.82;">Forgot Password ?</a></p>
-
-          <p id="two" style="opacity: 0.54;font-family: Arial,Helvetica,sans-serif;">Don't have account? <a  href="#" id="signup" style="color:#000000;opacity:0.82;">Sign up here</a></p>
-          </form>
+<body >
+    <div w3-include-html="head1.html"></div>
+    <div style="margin-top: 30px;">
+        <center> 
+        <h4 id="tabTitle" style = "font-family:defaultBarlowBold;color:#333333;">VOLUNTEER SIGN UP</h4>
         </center>
-      </div> -->
-  </div>
-  <div w3-include-html="footer.html"></div>
-</body>
-<script type="text/javascript">
-  includeHTML();
-  var qryCatType = "";
-  var qryEvId = "";
-  var qryStrings = getQueryString();
-  qryStrings.forEach(element => {
-    if(element.startsWith('cat_type')){
-      qryCatType = element.split('=')[1];
-      showForm();
-    }
-    else if(element.startsWith('ev_id')){
-      qryEvId = element.split('=')[1];
-    }
-  });
+    </div>
+    <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%; vertical-align: middle; margin-top: 0px; display:inline;">
+        <div class="spnBreadCrumbs" style = "float:left;margin-left:5%;"><a href="home.html" class="spnBreadCrumbs">HOME</a> ><div style="display:inline;" id="currentPage">&emsp;VOLUNTEER SIGN UP</div></div>
+    </div>
+    <hr/>
+    <div style = "text-align:center;">
+        <h5 style = "font-family:defaultBarlowBold;color:#bababa;">ALREADY A MEMBER ? <a class="hyperLinkText" href = 
+        "http://understandable-blin.hostingerapp.com/newDevMythri/registerNow.html?cat_type=login">SIGN IN</a></h5>
+    </div>
+<!--PROFILE CARDS-->
+    
+    <div class= "container" style = "font-family: defaultBarlow;">
+        <div class = "row">
+            <div class = "centeredDiv">
+                <div class = "card-box" style = "padding:3rem;">
+                <form id="signUpForm" action="">
+                    <label class="labelHeads" id="lbUsername">NAME</label>
+                    <input type="text" class="form-control" id="inpUsername" required><br>
+                    <label class="labelHeads" id="lbEmail">EMAIL</label>
+                    <input type="email" class="form-control"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" id="inpEmail" required><br>
+                    <label class="labelHeads" id="lbPhone">PHONE</label>
+                    <input type="text" class="form-control" pattern="[1-9]{1}[0-9]{9}" title="Enter 10 digit mobile number" id="inpPhone" required><br>
+                    <label class="labelHeads" id="lbOccupation">OCCUPATION</label>
+                    <input type="text" class="form-control" id="inpOccupation"><br>
+                    <label class="labelHeads" id="lbLocation">LOCATION</label>
+                    <input type="text" class="form-control" id="inpLocation" required><br>
+                    <label class="labelHeads" id="lbPassword">PASSWORD</label>
+                    <input type="password" class="form-control" id="inpPassword" required><br>
+                    <label class="labelHeads" id="lbPasswordCon">CONFIRM PASSWORD</label>
+                    <input type="password" class="form-control" id="inpPasswordCon" required><br>
+                    
+                    <p id="errorNote2" style="color:red;display:none;">Passwords don't match!</p>
+                    <button type="submit" class="btn" style="float: right;">SUBMIT</button>
+                </form>
+                <form style="display:none;" id="loginForm" action="">
+                    <label class="labelHeads" id="lbEmail">EMAIL</label>
+                    <input type="email" class="form-control"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" id="inpLogEmail" required><br>
+                    <label class="labelHeads" id="lbPassword">PASSWORD</label>
+                    <input type="password" class="form-control" id="inpLogPassword" required><br>
+                    <p id="errorNote1" style="color:red;display:none;">Incorrect username or password!</p>
+                    <button type="submit" class="btn" style="float: right;">SUBMIT</button>
+                </form>
+                <form style="display:none;" id="enquiryForm" action="">
+                    <label class="labelHeads" id="lbUsername">NAME</label>
+                    <input type="text" class="form-control" id="inpEnqUsername" required><br>
+                    <label class="labelHeads" id="lbEmail">EMAIL</label>
+                    <input type="email" class="form-control"  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" id="inpEnqEmail" required><br>
+                    <label class="labelHeads" id="lbPhone">PHONE</label>
+                    <input type="text" class="form-control" pattern="[1-9]{1}[0-9]{9}" title="Enter 10 digit mobile number" id="inpEnqPhone" required><br>
+                    <label class="labelHeads" id="lbMessage">MESSAGE</label>
+                    <textarea rows="7" class="form-control formStyle" id="txtEnqNotes" required></textarea><br>
+                    <button type="submit" class="btn" style="float: right;">SUBMIT</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div w3-include-html="footer.html" style="width: 100%;"></div>
 
-  function showForm(){
-    switch(qryCatType){
-    case "register":{
-      $('#title').text('Register');
-      break;
-    }
-    case "login":{
-      $('#grpName').css('display', 'none');
-      $('#grpPhone').css('display', 'none');
-      $('#grpOccupation').css('display', 'none');
-      $('#grpLocation').css('display', 'none');
-      $('#grpConfirmPassword').css('display', 'none');
-      $('#title').text('Login');
-      break;
-    }
-    case "volunteer":{
-      $('#title').text('Volunteer - Registration');
-      break;
-    }
-    case "donate":{
-      $('#title').text('Donation Form');
-      break;
-    }
-    case "janananma":{
-      $('#title').text('Donation Form');
-      break;
-    }
-    case "contact":{
-      $('#title').text('Contact Us');
-      break;
-    }
-    case "raise_your_voice":{
-      $('#title').text('Raise You Voice');
-      break;
-    }
-  }
-  }
-</script>
+    <script>
+        includeHTML();
+        var qryCatType = "";
+        var catFlag = 0;
+        var evFlag = 0;
+        var qryEvId = "";
+        var qryStrings = getQueryString();
+        qryStrings.forEach(element => {
+            if(element.startsWith('cat_type')){
+                qryCatType = element.split('=')[1];
+                catFlag = 1;
+                showForm();
+            }
+            else if(element.startsWith('ev_id')){
+                qryEvId = element.split('=')[1];
+                if(isNaN(parseInt(qryEvId))){
+                    window.location.replace('error.html');
+                }
+                evFlag = 1;
+            }
+        });
+        if(catFlag == 0 && evFlag == 0){
+            window.location.replace('error.html');
+        }
+        function showForm(){
+            switch(qryCatType){
+                case "register":
+                    $('#signUpForm').show();
+                    $('#loginForm').hide();
+                    $('#enquiryForm').hide();
+                    $('#title').text('Register');
+                    $('#tabTitle').text('Register');
+                    $('#currentPage').text('REGISTER');
+                break;
+                case "login":
+                    $('#signUpForm').hide();
+                    $('#loginForm').show();
+                    $('#enquiryForm').hide();
+                    $('#title').text('Login | MyThrissur');
+                    $('#tabTitle').text('LOGIN PORTAL');
+                    $('#currentPage').text('LOGIN');
+                break;
+                case "volunteer":
+                    $('#signUpForm').show();
+                    $('#loginForm').hide();
+                    $('#enquiryForm').hide();
+                    $('#title').text('Volunteer | MyThrissur');
+                    $('#tabTitle').text('VOLUNTEER SIGN UP');
+                    $('#currentPage').text('VOLUNTEER SIGN UP'); 
+                break;
+                case "donate":
+                    $('#signUpForm').hide();
+                    $('#loginForm').hide();
+                    $('#enquiryForm').show();
+                    $('#title').text('Donation Form | MyThrissur');
+                    $('#tabTitle').text('DONATION FORM');
+                    $('#currentPage').text('DONATE');
+                break;
+                case "janananma":
+                    $('#signUpForm').hide();
+                    $('#loginForm').hide();
+                    $('#enquiryForm').show();
+                    $('#title').text('Donation Form | MyThrissur');
+                    $('#tabTitle').text('DONATION FORM');
+                    $('#currentPage').text('DONATE');
+                break;
+                case "contact":
+                    $('#signUpForm').show();
+                    $('#loginForm').hide();
+                    $('#title').text('Contact Us | MyThrissur');
+                    $('#tabTitle').text('CONTACT US');
+                    $('#currentPage').text('CONTACT US');
+                break;
+                case "raise_your_voice":
+                    $('#signUpForm').hide();
+                    $('#loginForm').hide();
+                    $('#enquiryForm').show();
+                    $('#title').text('Raise Your Voice | MyThrissur');
+                    $('#tabTitle').text('RAISE YOUR VOICE');
+                    $('#currentPage').text('RAISE YOUR VOICE');
+                break;
+                default: window.location.replace('error.html');
+                break;
+            }
+        }
+        
+        $(document).ready(function(){
+            $('#signUpForm').submit(function(event){
+                event.preventDefault();
+                var data = [];
+                var password = $('#inpPassword').val();
+                var passwordCon  = $('#inpPasswordCon').val();
+                    if(password == passwordCon){
+                        data[0] = $('#inpUsername').val();
+                        data[1] = $('#inpPhone').val();
+                        data[2] = $('#inpOccupation').val();
+                        data[3] = $('#inpLocation').val();
+                        data[4] = $('#inpEmail').val();
+                        
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: 'assets/php/signUp.php',
+                            data: ({userName:data[0],phone:data[1],occupation:data[2],location:data[3],email:data[4],password:password}),
+                            success: function(responseData) {
+                                if(responseData.data.success == "successful"){
+                                    var response = responseData.data.result;
+                                    setCookie("isLogged",1);
+                                    setCookie("userId",response[0]);
+                                    window.location.replace('profile.html');
+                                } else if(responseData.data.success == "exists"){
+                                    if(confirm("Account already exists! Continue with Login?")){
+                                        $("#signUpForm").hide();
+                                        $("#loginForm").show();
+                                        var response = responseData.data.result;
+                                        $("#inpLogEmail").val(response[2]);
+                                    }
+                                }
+                            },
+                            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            demo.showNotification('top','center', 'Something went wrong', 4);
+                            }
+                        });
+                    } else {
+                        $('#errorNote2').css('display','inline');
+                        return false;
+                    }
+                });
+            
+            $('#loginForm').submit(function(event){
+                event.preventDefault();
+                var eMail = $('#inpLogEmail').val();
+                var passWord = $('#inpLogPassword').val();
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: 'assets/php/login.php',
+                    data: ({email:eMail,password:passWord}),
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            var response = responseData.data.result;
+                            $('#errorNote1').css('display','none');
+                            setCookie("userId",response[0]);
+                            setCookie("isLogged",1);
+                            window.location.replace('profile.html');
+                        } else {
+                            $('#errorNote1').css('display','inline');
+                            return false;
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        demo.showNotification('top','center', 'Something went wrong', 4);
+                    }
+                });
+            });
+            
+            $('#enquiryForm').submit(function(event){
+                event.preventDefault();
+                var data = [];
+                data[0] = $("#inpEnqUsername").val();
+                data[1] = $("#inpEnqPhone").val();
+                data[2] = $("#inpEnqEmail").val();
+                data[3] = $("#txtEnqNotes").val();
+                
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: 'assets/php/enquiry.php',
+                    data: ({userName:data[0],phone:data[1],email:data[2],notes:data[3],enqType:qryCatType,evId:qryEvId}),
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            alert("Thank you for your response! We'll contact you shortly");
+                            window.location.reload();
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Oops, something went wrong! Try again later!")
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>
