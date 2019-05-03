@@ -522,9 +522,8 @@ function loadEvents(selectId = 0){
 
 // La Cookie Section
 
-function reDirect(){
-    var page = window.location.protocol+"//"+window.location.hostname+"/devMythri/home.html";
-    window.location.replace(page);
+function reDirect(loc){
+    window.location.replace(loc);
 }
 function setCookie(cookieName,userId = null) {
 
@@ -559,7 +558,7 @@ function checkCookie(cookieName,signVar = null) {
  
         if(confirm("Confirm Log Out?")){
             setCookie(cookieName);
-            reDirect();
+            reDirect('home.html');
         } else {
             return;
         }
@@ -575,7 +574,7 @@ function checkCookie(cookieName,signVar = null) {
         else {                      //session validation
             alert("Session Expired! Login again to continue");
             setCookie(cookieName);
-            reDirect();
+            reDirect('home.html');
         }
     }
 }
