@@ -54,7 +54,7 @@
     </div>
     <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%; vertical-align: middle; margin-top: 0px; display:inline;">
         <div class="spnBreadCrumbs" style = "float:left;margin-left:5%;"><a href="home.html" class="spnBreadCrumbs">HOME</a> > VOLUNTEER PROFILE</div>
-        <div class="spnBreadCrumbs" style = "float:right;margin-right:5%;"><a href="javascript:checkCookie(-404,-404);" class="spnBreadCrumbs">Sign Out</a></div>
+        <div class="spnBreadCrumbs" style = "float:right;margin-right:5%;"><a href="javascript:setCookie('userId');setCookie('isLogged');reDirect('forms.html?cat_type=login');" class="spnBreadCrumbs">Sign Out</a></div>
     </div>
     <hr/>
 <!--PROFILE CARDS-->
@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <div class = "col-sm-6" style="padding: 5px 0px 0px 0px;">
-                    <div class = "card-box" style = "text-align:center;"><p style = "font-size:5rem;font-size:defaultBarlowBold;">0</p>
+                    <div class = "card-box" style = "text-align:center;"><p style = "font-size:5rem;font-size:defaultBarlowBold;" id="dvActivityCount">0</p>
                     <p style = "font-family:defaultBarlowBold;font-size:1.3rem;">ACTIVITY</p>
                     </div>
                 </div>
@@ -143,16 +143,11 @@
                         <th style="font-family:defaultBarlowBold;">Your Activities<br><hr style="border:1px solid #bababa;"/></th>
                     </tr>
                     </thead>
-                    <tr>
-                        <td>Activity 1</td>
-                    </tr>
-                    <tr>
-                        <td style = "font-size:1rem;">11-01-2019</td>
-                    </tr>
+                    <tbody id="tbActivityContent"></tbody>
                 </table>
             </div>
         </div>
-        <div class = "col-sm-5" style = "padding:0px 0px 0px 10px;">
+        <div class = "col-sm-5" style = "padding:0px 0px 0px 10px;" >
             <div class = "card-box" style = "height:304px;padding-top:0;">
                 <table style="width: 100%;margin-top:2rem;">
                     <thead class = "fixThisHeading" style="margin-top:2rem;">
@@ -166,9 +161,9 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody id = "sgTable"></tbody>
+                    <tbody id = "sgTable" style="cursor:pointer;"></tbody>
                 </table>
-                <div id="myModal" class="modal"><div class="modal-content"><span class="close">&times;</span><p id = "popText"></p></div></div>;
+                <div id="myModal" class="modal"><div class="modal-content"><span class="close">&times;</span><p id = "popText"></p></div></div>
                 <p></p>
             </div>
         </div>
@@ -185,10 +180,15 @@
             window.location.reload();
         }
     }
-    //setCookie("userId",1);
-    /*to create a cookie at login*/
-    checkCookie("userId");
-    /*to be included in the login page js code*/
+    $(document).ready(function(){
+            if(getCookie("userId=") == "null" || getCookie("userId=") == ""){
+                reDirect('forms.html?cat_type=login');
+            } else {
+                loadProfile(parseInt(getCookie("userId=")));
+                loadEvents();
+                loadActivity();
+            }
+    });
 </script>    
 </body>
 
