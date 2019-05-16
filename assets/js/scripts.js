@@ -510,7 +510,7 @@ function loadEvents(selectId = 0){
         var eveTable = "";
         
         for(i = 0; i< myObj.length; i++){
-            eveTable += '<tr><td><div style = "display:inline;"><div class = "col-sm-4"><img class="img-responsive" src = "'+myObj[i].eveImg+'"></div><div class = "col-sm-8"><p id = "sgHead">'+myObj[i].eveName+'</p><p style = "font-size:1rem;" id = "sgDate">'+myObj[i].eveDate+'</p><p style = "font-size:1.3rem;text-align:justify;" id = "sgData">'+myObj[i].eveDes+'</p></div></di></td></tr>';
+            eveTable += '<tr onclick="reDirect(&quot;individual-listing.php?type='+myObj[i].eveType+'&ev_id='+myObj[i].eveId+'&quot;,1)"><td><div style = "display:inline;"><div class = "col-sm-4"><img class="img-responsive" src = "'+myObj[i].eveImg+'"></div><div  class = "col-sm-8"><p id = "sgHead">'+myObj[i].eveName+'</p><p style = "font-size:1rem;" id = "sgDate">'+myObj[i].eveDate+'</p><p style = "font-size:1.3rem;text-align:justify;" id = "sgData">'+myObj[i].eveDes+'</p></div></di></td></a></tr>';
         }
         document.getElementById("sgTable").innerHTML = eveTable;
         }
@@ -519,12 +519,37 @@ function loadEvents(selectId = 0){
     xmlhttp.send();
 }
 
+function loadActivity(){
+    var id = getCookie("userId=");
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myObj = JSON.parse(this.responseText);
+            var actTable = "";
+            for(i = 0; i< myObj.length; i++){
+                actTable += '<tr id="'+myObj[i].evId+'"><td>'+myObj[i].eveName+'</td><tr><td style = "font-size:1rem;">'+myObj[i].eveDate+'</td></tr></tr>';
+            }
+            document.getElementById("tbActivityContent").innerHTML = actTable;
+            document.getElementById("userRating").innerHTML = myObj[0].ehRating;
+            document.getElementById("dvActivityCount").innerHTML = myObj[0].count;
+        }
+    };
+    xmlhttp.open("POST", "assets/php/fetchActivity.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xmlhttp.send("id="+id);
+}
 
 // La Cookie Section
 
-function reDirect(loc){
-    window.location.replace(loc);
+function reDirect(loc,type=0){
+    if(type=0){
+        window.location.replace(loc);
+    } else {
+        window.location.href=loc;
+    }
 }
+
 function setCookie(cookieName,userId = null) {
 
     var d = new Date();
@@ -550,31 +575,4 @@ function getCookie(cookieName) {
         }
     }
     return "";
-}
-
-function checkCookie(cookieName,signVar = null) {
-    
-    if(signVar !== null){       //sign out code
- 
-        if(confirm("Confirm Log Out?")){
-            setCookie(cookieName);
-            reDirect('home.html');
-        } else {
-            return;
-        }
-        
-    } else {
-    
-        var id = getCookie(cookieName+"="); //load data
-        
-        if (id !== "null") {
-            loadProfile(id);
-            loadEvents();
-        }
-        else {                      //session validation
-            alert("Session Expired! Login again to continue");
-            setCookie(cookieName);
-            reDirect('home.html');
-        }
-    }
 }
