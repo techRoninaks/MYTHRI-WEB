@@ -2,7 +2,7 @@
 <html lang="en" id="myDiv">
 <head>
 
-  <title id="title">Register Now</title>
+  <title id="title">Forms | MyThrissur</title>
   <!--<link rel="stylesheet" href="asset/css/gridex.css">-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +20,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <style>
+    body {
+        font-family:defaultBarlowBold; !important
+    }
+    p {
+        font-family:defaultBarlowBold; !important
+    }
     .hyperLinkText {
         color:#333333;
     }
@@ -64,8 +70,10 @@
     </div>
     <hr/>
     <div style = "text-align:center;">
-        <h5 style = "font-family:defaultBarlowBold;color:#bababa;">ALREADY A MEMBER ? <a class="hyperLinkText" href = 
-        "http://understandable-blin.hostingerapp.com/newDevMythri/registerNow.html?cat_type=login">SIGN IN</a></h5>
+        <h5 style = "font-family:defaultBarlowBold;color:#bababa;" id="hSignIn">ALREADY A MEMBER ? 
+        <a class="hyperLinkText" href = "forms.html?cat_type=login" id="aSignIn">SIGN IN</a></h5>
+        <h5 style = "display:none;font-family:defaultBarlowBold;color:#bababa;" id="hSignUp">NOT A MEMBER ? 
+        <a class="hyperLinkText" href = "forms.html?cat_type=register" style="display:none;" id="aSignUp">SIGN UP</a></h5>
     </div>
 <!--PROFILE CARDS-->
     
@@ -148,16 +156,20 @@
                     $('#signUpForm').show();
                     $('#loginForm').hide();
                     $('#enquiryForm').hide();
-                    $('#title').text('Register');
-                    $('#tabTitle').text('Register');
+                    $('#title').text('Register | MyThrissur');
+                    $('#tabTitle').text('REGISTER');
                     $('#currentPage').text('REGISTER');
                 break;
                 case "login":
                     $('#signUpForm').hide();
                     $('#loginForm').show();
                     $('#enquiryForm').hide();
+                    $('#hSignIn').hide();
+                    $('#aSignIn').hide();
+                    $('#hSignUp').show();
+                    $('#aSignUp').show();
                     $('#title').text('Login | MyThrissur');
-                    $('#tabTitle').text('LOGIN PORTAL');
+                    $('#tabTitle').text('LOGIN');
                     $('#currentPage').text('LOGIN');
                 break;
                 case "volunteer":
@@ -166,7 +178,7 @@
                     $('#enquiryForm').hide();
                     $('#title').text('Volunteer | MyThrissur');
                     $('#tabTitle').text('VOLUNTEER SIGN UP');
-                    $('#currentPage').text('VOLUNTEER SIGN UP'); 
+                    $('#currentPage').text('VOLUNTEER SIGN UP');
                 break;
                 case "donate":
                     $('#signUpForm').hide();
@@ -175,6 +187,7 @@
                     $('#title').text('Donation Form | MyThrissur');
                     $('#tabTitle').text('DONATION FORM');
                     $('#currentPage').text('DONATE');
+                    getFormData();
                 break;
                 case "janananma":
                     $('#signUpForm').hide();
@@ -183,13 +196,7 @@
                     $('#title').text('Donation Form | MyThrissur');
                     $('#tabTitle').text('DONATION FORM');
                     $('#currentPage').text('DONATE');
-                break;
-                case "contact":
-                    $('#signUpForm').show();
-                    $('#loginForm').hide();
-                    $('#title').text('Contact Us | MyThrissur');
-                    $('#tabTitle').text('CONTACT US');
-                    $('#currentPage').text('CONTACT US');
+                    getFormData();
                 break;
                 case "raise_your_voice":
                     $('#signUpForm').hide();
@@ -198,6 +205,7 @@
                     $('#title').text('Raise Your Voice | MyThrissur');
                     $('#tabTitle').text('RAISE YOUR VOICE');
                     $('#currentPage').text('RAISE YOUR VOICE');
+                    getFormData();
                 break;
                 default: window.location.replace('error.html');
                 break;
@@ -232,6 +240,9 @@
                                     if(confirm("Account already exists! Continue with Login?")){
                                         $("#signUpForm").hide();
                                         $("#loginForm").show();
+                                        $("#currentPage").text("LOGIN");
+                                        $("#tabTitle").text("LOGIN");
+                                        $('#title').text('Login | MyThrissur');
                                         var response = responseData.data.result;
                                         $("#inpLogEmail").val(response[2]);
                                     }
@@ -299,6 +310,27 @@
                 });
             });
         });
+        
+        function getFormData(){
+            var userId = parseInt(getCookie("userId"));
+            var isLogged = parseInt(getCookie("isLogged"));
+            if(!isNaN(userId)&&!isNaN(isLogged)){
+                $.ajax({
+                    type: 'POST',
+                        dataType: 'json',
+                        url: 'assets/php/getFormData.php',
+                        data: ({userId:userId}),
+                        success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            var response = responseData.data.result;
+                            $('#inpEnqUsername').val(response[0]);
+                            $('#inpEnqEmail').val(response[1]);
+                            $('#inpEnqPhone').val(response[2]);
+                        }}
+                });
+            }
+        }
+
     </script>
 </body>
 </html>
