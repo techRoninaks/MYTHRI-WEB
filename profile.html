@@ -181,10 +181,10 @@
         }
     }
     $(document).ready(function(){
-            if(getCookie("userId=") == "null" || getCookie("userId=") == ""){
+            if(getCookie("userId") == "null" || getCookie("userId") == ""){
                 reDirect('forms.html?cat_type=login');
             } else {
-                loadProfile(parseInt(getCookie("userId=")));
+                loadProfile(parseInt(getCookie("userId")));
                 loadEvents();
                 loadActivity();
             }
