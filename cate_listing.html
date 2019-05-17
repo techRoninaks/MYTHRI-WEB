@@ -108,6 +108,7 @@
     font-size: 25px;
     border: none;
   }
+
   </style>
 
   
@@ -135,7 +136,7 @@
 <br>
 <br>
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class=col-sm-12>
       <div class="col-sm-3">
@@ -195,12 +196,12 @@
       </div>
     </div>
   </div>
-</div>
-</br>
+</div> -->
+<!-- </br> -->
 <div class="container">
   <div class="row">
     <div class=col-sm-12 id="row1">
-      <div class="col-sm-3">
+      <div class="gallery">
         <div class="container1">
           <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
             <div class="overlay">
@@ -226,7 +227,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-3">
+      <div class="gallery">
           <div class="container1">
             <img class="img-responsive" src="assets/images/2.jpg" alt="sample" style="width: 350px;height: 150px;">
               <div class="overlay">
@@ -252,7 +253,7 @@
             </div>
           </div>
       </div>
-      <div class="col-sm-3">
+      <div class="gallery">
           <div class="container1">
             <img class="img-responsive" src="assets/images/3.jpg" alt="sample" style="width: 350px;height: 150px;">
               <div class="overlay">
@@ -278,7 +279,7 @@
             </div>
           </div>
       </div>
-      <div class="col-sm-3">
+      <div class="gallery">
           <div class="container1">
             <img class="img-responsive" src="assets/images/4.jpg" alt="sample" style="width: 350px;height: 150px;">
               <div class="overlay">
@@ -600,6 +601,13 @@
     case "events":{
       $('#title').text('Events');
       $('#tabTitle').hide();
+      loadtablerole("events",1);
+      break;
+    }
+    case "news":{
+      $('#title').text('News');
+      $('#tabTitle').hide();
+      loadtablerole("news",1);
       break;
     }
   }
