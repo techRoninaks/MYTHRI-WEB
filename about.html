@@ -38,7 +38,7 @@
 
 
 <body>
-    <div w3-include-html="head1.html"></div>
+    <div id="header" w3-include-html="head1.html"></div>
   <div id="divMaster" style="margin-top: 45px;">
     <section>
       <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%; vertical-align: middle;">
@@ -69,10 +69,22 @@
       </div>
     </section>
   </div>
-  <div w3-include-html="footer.html"></div>
+  <div id="footer" w3-include-html="footer.html"></div>
 </body>
 <script type="text/javascript">
   includeHTML();
+  toggleHeaders();
+  var qryMobView = "";
+  var qryStrings = getQueryString();
+  qryStrings.forEach(element => {
+    if(element.startsWith('m_view')){
+      qryMobView = element.split('=')[1];
+      if(qryMobView == "1"){
+        setCookie("mob","true");
+        toggleHeaders();
+      }
+    }
+  });
 </script>
 </html> 
 

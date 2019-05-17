@@ -46,7 +46,7 @@
 </head>
 
 <body >
-    <div w3-include-html="head1.html"></div>
+    <div id="header" w3-include-html="head1.html"></div>
     <div style="margin-top: 30px;">
         <center> 
         <h4 id="tabTitle" style = "font-family:defaultBarlowBold;color:#333333;">VOLUNTEER PROFILE</h4>
@@ -177,9 +177,21 @@
 <br>
 <!--PROFILE CARDS-->
     
-    <div w3-include-html="footer.html" style="width: 100%;"></div>
+    <div id="footer" w3-include-html="footer.html" style="width: 100%;"></div>
 <script>
     includeHTML();
+    toggleHeaders();
+    var qryMobView = "";
+    var qryStrings = getQueryString();
+    qryStrings.forEach(element => {
+        if(element.startsWith('m_view')){
+        qryMobView = element.split('=')[1];
+        if(qryMobView == "1"){
+            setCookie("mob","true");
+            toggleHeaders();
+        }
+        }
+    });
     function cancelEdit(){
         if(confirm("Cancel Editing?")){
             window.location.reload();
