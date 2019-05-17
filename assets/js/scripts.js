@@ -223,7 +223,7 @@ function off() {
 
 function templateDonVol(data, type){
   var template ="";
-  template +=  "<div class= col-md-3  id= donatetemp >"+
+  template +=  "<div class= gallery  id= donatetemp >"+
   "<a class= noa  href= forms.html?cat_type="+type+"&ev_id="+data["event_id"] +" style=width:100%;>"+
     "<div class= container1 >"+
     " <img class= img-responsive   src= "+ data["event_img"] +"   alt= sample   style= width:100%;height:150px;>"+
@@ -240,7 +240,7 @@ function templateDonVol(data, type){
       // "<font color= grey   size= -16 ;>"+
         "<h6>"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
       "</font>"+
-      "<p style= width:240px;height:60px;  >"+
+      "<p style= width:100%;height:60px;  >"+
         "<font size= -18   color= grey  ;>"
           +data["event_des"]+           
         "</font>"+
@@ -258,8 +258,8 @@ function templateDonVol(data, type){
 
 function templateJana(data, type){
   var template = "";
-  template += "<div class= col-md-3  id= donatetemp >"+
-  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +"style:100%>"+
+  template += "<div class= gallery  id= donatetemp >"+
+  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +" style:100%>"+
     "<div class= container1  id= janatemp  >"+
     " <img class= img-responsive   src= "+ data["event_img"] +"   alt= sample   style= width:100%;height:150px;>"+
         "<div class=  overlay  >"+
@@ -270,13 +270,13 @@ function templateJana(data, type){
     "<br>"+
     "<div class=  text   align=  left  >"+         
       "<font style=  font-size:14; ><strong>"+data["event_name"]+"</strong></font>"+
-      "<font color= grey   size= -16 ;>"+
+      "<font color= grey   size= 14 ;>"+
         "<h6>"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
       "</font>"+
-      "<p style= width:240px;height:60px;  >"+
-        "<font size= -18   color= grey  ;>"
+      "<p style= width:100%; color= grey>"+
+        "<h6>"
           +data["event_des"]+           
-        "</font>"+
+        "</h6>"+
       "</p> "+
     "</div>"+
     "<font size= -16  ><strong>Need Rs.12,000 more of Rs.40,000</strong></font>"+
@@ -297,8 +297,8 @@ function templateJana(data, type){
 
 function templateCare(data, type){
   var template = "";
-  template += "<div class= col-md-3  id= donatetemp >"+
-  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +"style=width:100%>"+
+  template += "<div class= gallery  id= donatetemp >"+
+  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +" style=width:100%>"+
     "<div class= container1  id= janatemp  >"+
     " <img class= img-responsive   src= "+ data["cc_img"] +"   alt= sample   style= width:100%;height:150px;>"+
         "<div class=  overlay  >"+
@@ -312,7 +312,7 @@ function templateCare(data, type){
       "<font color= grey   size= -16 ;>"+
         "<h6>"+data["cc_venue"]+", "+data["cc_contact"]+"</h6>"+
       "</font>"+
-      "<p style= width:240px;height:60px;  >"+
+      "<p style= width:100%;height:60px;  >"+
         "<font size= -18   color= grey  ;>"
           +data["cc_des"]+           
         "</font>"+
@@ -337,7 +337,7 @@ function templateCare(data, type){
 function templateHomeJana(data, type){
   var template = ""; 
   template += "<div class= col-md-4  id= shadowB  >"+
-  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +"style=width:100%>"+
+  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +" style=width:100%>"+
   "<div class=  hovereffect  >"+
   "<img class=  img-responsive  src=  "+ data["event_img"] +"   alt= sample  style=  width:100%;height:150px; >"+
     "<div class=  overlay11   style=  margin-top:-100px;width:240px;height:35px; >"+
@@ -398,7 +398,7 @@ return template;
 function templateHomeCare(data, type){
   var template = ""; 
   template += "<div class= col-md-4  id= shadowB  >"+
-  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +"style=width:100%>"+
+  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +" style=width:100%>"+
   "<div class=  hovereffect  >"+
   "<img class=  img-responsive  src=  "+ data["cc_img"] +"   alt= sample  style=  width:100%;height:150px; >"+
     "<div class=  overlay11   style=  margin-top:-100px;width:240px;height:35px; >"+

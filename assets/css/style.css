@@ -186,6 +186,15 @@ a:hover{
     
 }
 
+.gallery{
+    padding: 0 6px;
+    float: left;
+    width: 22.99999%;
+    margin: 6px;
+    height: inherit;
+}
+  
+
 @media (max-width:1200px) {
   #events{
 
@@ -208,7 +217,7 @@ a:hover{
     }
 }
 
-@media (max-width:990px) {
+@media (max-width:992px) {
     #more > ul{
         text-align: center;  
     }
@@ -238,9 +247,9 @@ a:hover{
     .btn{
         margin-right: 10px;
     }
-    #donatetemp{
-        margin: 5px;
-        margin-left: 0px;
+    .gallery {
+        width: 29%;
+        margin: 6px 15px;
     }
 }
 
@@ -251,12 +260,19 @@ a:hover{
     }
 }
 
-@media (max-width:1200px) {
-
-    #donatetemp{
-        margin: 5px;
-        /* margin-left: 0px; */
+@media only screen and (max-width: 758px) {
+    .gallery {
+      width: 40.99999%;
+      margin: 6px 25px;
     }
+}
+@media only screen and (max-width: 584px) {
+    .gallery {
+      width: 100%;
+      margin: 6px 25px;
+    }
+}
+@media (max-width:1200px) {
 }
 
 #overlay1{
@@ -346,11 +362,11 @@ a:hover{
 
 
 
-#donatetemp:hover{
+/* #donatetemp:hover{
     -webkit-box-shadow: 0px 6px 20px 1px rgba(0,0,0,0.65);
     -moz-box-shadow: 0px 6px 20px 1px rgba(0,0,0,0.65);
     box-shadow: 0px 6px 20px 1px rgba(0,0,0,0.65);
     /* transition: 250ms; */
     transition: 0.3s;
     
-}
+} */

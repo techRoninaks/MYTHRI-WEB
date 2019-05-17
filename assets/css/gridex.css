@@ -22,7 +22,7 @@
 
  .progressbar {
   background-color:lightgrey;
-  width: 240px;
+  width: 100%;
   border-radius:0px;
   height: 8px;
   margin-bottom: 20px;
