@@ -29,7 +29,7 @@ function includeHTML() {
 }
 
 function toggleBTN(){
-  console.log("in func");
+  // console.log("in func");
   var element = document.getElementById('dropmenu');
   if(element.classList.contains("show")){
     document.getElementById('dropmenu').classList.remove("show");
@@ -130,14 +130,15 @@ function homeload(array){
   
   for(i = 1; i<array.length; i++){
     var data = array[i];
-    switch(data["event_type"]){
-      case "Jana&nbsp;Nanma":
+    // console.log(data["event_type"]);
+    switch(data["event_type"].toLowerCase()){
+      case "janananma":
               htmltemp = htmltemp + templateHomeJana(data, "janananma");
               break;
-      case "Donate":
+      case "donate":
               htmltemp = htmltemp + templateHomeDoVol(data, "donate");
               break;
-      case "Volunteer":
+      case "volunteer":
               htmltemp = htmltemp + templateHomeDoVol(data, "volunteer");
               break;
       default:
@@ -145,7 +146,7 @@ function homeload(array){
     }
    
     }
-    //  console.log(htmltemp);
+     // console.log(htmltemp);
   document.getElementById('homerow1').innerHTML = htmltemp; 
   }
 
@@ -217,7 +218,7 @@ function on() {
 function off() {
   
   document.getElementById("overlay1").style.display = "none";
-  console.log("hell");
+  // console.log("hell");
 } 
 
 function templateDonVol(data, type){
@@ -466,7 +467,6 @@ function editProfile(){
             y.style.display = "none";
           }
         var id = getCookie("userId=");
-        console.log("edit cookie-> "+id);
         loadProfile(id,1);
 }
 
