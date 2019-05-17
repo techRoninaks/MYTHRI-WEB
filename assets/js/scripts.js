@@ -223,9 +223,9 @@ function off() {
 function templateDonVol(data, type){
   var template ="";
   template +=  "<div class= col-md-3  id= donatetemp >"+
-  "<a class= noa  href= forms.html?cat_type="+type+"&ev_id="+data["event_id"] +" >"+
+  "<a class= noa  href= forms.html?cat_type="+type+"&ev_id="+data["event_id"] +" style=width:100%;>"+
     "<div class= container1 >"+
-    " <img class= img-responsive   src= "+ data["event_img"] +"   alt= sample   style= width:350px;height:150px;>"+
+    " <img class= img-responsive   src= "+ data["event_img"] +"   alt= sample   style= width:100%;height:150px;>"+
         "<div class=  overlay  >"+
           "<div class=  text1  >"+type.toUpperCase()+""+
           "</div>"+
@@ -258,9 +258,9 @@ function templateDonVol(data, type){
 function templateJana(data, type){
   var template = "";
   template += "<div class= col-md-3  id= donatetemp >"+
-  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +">"+
+  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +"style:100%>"+
     "<div class= container1  id= janatemp  >"+
-    " <img class= img-responsive   src= "+ data["event_img"] +"   alt= sample   style= width:350px;height:150px;>"+
+    " <img class= img-responsive   src= "+ data["event_img"] +"   alt= sample   style= width:100%;height:150px;>"+
         "<div class=  overlay  >"+
           "<div class=  text1  >Read more"+
           "</div>"+
@@ -297,9 +297,9 @@ function templateJana(data, type){
 function templateCare(data, type){
   var template = "";
   template += "<div class= col-md-3  id= donatetemp >"+
-  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +">"+
+  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +"style=width:100%>"+
     "<div class= container1  id= janatemp  >"+
-    " <img class= img-responsive   src= "+ data["cc_img"] +"   alt= sample   style= width:350px;height:150px;>"+
+    " <img class= img-responsive   src= "+ data["cc_img"] +"   alt= sample   style= width:100%;height:150px;>"+
         "<div class=  overlay  >"+
           "<div class=  text1  >Read more"+
           "</div>"+
@@ -336,9 +336,9 @@ function templateCare(data, type){
 function templateHomeJana(data, type){
   var template = ""; 
   template += "<div class= col-md-4  id= shadowB  >"+
-  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +">"+
+  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +"style=width:100%>"+
   "<div class=  hovereffect  >"+
-  "<img class=  img-responsive  src=  "+ data["event_img"] +"   alt= sample  style=  width:350px;height:150px; >"+
+  "<img class=  img-responsive  src=  "+ data["event_img"] +"   alt= sample  style=  width:100%;height:150px; >"+
     "<div class=  overlay11   style=  margin-top:-100px;width:240px;height:35px; >"+
          "<h2 style=  width:250px; >"+data["event_type"]+"</h2>"+
   "</div>"+
@@ -366,9 +366,9 @@ return template;
 function templateHomeDoVol(data, type){
   var template = ""; 
   template += "<div class= col-md-4 id= shadowB >"+
-  "<a class= noa  href= forms.html?cat_type="+type+"&ev_id="+data["event_id"] +" >"+
+  "<a class= noa  href= forms.html?cat_type="+type+"&ev_id="+data["event_id"] +" style=width:100%>"+
   "<div class=  hovereffect  >"+
-  "<img class=  img-responsive  src=  "+ data["event_img"] +"   alt= sample  style=  width:350px;height:150px; >"+
+  "<img class=  img-responsive  src=  "+ data["event_img"] +"   alt= sample  style=  width:100%;height:150px; >"+
     "<div class=  overlay11   style=  margin-top:-100px;width:240px;height:35px; >"+
          "<h2 style=  width:250px; >"+data["event_type"]+"</h2>"+
   "</div>"+
@@ -397,9 +397,9 @@ return template;
 function templateHomeCare(data, type){
   var template = ""; 
   template += "<div class= col-md-4  id= shadowB  >"+
-  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +">"+
+  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +"style=width:100%>"+
   "<div class=  hovereffect  >"+
-  "<img class=  img-responsive  src=  "+ data["cc_img"] +"   alt= sample  style=  width:350px;height:150px; >"+
+  "<img class=  img-responsive  src=  "+ data["cc_img"] +"   alt= sample  style=  width:100%;height:150px; >"+
     "<div class=  overlay11   style=  margin-top:-100px;width:240px;height:35px; >"+
          "<h2 style=  width:250px; >Care Centers</h2>"+
   "</div>"+
@@ -577,4 +577,11 @@ function checkCookie(cookieName,signVar = null) {
             reDirect('home.html');
         }
     }
+}
+
+function toggleHeaders(){
+  if(getCookie("mob") == "true"){
+    $('#header').hide();
+    $('#footer').hide();
+  }
 }
