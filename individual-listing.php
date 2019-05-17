@@ -124,7 +124,7 @@
 
 </head>
 <body>
-  <div w3-include-html="head1.html"></div>
+  <div id="header" w3-include-html="head1.html"></div>
   
   <?php
   
@@ -251,7 +251,7 @@
  
   ?>
 
-   <div w3-include-html="footer.html" style="margin-top: 24px;"></div>
+   <div id="footer" w3-include-html="footer.html" style="margin-top: 24px;"></div>
   <script type="text/javascript">
     includeHTML();
   </script>
@@ -285,6 +285,8 @@
  </style>
  <script type="text/javascript">
   includeHTML();
+  toggleHeaders();
+  var qryMobView = "";
   var qryType = "";
   var qryEvId = "";
   var qryStrings = getQueryString();
@@ -295,6 +297,13 @@
     }
     else if(element.startsWith('ev_id')){
       qryEvId = element.split('=')[1];
+    }
+    else if(element.startsWith('m_view')){
+      qryMobView = element.split('=')[1];
+      if(qryMobView == "1"){
+        setCookie("mob","true");
+        toggleHeaders();
+      }
     }
   });
 

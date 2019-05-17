@@ -114,7 +114,7 @@
 </head>
 
 <body>
-  <div w3-include-html="head1.html"></div>
+  <div id="header" w3-include-html="head1.html"></div>
   <ul class="breadcrumb" style="margin-top: 24px;">
     <center> 
       <h4 id="tabTitle"><STRONG>
@@ -544,16 +544,24 @@
 </center>
 <br>
 <br>
-<div w3-include-html="footer.html" style="width: 100%;"></div>
+<div id="footer" w3-include-html="footer.html" style="width: 100%;"></div>
 </body>
 <script type="text/javascript">
   includeHTML();
+  toggleHeaders();
   var qryCatType = "";
+  var qryMobView = "";
   var qryStrings = getQueryString();
   qryStrings.forEach(element => {
     if(element.startsWith('cat_type')){
       qryCatType = element.split('=')[1];
       showForm();
+    }else if(element.startsWith('m_view')){
+      qryMobView = element.split('=')[1];
+      if(qryMobView == "1"){
+        setCookie("mob","true");
+        toggleHeaders();
+      }
     }
   });
 
@@ -605,42 +613,14 @@
 	var element = document.getElementById("temp");
 	
 	// declare function for "onMouseOver" event:
-	element.onmouseover = function() {
-		// var nameOfClass = "yourClassName";
-		
-		// // Some browsers do not support "classList". So, it's necessary to write a condition to see if the current browser supports it.
-		// if (element.classList) {
-		// 	element.classList.add(nameOfClass);
-		// }
-		// else {
-		// 	// If your browser does not support it, you'll have to use "className" property. Then, you can use a Regular Expression to validate if the class name exists.
-		// 	var regExp = new RegExp('(\\s|^)' + nameOfClass + '(\\s|$)');
-		// 	// Will add class if it's not found by validating the regular expression
-		// 	if (!element.className.match(regExp)) {
-		// 		element.className += " " + nameOfClass;
-		// 	}
+    // element.onmouseover = function() {
+    //   document.getElementById("overlay1").style.display = "block";
     // }
-    document.getElementById("overlay1").style.display = "block";
-    // console.log('hoverOn');
- 	}
  
 	// declare function for "onMouseOut" event:
-	element.onmouseout = function () {
-		// var nameOfClass = "yourClassName";
-	
-		// if (element.classList) {
-		// 	element.classList.remove(nameOfClass);
-		// }
-		// else {
-		// 	var regExp = new RegExp('(\\s|^)' + nameOfClass + '(\\s|$)');
-		// 	// Will remove class if it's found by validating the regular expression
-		// 	if (element.className.match(regExp)) {
-		// 		element.className.replace(regExp, ' ');
-		// 	}
+    // element.onmouseout = function () {
+    //   document.getElementById("overlay1").style.display = "none";
     // }
-    document.getElementById("overlay1").style.display = "none";
-    // console.log('hoverOff');
-	}
-}
+  }
 </script>
 </html>

@@ -53,7 +53,7 @@
 </head>
 
 <body >
-    <div w3-include-html="head1.html"></div>
+    <div id="header" w3-include-html="head1.html"></div>
     <div style="margin-top: 30px;">
         <center> 
         <h4 id="tabTitle" style = "font-family:defaultBarlowBold;color:#333333;">CONTACT US</h4>
@@ -95,35 +95,47 @@
     </div>
     <br><br>
     
-    <div w3-include-html="footer.html" style="width: 100%;"></div>
+    <div id="footer" w3-include-html="footer.html" style="width: 100%;"></div>
     
     <script>
     includeHTML();
-        $(document).ready(function(){
-            $('#enquiryForm').submit(function(event){
-                event.preventDefault();
-                var data = [];
-                data[0] = $('#inpEnqUsername').val();
-                data[1] = $('#inpEnqEmail').val();
-                data[2] = $('#txtEnqNotes').val();
+    toggleHeaders();
+    var qryMobView = "";
+    var qryStrings = getQueryString();
+    qryStrings.forEach(element => {
+        if(element.startsWith('m_view')){
+        qryMobView = element.split('=')[1];
+        if(qryMobView == "1"){
+            setCookie("mob","true");
+            toggleHeaders();
+        }
+        }
+    });
+    $(document).ready(function(){
+        $('#enquiryForm').submit(function(event){
+            event.preventDefault();
+            var data = [];
+            data[0] = $('#inpEnqUsername').val();
+            data[1] = $('#inpEnqEmail').val();
+            data[2] = $('#txtEnqNotes').val();
 
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'json',
-                    url: 'assets/php/enquiry.php',
-                    data: ({userName:data[0],phone:0,email:data[1],notes:data[2],enqType:'contact',evId:0}),
-                    success: function(responseData) {
-                        if(responseData.data.success == "successful"){
-                            alert("Thank you for your response! We'll contact you shortly");
-                            window.location.reload();
-                        }
-                    },
-                    error: function(XMLHttpRequest, textStatus, errorThrown) {
-                        alert("Oops, something went wrong! Try again later!")
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: 'assets/php/enquiry.php',
+                data: ({userName:data[0],phone:0,email:data[1],notes:data[2],enqType:'contact',evId:0}),
+                success: function(responseData) {
+                    if(responseData.data.success == "successful"){
+                        alert("Thank you for your response! We'll contact you shortly");
+                        window.location.reload();
                     }
-                });
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Oops, something went wrong! Try again later!")
+                }
             });
         });
+    });
     </script>
 </body>
 </html>

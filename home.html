@@ -236,7 +236,7 @@ a:hover{
 
 <body>
 <!-- <div class="container1 img-responsive" style="background-image: url('assets/images/homepage_title.jpg');    height: 242px;background-repeat: no-repeat;" > -->
-  <div w3-include-html="head1.html" class="header"></div>
+  <div id="header" w3-include-html="head1.html" class="header"></div>
   <img src="assets/images/homepage_title.jpg" class="img-responsive" style="width: 100%;height: 268px;">
 
 
@@ -541,10 +541,22 @@ a:hover{
 
 
 
-<div w3-include-html="footer.html"></div>    
+<div id="footer" w3-include-html="footer.html"></div>    
 </body>
 <script type="text/javascript">
   includeHTML();
+  toggleHeaders();
+  var qryMobView = "";
+  var qryStrings = getQueryString();
+  qryStrings.forEach(element => {
+    if(element.startsWith('m_view')){
+      qryMobView = element.split('=')[1];
+      if(qryMobView == "1"){
+        setCookie("mob","true");
+        toggleHeaders();
+      }
+    }
+  });
   function changeLocation(address){
     switch(address){
       case "volunteer":{
