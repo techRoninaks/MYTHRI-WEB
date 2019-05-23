@@ -132,69 +132,72 @@
   ini_set('display_startup_errors', 0);
   error_reporting(E_ALL);
   
- require "init.php";
+  require "init.php";
 
 
  
-      if(isset($_GET["ev_id"]) && isset($_GET["type"])){
+  if(isset($_GET["ev_id"]) && isset($_GET["type"])){
+    $evid=$_GET['ev_id'];
+    $qtype=$_GET['type'];
+    if($qtype=="care_centers")
+    {
 
+      $sql = "SELECT * FROM tbl_carectr where cc_id=$evid";
+      $result =mysqli_query($conn,$sql);
 
-        
+      while($row=mysqli_fetch_array($result)){
+        $venue=$row['cc_venue'];
+        $title=$row['cc_name'];
+        $strength=$row['cc_strength'];
+        $contact=$row['cc_contact'];
+        $id=$row['cc_id'];
+        $des=$row['cc_des'];
+        $image=$row['cc_img'];
+      }
+    }
+    
+    else 
+    {
+      $sql = "SELECT e.*,(select min(e.event_id) from tbl_event e where e.event_id > $evid and e.ev_id = (select et.ev_id from tbl_evtype et where et.ev_type='$qtype')) AS NXT, (select max(e.event_id) from tbl_event e where e.event_id < $evid and e.ev_id = (select et.ev_id from tbl_evtype et where et.ev_type='$qtype')) AS PREV FROM tbl_event e where event_id=$evid";
+      $result=mysqli_query($conn,$sql);
+      while($row=mysqli_fetch_array($result)){
+      
+      $title=$row['event_name'];        
+      $venue=$row['event_venue'];
+      $date=$row['event_date'];
+      $contact=$row['event_contact'];
+      $id=$row['event_id'];
+      $image=$row['event_img'];
+      $des=$row['event_des'];
+      $total=$row['event_total'];
+      $needed=$row['event_needed'];
+      $prev = $row['PREV'];
+      $next = $row['NXT'];
+      $aa=$total-$needed;
+      $progress=round(($aa/$total)*100,1);
 
-          $evid=$_GET['ev_id'];
-          $qtype=$_GET['type'];
-     
-
-
-       if($qtype=="care_centers")
-       {
-
-          $sql = "SELECT * FROM tbl_carectr where ev_id=(SELECT ev_id FROM tbl_evtype where ev_id='$evid')";
-          $result =mysqli_query($conn,$sql);
-  
-          while($row=mysqli_fetch_array($result)){
-            $venue=$row['cc_venue'];
-            $title=$row['cc_title'];
-            $strength=$row['cc_strength'];
-            $contact=$row['cc_contact'];
-            $id=$row['cc_id'];
-            $des=$row['cc_des'];
-          }
-        }
-        
-       else 
-       {
-          $sql = "SELECT * FROM tbl_event where ev_id=(SELECT ev_id FROM tbl_evtype where ev_id='$evid')";
-          $result =mysqli_query($conn,$sql);
-          while($row=mysqli_fetch_array($result)){
-          
-          $title=$row['event_title'];        
-          $venue=$row['event_venue'];
-          $date=$row['event_date'];
-          $title=$row['event_title'];
-          $contact=$row['event_contact'];
-          $id=$row['event_id'];
-          $des=$row['event_des'];
-          $total=$row['event_total'];
-          $needed=$row['event_needed'];
-          $aa=$total-$needed;
-          $progress=round(($aa/$total)*100,1);
-
-        }
-       }       
-
-
- 
+      }
+    }       
   ?>
   <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%; vertical-align: middle; margin-top: 48px;">
-    <p class="spnBreadCrumbs"><a href="home.html" class="spnBreadCrumbs">HOME</a> > <a href="cate_listing.html?cat_type=<?php echo $_GET['type'] ?>&pg_no=1" class="spnBreadCrumbs" id="links">CARE CENTERS</a> ><?php echo $title ?></p>
+    <p class="spnBreadCrumbs"><a href="home.html" class="spnBreadCrumbs">HOME</a> > <?php if($qtype == "care_centers"){
+      echo "<a href='cate_listing.html?cat_type=care_center&pg_no=1' class='spnBreadCrumbs'>CARE CENTERS</a>";
+    }else if($qtype == "volunteer"){
+      echo "<a href='cate_listing.html?cat_type=donate&pg_no=1' class='spnBreadCrumbs'>INITIATIVES</a> > <a href='cate_listing.html?cat_type=volunteer&pg_no=1' class='spnBreadCrumbs'>VOLUNTEER</a>";
+    }else if($qtype == "donate"){
+      echo "<a href='cate_listing.html?cat_type=donate&pg_no=1' class='spnBreadCrumbs'>INITIATIVES</a> > <a href='cate_listing.html?cat_type=donate&pg_no=1' class='spnBreadCrumbs'>DONATE</a>";
+    }else if($qtype == "janananma"){
+      echo "<a href='cate_listing.html?cat_type=donate&pg_no=1' class='spnBreadCrumbs'>INITIATIVES</a> > <a href='cate_listing.html?cat_type=janananma&pg_no=1' class='spnBreadCrumbs'>NANMA</a>";
+    }else if($qtype == "events"){
+      echo "<a href='cate_listing.html?cat_type=events&pg_no=1' class='spnBreadCrumbs'>EVENTS</a>";
+    }?> > <?php echo strtoupper($title) ?> </p>
     <hr/>
   </div>
   <div class="content_listing" >
     <div class="row">
       <div class="column" style="background-color:white;" >
         <h3><strong style="font-size: 18px;color: #000000;opacity:82%; font-family: defaultBarlowBold !important;" id="heading">
-          <?php echo $title ?></strong></h3>
+          <?php echo strtoupper($title) ?></strong></h3>
         <div class="content1" style="margin-top:24px;">
           <h5 class="content-text" id="venue" style="display:inline;"><strong id="place" style="display:inline;" >VENUE:</strong><strong><?php echo $venue ?></strong> </h5>
             <h5 class="content-text" id="date" ><strong id="dates" style="display:inline;">DATE:</strong><strong style="text-transform: uppercase"><?php echo date('d M Y',strtotime($date)) ?></strong> </h5>
@@ -204,16 +207,30 @@
       </div>
       <div class="column" style="background-color:white;padding-left:40px" >
         <h2 align=right> 
-          <a href=" " class="previous round cls-anchor">&#8249;</a>
-          <a href=" " class="next round cls-anchor" style="align-content: center;">&#8250;</a>
+          <a href="<?php 
+          if($prev == "" || strtolower($prev) == "null" || $prev == null){
+            echo "";
+          }
+          else{
+            echo "individual-listing.php?type=$qtype&ev_id=$prev";
+          }
+          ?>" class="previous round cls-anchor">&#8249;</a>
+          <a href="<?php 
+          if($next == "" || strtolower($next) == "null" || $next == null){
+            echo "";
+          }
+          else{
+            echo "individual-listing.php?type=$qtype&ev_id=$next";
+          }
+          ?>" class="next round cls-anchor" style="align-content: center;">&#8250;</a>
         </h2>
         <br>
         <div class="absolute" id="progress">
           <p style="line-height:18px; text-align:right;" class="content-text">
-            <strong>Need Rs.<?php echo $total ?> more of Rs.<?php echo $needed ?></strong> 
+            <strong>Need Rs.1200 more of Rs.4000</strong> 
           </p>
           <div class="outter" >
-            <div class="inner"  >
+            <div class="inner" style="width:30%;">
             </div>
         </div>
         </div>
@@ -221,13 +238,13 @@
     </div>
     
     <div class="row">
-      <img src="assets/images/<?php echo $id ?>.jpg" alt="download1.jpg"  align="center" class="img-main">
+      <img src="<?php echo $image ?>" alt="download1.jpg"  align="center" class="img-main">
     </div>
     <div align="center" style="margin: 20px;">
-        <button class="btns" onclick="window.location.href='http://www.hyperlinkcode.com/button-links.php'" id="donate">
+        <button class="btns" onclick='window.location.href=&quot;<?php echo "forms.html?cat_type=donate"."&ev_id=$evid"."&type=$qtype"; ?>&quot;' id="donate">
         <strong>DONATE</strong> 
         </button> 
-        <button class="btns" onclick="window.location.href='http://www.hyperlinkcode.com/button-links.php'" id="volunteer">
+        <button class="btns" onclick='window.location.href=&quot;<?php echo "forms.html?cat_type=volunteer"."&ev_id=$evid"."&type=$qtype"; ?>&quot;' id="volunteer">
         <strong>VOLUNTEER</strong>
         </button>
     </div>
@@ -237,52 +254,46 @@
     <br>
   </div>
   <?php
-
-  
-}
-
- 
- else
- {
-   header("Location:error.php?error-code=404");
-
- }
+  }
+  else //redirect if error occurs
+  {
+    header("Location:error.php?error-code=404");
+  }
 
  
   ?>
 
-   <div id="footer" w3-include-html="footer.html" style="margin-top: 24px;"></div>
+  <div id="footer" w3-include-html="footer.html" style="margin-top: 24px;"></div>
   <script type="text/javascript">
     includeHTML();
   </script>
 </body>
 </html>
- <?php
- $total=54000;
- $need=36000;
- $aa=$total-$need;
- $person=round(($aa/$total)*100,1);
- ?>
- <style type="text/css">
- .outter {
-  
+<?php
+  $total=54000;
+  $need=36000;
+  $aa=$total-$need;
+  $person=round(($aa/$total)*100,1);
+?>
+<style type="text/css">
+  .outter {
+
   background-color:#f1f1f1;
   height:12px;
   width: 100%;
-  
+
   padding-top: 0;
 
- }
- .inner {
+  }
+  .inner {
 
   height:12px;
   width: <?php echo $progress ?>%;
- padding-top:0;
+  padding-top:0;
 
- background-color: orange;
-}
-
- </style>
+  background-color: orange;
+  }
+</style>
  <script type="text/javascript">
   includeHTML();
   toggleHeaders();
@@ -308,51 +319,51 @@
   });
 
 
-function showForm(){
+  function showForm(){
     switch(qryType){
-    case "donate":{
-      $('#title').text('Donate');
-      $('#strength').css('display', 'none');
-      $('#volunteer').css('display', 'none');
-      document.getElementById("links").innerHTML = "INITIATIVES";
-      qryEvId =1;
-      break;
+      case "donate":{
+        $('#title').text('Donate');
+        $('#strength').css('display', 'none');
+        $('#volunteer').css('display', 'none');
+        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>INITIATIVES</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>DONATE</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
+        qryEvId = 1;
+        break;
+      }
+      case "janananma":{
+        $('#title').text('Janananma');
+        $('#strength').css('display', 'none');
+        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>INITIATIVES</a> > <a href=cate_listing.html?cat_type=janananma&pg_no=1 class=spnBreadCrumbs style=margin:0px;>JANANANMA</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
+        qryEvId = 2;
+        break;
+      }
+      case "care_centers":{
+        $('#title').text('Care centers');
+        $('#dates').css('display', 'none');
+        $('#date').css('display', 'none');
+        $('#place').css('display', 'none');
+        $('#progress').css('display', 'none');
+        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=care_centers&pg_no=1 class=spnBreadCrumbs style=margin:0px;>CARE CENTERS</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
+        qryEvId = 3;
+        break;
+      }
+      case "events":{
+        $('#title').text('Events');
+        $('#strength').css('display', 'none');
+        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=events&pg_no=1 class=spnBreadCrumbs style=margin:0px;>DONATE</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
+        document.getElementById("heading").innerHTML = "A DAY FOR SPECIAL ONES";
+        qryEvId = 4;
+        break;
+      }
+      case "volunteer":{
+        $('#title').text('Volunteer');
+        $('#strength').css('display', 'none');
+        $('#donate').css('display', 'none');
+        $('#progress').css('display', 'none');
+        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>INITIATIVES</a> > <a href=cate_listing.html?cat_type=volunteer&pg_no=1 class=spnBreadCrumbs style=margin:0px;>VOLUNTEER</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
+        qryEvId = 5;
+        break;
+      }
     }
-    case "janananma":{
-      $('#title').text('Janananma');
-      $('#strength').css('display', 'none');
-      document.getElementById("links").innerHTML = "INITIATIVES";
-      qryEvId =2;
-      break;
-    }
-    case "care_centers":{
-      $('#title').text('Care centers');
-      $('#dates').css('display', 'none');
-      $('#date').css('display', 'none');
-      $('#place').css('display', 'none');
-      $('#progress').css('display', 'none');
-      document.getElementById("links").innerHTML = "CARE CENTERS";
-      qryEvId =3;
-      break;
-    }
-    case "events":{
-      $('#title').text('Events');
-      $('#strength').css('display', 'none');
-      document.getElementById("links").innerHTML = "EVENTS";
-      document.getElementById("heading").innerHTML = "A DAY FOR SPECIAL ONES";
-      qryEvId =4;
-      break;
-    }
-    case "volunteer":{
-      $('#title').text('Volunteer');
-      $('#strength').css('display', 'none');
-      $('#donate').css('display', 'none');
-      $('#progress').css('display', 'none');
-      document.getElementById("links").innerHTML = "INITIATIVES";
-      qryEvId =5;
-      break;
-    }
-  }
   }
 
 </script>

@@ -1,7 +1,7 @@
 <?php
         require "../../init.php";//needed for connection with database
         
-        $sql_query =  "SELECT E.*,T.ev_type FROM tbl_event as E JOIN tbl_evtype as T ON E.ev_id=T.ev_id ORDER BY `E`.`event_date` DESC   ";//SQL command
+        $sql_query =  "SELECT E.*,T.ev_type FROM tbl_event as E JOIN tbl_evtype as T ON E.ev_id=T.ev_id WHERE E.ev_id IN (1,2,3) ORDER BY `E`.`event_date` DESC LIMIT 3";//SQL command
         $response = array();
         $data = array();
         $success = "unsuccessful";

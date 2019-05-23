@@ -44,7 +44,11 @@ function toggleBTN(){
 }
 
 function getQueryString(){
-  return document.URL.split('?')[1].split('&');
+  var temp = document.URL.split('?');
+  if(temp.length > 1){
+    return temp[1].split('&');
+  }
+  return [];
 }
 
 function loadtablerole(caller, page){
@@ -58,23 +62,28 @@ function loadtablerole(caller, page){
         
         switch (caller){
           case "janananma":
-              janaload(myObj);
-              break;
+            janaload(myObj);
+            break;
           case "donate":
-              donateload(myObj);
-              break;
+            donateload(myObj);
+            break;
           case "volunteer":
-              volunteerload(myObj);
-              break;
+            volunteerload(myObj);
+            break;
           case "home":
-              homeload(myObj);
-              break;
+            homeload(myObj);
+            break;
           case "care":
-              careload(myObj);
-              break;
+            careload(myObj);
+            break;
           case "carehome":
-              carehomeload(myObj);
-              break;
+            carehomeload(myObj);
+            break;
+          case "events":
+            eventload(myObj);
+            break;
+          case "news":
+            break;
           default:
             // homeload(myObj);
             break;
@@ -85,38 +94,47 @@ function loadtablerole(caller, page){
 
   switch(caller){
     case "janananma":
-            xhr.open("GET", "assets/php/getjana.php", true);
-            xhr.setRequestHeader("Content-type", "text/plain");
-            xhr.send();
-            break;
+      xhr.open("GET", "assets/php/getjana.php", true);
+      xhr.setRequestHeader("Content-type", "text/plain");
+      xhr.send();
+      break;
     case "donate":
-            xhr.open("GET", "assets/php/getdonate.php", true);
-            xhr.setRequestHeader("Content-type", "text/plain");
-            xhr.send();
-            break;
+      xhr.open("GET", "assets/php/getdonate.php", true);
+      xhr.setRequestHeader("Content-type", "text/plain");
+      xhr.send();
+      break;
     case "volunteer":
-            xhr.open("GET", "assets/php/getvolunteer.php", true);
-            xhr.setRequestHeader("Content-type", "text/plain");
-            xhr.send();
-            break;
+      xhr.open("GET", "assets/php/getvolunteer.php", true);
+      xhr.setRequestHeader("Content-type", "text/plain");
+      xhr.send();
+      break;
     case "home":
-          xhr.open("GET", "assets/php/gethome1.php", true);
-          xhr.setRequestHeader("Content-type", "text/plain");
-          xhr.send();
-          break;
+      xhr.open("GET", "assets/php/gethome1.php", true);
+      xhr.setRequestHeader("Content-type", "text/plain");
+      xhr.send();
+      break;
     case "care":
-          xhr.open("GET", "assets/php/getcare.php", true);
-          xhr.setRequestHeader("Content-type", "text/plain");
-          xhr.send();
-          break;
+      xhr.open("GET", "assets/php/getcare.php", true);
+      xhr.setRequestHeader("Content-type", "text/plain");
+      xhr.send();
+      break;
     case "carehome":
-          xhr.open("GET", "assets/php/getcare.php", true);
-          xhr.setRequestHeader("Content-type", "text/plain");
-          xhr.send();
-          break;
+      xhr.open("GET", "assets/php/getcare.php", true);
+      xhr.setRequestHeader("Content-type", "text/plain");
+      xhr.send();
+      break;
+    case "events":
+      xhr.open("GET", "assets/php/getevents.php", true);
+      xhr.setRequestHeader("Content-type", "text/plain");
+      xhr.send();
+      break;
+    case "news":
+      xhr.open("GET", "assets/php/getnews.php", true);
+      xhr.setRequestHeader("Content-type", "text/plain");
+      xhr.send();
+      break;
     default:
-
-            break;
+      break;
   }
 
   // xhr.open("GET", "assets/php/getjana.php", true);
@@ -167,7 +185,7 @@ function carehomeload(array){
   var data2 = "";
   var htmltemp ="";
   
-  for(i = 1; i<array.length; i++){
+  for(i = 1; i<=3; i++){
     var data = array[i];
     htmltemp = htmltemp + templateHomeCare(data, "care_centers");
     }
@@ -198,6 +216,18 @@ function donateload(array){
   document.getElementById('row1').innerHTML = htmltemp; 
   }
 
+  function eventload(array){
+    var data2 = "";
+    var htmltemp ="";
+    
+    for(i = 1; i<array.length; i++){
+      var data = array[i];
+      htmltemp = htmltemp + templateEvents(data, "events");
+      }
+      
+    document.getElementById('row1').innerHTML = htmltemp; 
+    }
+
 function volunteerload(array){
   var data2 = "";
   var htmltemp ="";
@@ -226,7 +256,7 @@ function templateDonVol(data, type){
   template +=  "<div class= gallery  id= donatetemp >"+
   "<a class= noa  href= forms.html?cat_type="+type+"&ev_id="+data["event_id"] +" style=width:100%;>"+
     "<div class= container1 >"+
-    " <img class= img-responsive   src= "+ data["event_img"] +"   alt= sample   style= width:100%;height:150px;>"+
+    " <img class= img-responsive   src= "+ data["event_img"] +"   alt=sample   style= width:100%;height:150px;>"+
         "<div class=  overlay  >"+
           "<div class=  text1  >"+type.toUpperCase()+""+
           "</div>"+
@@ -234,20 +264,17 @@ function templateDonVol(data, type){
     "</div>"+
     "</a>"+
     "<br>"+
-    "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +" >"+
+    "<a class= noa href= individual-listing.php?type="+type+"&ev_id="+data["event_id"] +" >"+
     "<div class=  text   align=  left  >"+         
       "<font style=  font-size:14; ><strong>"+data["event_name"]+"</strong></font>"+
       // "<font color= grey   size= -16 ;>"+
-        "<h6>"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
-      "</font>"+
-      "<p style= width:100%;height:60px;  >"+
-        "<font size= -18   color= grey  ;>"
-          +data["event_des"]+           
-        "</font>"+
-      "</p> "+
+        "<h6 style=height:26px;color:gray;width:100%;>"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
+        "<p style=  width:100%;height:80px;line-height:17px;font-family:defaultBarlow;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;><font size= 2  color= grey ;>"
+        +data["event_des"]+
+         "</font></p>"+
     "</div>"+
-    "</a>"+
-    "<font size= -16  ><strong>Need Rs.12,000 more of Rs.40,000</strong></font>"+
+    "</a>"+ (type == "donate" ?
+    "<strong>Need Rs.12,000 more of Rs.40,000</strong>" : "<strong>Need 12 more of 40</strong>")+
     "<div class= progressbar >"+
       "<div class= progressbarx >"+
       "</div>"+
@@ -256,10 +283,35 @@ function templateDonVol(data, type){
     return template;
 }
 
+function templateEvents(data, type){
+  var template ="";
+  template +=  "<div class= gallery  id= donatetemp >"+
+  "<a class= noa  href= individual-listing.php?type="+type+"&ev_id="+data["event_id"] +" style=width:100%;>"+
+    "<div class= container1 >"+
+    " <img class= img-responsive   src= "+ data["event_img"] +"   alt=sample   style= width:100%;height:150px;>"+
+        "<div class=  overlay  >"+
+          "<div class=  text1  >"+"Read More"+""+
+          "</div>"+
+        "</div>"+
+    "</div>"+
+    "<br>"+
+    "<div class=  text   align=  left  >"+         
+      "<font style=  font-size:14; ><strong>"+data["event_name"]+"</strong></font>"+
+      // "<font color= grey   size= -16 ;>"+
+        "<h6 style=height:26px;color:gray;width:100%;>"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
+        "<p style=  width:100%;height:80px;line-height:17px;font-family:defaultBarlow;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;><font size= 2  color= grey ;>"
+        +data["event_des"]+
+         "</font></p>"+
+    "</div>"+
+    "</a>"+
+    "</div>";
+    return template;
+}
+
 function templateJana(data, type){
   var template = "";
   template += "<div class= gallery  id= donatetemp >"+
-  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +" style:100%>"+
+  "<a class= noa  href= individual-listing.php?type="+type+"&ev_id="+data["event_id"] +" style:100%>"+
     "<div class= container1  id= janatemp  >"+
     " <img class= img-responsive   src= "+ data["event_img"] +"   alt= sample   style= width:100%;height:150px;>"+
         "<div class=  overlay  >"+
@@ -270,16 +322,12 @@ function templateJana(data, type){
     "<br>"+
     "<div class=  text   align=  left  >"+         
       "<font style=  font-size:14; ><strong>"+data["event_name"]+"</strong></font>"+
-      "<font color= grey   size= 14 ;>"+
-        "<h6>"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
-      "</font>"+
-      "<p style= width:100%; color= grey>"+
-        "<h6>"
-          +data["event_des"]+           
-        "</h6>"+
-      "</p> "+
+        "<h6 style=height:26px;color:gray;width:100%>"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
+        "<p style=  width:100%;height:80px;line-height:17px;font-family:defaultBarlow;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;><font size= 2  color= grey ;>"
+        +data["event_des"]+
+         "</font></p>"+
     "</div>"+
-    "<font size= -16  ><strong>Need Rs.12,000 more of Rs.40,000</strong></font>"+
+    "<strong>Need Rs 1200 more of Rs. 4000</strong>"+
     "<div class= progressbar >"+
       "<div class= progressbarx >"+
       "</div>"+
@@ -298,7 +346,7 @@ function templateJana(data, type){
 function templateCare(data, type){
   var template = "";
   template += "<div class= gallery  id= donatetemp >"+
-  "<a class= noa  href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +" style=width:100%>"+
+  "<a class=noa  href= individual-listing.php?type="+type+"&ev_id="+data["cc_id"] +" style=width:100%>"+
     "<div class= container1  id= janatemp  >"+
     " <img class= img-responsive   src= "+ data["cc_img"] +"   alt= sample   style= width:100%;height:150px;>"+
         "<div class=  overlay  >"+
@@ -306,19 +354,14 @@ function templateCare(data, type){
           "</div>"+
         "</div>"+
     "</div>"+
-    "<br>"+
     "<div class=  text   align=  left  >"+         
-      // "<font style=  font-size:14; ><strong>"+data["cc_name"]+"</strong></font>"+
-      "<font color= grey   size= -16 ;>"+
-        "<h6>"+data["cc_venue"]+", "+data["cc_contact"]+"</h6>"+
-      "</font>"+
-      "<p style= width:100%;height:60px;  >"+
-        "<font size= -18   color= grey  ;>"
-          +data["cc_des"]+           
-        "</font>"+
-      "</p> "+
+      "<font style=  font-size:14; ><strong>"+data["cc_name"]+"</strong></font>"+
+        "<h6 style=height:26px;color:gray;width:100%;>"+data["cc_venue"]+", "+data["cc_contact"]+"</h6>"+
+        "<p style=  width:100%;height:80px;line-height:17px;font-family:defaultBarlow;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;><font size= 2  color= grey ;>"
+        +data["cc_des"]+
+         "</font></p>"+
     "</div>"+
-    "<font size= -16  ><strong>Need Rs.12,000 more of Rs.40,000</strong></font>"+
+    "<strong>Need Rs.12,000 more of Rs.40,000</strong>"+
     "<div class= progressbar >"+
       "<div class= progressbarx >"+
       "</div>"+
@@ -334,25 +377,27 @@ function templateCare(data, type){
     return template;
 }
 
+
+
 function templateHomeJana(data, type){
   var template = ""; 
-  template += "<div class= col-md-4  id= shadowB  >"+
-  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +" style=width:100%>"+
+  template += "<div class= galleryHome  id= shadowB  >"+
+  "<a class= noa href= individual-listing.php?type="+type+"&ev_id="+data["event_id"] +" style=width:100%>"+
   "<div class=  hovereffect  >"+
   "<img class=  img-responsive  src=  "+ data["event_img"] +"   alt= sample  style=  width:100%;height:150px; >"+
-    "<div class=  overlay11   style=  margin-top:-100px;width:240px;height:35px; >"+
-         "<h2 style=  width:250px; >"+data["event_type"]+"</h2>"+
+    "<div class=  overlay11   style=  margin-top:-100px;width:100%;height:35px; >"+
+         "<h2 style=  width:100%; >"+data["event_type"]+"</h2>"+
   "</div>"+
 "</div>"+
 "<div class= text   align= left  style=  margin-top:20px; >"+
-  "<font color= grey size= 2; >"+data["event_name"]+"</font>"+
+  "<font color= black size= 2; >"+data["event_name"]+"</font>"+
   // "<font color= grey  size= -16 ; ></font>"+
-  "<h6 style=  color:gray;  >"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
-   "<p style=  width:240px;height:80px;line-height:17px; ><font size= 2  color= grey ;>"
-   +data["event_des"]+
-    "</font></p>"+
+  "<h6 style=  color:gray;height:26px  >"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
+  "<p style=  width:100%;height:80px;line-height:17px;font-family:defaultBarlow;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;><font size= 2  color= grey ;>"
+  +data["event_des"]+
+   "</font></p>"+
 "</div>"+
-"<strong>need Rs 1200 more of Rs. 4000</strong>"+
+"<strong>Need Rs 1200 more of Rs. 4000</strong>"+
 "<div class=  progressbar  >"+
 "<div class=  progressbarx  >"+
 "</div>"+
@@ -366,26 +411,26 @@ return template;
 
 function templateHomeDoVol(data, type){
   var template = ""; 
-  template += "<div class= col-md-4 id= shadowB >"+
+  template += "<div class= galleryHome id= shadowB >"+
   "<a class= noa  href= forms.html?cat_type="+type+"&ev_id="+data["event_id"] +" style=width:100%>"+
   "<div class=  hovereffect  >"+
   "<img class=  img-responsive  src=  "+ data["event_img"] +"   alt= sample  style=  width:100%;height:150px; >"+
-    "<div class=  overlay11   style=  margin-top:-100px;width:240px;height:35px; >"+
-         "<h2 style=  width:250px; >"+data["event_type"]+"</h2>"+
+    "<div class=  overlay11   style=  margin-top:-100px;width:100%;height:35px; >"+
+         "<h2 style=  width:100%; >"+data["event_type"]+"</h2>"+
   "</div>"+
 "</div>"+
 "</a>"+
-"<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["event_id"] +" >"+
+"<a class= noa href= individual-listing.php?type="+type+"&ev_id="+data["event_id"] +" >"+
 "<div class= text   align= left  style=  margin-top:20px; >"+
-  "<font color= grey size= 2; >"+data["event_name"]+"</font>"+
+  "<font color= black size= 2; >"+data["event_name"]+"</font>"+
   // "<font color= grey  size= -16 ; ></font>"+
-  "<h6 style=  color:gray;  >"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
-   "<p style=  width:240px;height:80px;line-height:17px; ><font size= 2  color= grey ;>"
-   +data["event_des"]+
-    "</font></p>"+
+  "<h6 style=  color:gray;height:26px  >"+data["event_date"]+", "+data["event_venue"]+", "+data["contact"]+"</h6>"+
+  "<p style=  width:100%;height:80px;line-height:17px;font-family:defaultBarlow;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;><font size= 2  color= grey ;>"
+  +data["event_des"]+
+   "</font></p>"+
 "</div>"+
 "</a>"+
-"<strong>need Rs 1200 more of Rs. 4000</strong>"+
+"<strong>Need Rs 1200 more of Rs. 4000</strong>"+
 "<div class=  progressbar  >"+
 "<div class=  progressbarx  >"+
 "</div>"+
@@ -397,8 +442,8 @@ return template;
 
 function templateHomeCare(data, type){
   var template = ""; 
-  template += "<div class= col-md-4  id= shadowB  >"+
-  "<a class= noa href= individuallisting.php?type="+type+"&ev_id="+data["cc_id"] +" style=width:100%>"+
+  template += "<div class= galleryHome  id= shadowB  >"+
+  "<a class= noa href= individual-listing.php?type="+type+"&ev_id="+data["cc_id"] +" style=width:100%>"+
   "<div class=  hovereffect  >"+
   "<img class=  img-responsive  src=  "+ data["cc_img"] +"   alt= sample  style=  width:100%;height:150px; >"+
     "<div class=  overlay11   style=  margin-top:-100px;width:240px;height:35px; >"+
@@ -406,14 +451,14 @@ function templateHomeCare(data, type){
   "</div>"+
 "</div>"+
 "<div class= text   align= left  style=  margin-top:20px; >"+
-  // "<font color= grey size= 2; >"+data["event_name"]+"</font>"+
+  "<font color=black size= 2; >"+data["cc_name"]+"</font>"+
   // "<font color= grey  size= -16 ; ></font>"+
-  "<h6 style=  color:gray;  >"+data["cc_venue"]+", "+data["cc_contact"]+"</h6>"+
-   "<p style=  width:240px;height:80px;line-height:17px; ><font size= 2  color= grey ;>"
-   +data["cc_des"]+
-    "</font></p>"+
+  "<h6 style=  color:gray;height:26px  >"+data["cc_venue"]+", "+data["cc_contact"]+"</h6>"+
+  "<p style=  width:100%;height:80px;line-height:17px;font-family:defaultBarlow;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;><font size= 2  color= grey ;>"
+  +data["cc_des"]+
+   "</font></p>"+
 "</div>"+
-"<strong>need Rs 1200 more of Rs. 4000</strong>"+
+"<strong>Need Rs 1200 more of Rs. 4000</strong>"+
 "<div class=  progressbar  >"+
 "<div class=  progressbarx  >"+
 "</div>"+
@@ -571,13 +616,15 @@ function getCookie(cookieName) {
             // console.log("&&&&&& "+c);
         }
         if (c.indexOf(cookieName) === 0) {
-            return c.substring(cookieName.length, c.length);
+            return c.substring(cookieName.length + 1, c.length);
         }
     }
     return "";
 }
 function toggleHeaders(){
   if(getCookie("mob") == "true"){
+    // document.getElementById('header').style.display = "none";
+    // document.getElementById('footer').style.display = "none";
     $('#header').hide();
     $('#footer').hide();
   }

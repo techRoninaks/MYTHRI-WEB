@@ -26,7 +26,7 @@
     font-family: defaultBarlow !important;
   }
  .hovereffect {
-  width: 240px;
+  width: 100%;
   height: 20%;
   /*float: left;*/
   overflow: hidden;
@@ -112,7 +112,7 @@
 }
 .progressbar {
   background-color:lightgrey;
-  width: 240px;
+  width: 100%;
   border-radius:0px;
   height: 8px;
   margin-bottom: 20px;
@@ -231,291 +231,248 @@ a:hover{
 .dvBeAVol a :hover{
   text-decoration-color: #00000066;
 }
+
+@media (max-width:920px) {
+  .btn{
+    width:18%;
+  }
+}
+@media (max-width:758px) {
+  .btn{
+    width:20%;
+  }
+}
+@media (max-width:675px) {
+  .btn{
+    width:22%;
+  }
+}
+@media (max-width:554px) {
+  .btn{
+    width:24%;
+  }
+}
 </style>
 
 
 <body>
-<!-- <div class="container1 img-responsive" style="background-image: url('assets/images/homepage_title.jpg');    height: 242px;background-repeat: no-repeat;" > -->
   <div id="header" w3-include-html="head1.html" class="header"></div>
   <img src="assets/images/homepage_title.jpg" class="img-responsive" style="width: 100%;height: 268px;">
 
 
   <button class="btn" style="top: 120px;" onclick='changeLocation("volunteer");'><b>VOLUNTEER</b></button>
   <br>
-    <button class="btn" style="top: 190px;" onclick='changeLocation("donate");'><b>DONATE</b></button>
-<!-- <br> -->
-<div class="container-fluid">
-  <!-- <br> -->
-  
-  <div class="row">
-   <!--  <div class="col-sm-12" style="background-color"></div> -->
-    <div class="col-sm-9" style="padding-left: 50px;" >
-      <br>
-    <!--  <br> -->
-      <div class="row">
+  <button class="btn" style="top: 190px;" onclick='changeLocation("donate");'><b>DONATE</b></button>
 
-
-        <div class="col-sm-4">
-            <b style="font-size: 17px;font-weight: 700;padding-bottom: 0px"> LATEST INITIATIVES</b>
-          </div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4" style="padding-left: 155px;padding-right: 0px;">
-            <a href="cate_listing.html?cat_type=donate&pg_no=1" style="text-decoration: none;"><small><h6 style="opacity: .38; /*float:right*/;padding-right: 55px;padding-bottom: 15px;">SEE ALL INITIATIVES</h6></small></a>
-        </div>    
-      </div>
-      <div class="row" id="homerow1">
-    <div class="col-md-4" style=" ">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-9" style="padding-left: 50px;" >
+        <br>
+      <!--  <br> -->
+        <div class="row">
+          <div class="col-xs-4">
+              <b style="font-size: 17px;font-weight: 700;padding-bottom: 0px"> LATEST INITIATIVES</b>
+            </div>
+          <div class="col-xs-8" style="padding-left: 155px;padding-right: 0px; float:right;">
+              <a href="cate_listing.html?cat_type=donate&pg_no=1" style="text-decoration: none;"><small><h6 style="opacity: .38; /*float:right*/;padding-right: 55px;padding-bottom: 15px; text-align: end;">SEE ALL INITIATIVES</h6></small></a>
+          </div>    
+        </div>
+        <div class="row" id="homerow1">
+        <div class="col-md-4" >
           <div class="hovereffect">
-          <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
-            <div class="overlay11" style="margin-top: -100px;width: 240px;height: 35px;">
-                 <h2 style="   width: 250px; ">DONATE</h2>
-
-          </div>
-       </div>
-        <div class="text" align="left" style="margin-top: 20px;">
-          <font size="2";><strong>Home for elderly</strong></font>
-          <font color="grey" size="-16";></font>
-          <h6 style="color: gray;">date,place</h6>
-           <p style="width:240px;height:80px;line-height:17px; "><font size="2" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-            </p> 
-        </div>
-   <strong>need Rs 1200 more of Rs. 4000</strong>
-    <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-      </div>
-    </div>
-
-
-    <div class="col-md-4 shadowB" >
-      <div class="hovereffect">
-        <img class="img-responsive" src="assets/images/boyshome.jpg" alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
-                 <h2 style="  width: 250px;   ">VOLUNTEER</h2>
-        </div>
-      </div>
-        <div class="text" align="left" style="margin-top: 20px;">
-          <font size="2";><strong>Boys home</strong></font>
-          <font color="grey" size="-16";></font>
-          <h6 style="color: gray;">date,place</h6></font>
-            <p style="width:240px;height:80px;line-height: 17px;"><font size="2" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-            </p> 
-        </div>
-          <font size=""><strong>need Rs. 1200 more of Rs. 4000</strong></font>
-    <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-      </div>
-  </div>
-    <div class="col-sm-4" >
-      <div class="hovereffect">
-        <img class="img-responsive" src="assets/images/girlshome.jpg" alt="sample" style="width: 350px;height: 150px;">
-        <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
-                 <h2 style=" width:250px;">DONATE</h2>
-        </div>
-      </div>
-        <div class="text" align="left" style="margin-top: 20px;">
-          <font size="2";><strong>Home for girls</strong></font>
-          <font color="grey" size="-16";></font>
-          <h6 style="color: gray;">date,place</h6>
-            <p style="width:240px;height:80px;line-height: 17px;"><font size="2" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-            </p> 
-        </div>
-          <font size=""><strong>need Rs. 1200 more of Rs. 4000</strong></font>
-    <div class="progressbar">
-      <div class="progressbarx">
-    </div>
-      </div>
-    </div>
-  </div>
-  <script>
-    loadtablerole("home",1);
-  </script>
-      <div class="row" style="margin-top: 20px;">
-          <div class="col-sm-4">
-          <b style="font-size: 17px;font-weight: 700;"> OUR CARE CENTERS</b>
-          </div>
-          <div class="col-sm-4"></div>
-
-          <div class="col-sm-4" style="padding-left: 145px; padding-right: 0px;">
-            <a href="cate_listing.html?cat_type=events&pg_no=1" style="text-decoration: none;"><small><h6 style="opacity: .38;/* float:right;*/padding-right: 55px;padding-bottom: 10px;">SEE ALL CENTERS</h6></small></a>
-          </div>
-      </div>
-      <div class="row" id="homerow2" style="padding-bottom: 30px;">
-          <div class="col-sm-4" >
-            <div class="hovereffect">
-              <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
-                      <h2 style=" width: 250px;">DONATE</h2>
-
+            <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
+              <div class="overlay11" style="margin-top: -100px;width: 240px;height: 35px;">
+                  <h2 style="   width: 250px; ">DONATE</h2>
               </div>
+          </div>
+          <div class="text" align="left" style="margin-top: 20px;">
+            <font size="2";><strong>Home for elderly</strong></font>
+            <font color="grey" size="-16";></font>
+            <h6 style="color: gray;">date,place</h6>
+            <p style="width:240px;height:80px;line-height:17px; "><font size="2" color="grey";>
+                    Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+              </p> 
+          </div>
+          <strong>need Rs 1200 more of Rs. 4000</strong>
+          <div class="progressbar">
+            <div class="progressbarx">
             </div>
-              <div class="text" align="left" style="margin-top: 20px;">
-                <font size="2";><strong>Home for elderly</strong></font>
-                <font color="grey" size="-16";></font>
-                <h6 style="color: gray;">date,place</h6>
-                  <p style="width:240px;height:100px;line-height: 17px;"><font size="2" color="grey";>
-                        Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-                
-                  </p> 
+          </div>
+        </div>
+
+
+      <div class="col-md-4 shadowB" >
+        <div class="hovereffect">
+          <img class="img-responsive" src="assets/images/boyshome.jpg" alt="sample" style="width: 350px;height: 150px;">
+          <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
+                  <h2 style="  width: 250px;   ">VOLUNTEER</h2>
+          </div>
+        </div>
+          <div class="text" align="left" style="margin-top: 20px;">
+            <font size="2";><strong>Boys home</strong></font>
+            <font color="grey" size="-16";></font>
+            <h6 style="color: gray;">date,place</h6></font>
+              <p style="width:240px;height:80px;line-height: 17px;"><font size="2" color="grey";>
+                    Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+              </p> 
+          </div>
+            <font size=""><strong>need Rs. 1200 more of Rs. 4000</strong></font>
+      <div class="progressbar">
+        <div class="progressbarx">
+      </div>
+        </div>
+    </div>
+      <div class="col-sm-4" >
+        <div class="hovereffect">
+          <img class="img-responsive" src="assets/images/girlshome.jpg" alt="sample" style="width: 350px;height: 150px;">
+          <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
+                  <h2 style=" width:250px;">DONATE</h2>
+          </div>
+        </div>
+          <div class="text" align="left" style="margin-top: 20px;">
+            <font size="2";><strong>Home for girls</strong></font>
+            <font color="grey" size="-16";></font>
+            <h6 style="color: gray;">date,place</h6>
+              <p style="width:240px;height:80px;line-height: 17px;"><font size="2" color="grey";>
+                    Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+              </p> 
+          </div>
+            <font size=""><strong>need Rs. 1200 more of Rs. 4000</strong></font>
+      <div class="progressbar">
+        <div class="progressbarx">
+      </div>
+        </div>
+      </div>
+        </div>
+    <script>
+      loadtablerole("home",1);
+    </script>
+        <div class="row">
+          <div class="col-xs-4">
+              <b style="font-size: 17px;font-weight: 700;padding-bottom: 0px"> OUR CARECENTERS</b>
+            </div>
+          <div class="col-xs-8" style="padding-left: 155px;padding-right: 0px; float:right;">
+              <a href="cate_listing.html?cat_type=care_centers&pg_no=1" style="text-decoration: none;"><small><h6 style="opacity: .38; /*float:right*/;padding-right: 55px;padding-bottom: 15px; text-align: end;">SEE ALL CARECENTERS</h6></small></a>
+          </div>    
+        </div>
+        <div class="row" id="homerow2" style="padding-bottom: 30px;">
+            <div class="col-sm-4" >
+              <div class="hovereffect">
+                <img class="img-responsive" src="assets/images/elders.jpg" alt="sample" style="width: 350px;height: 150px;">
+                <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
+                        <h2 style=" width: 250px;">DONATE</h2>
+
+                </div>
               </div>
+                <div class="text" align="left" style="margin-top: 20px;">
+                  <font size="2";><strong>Home for elderly</strong></font>
+                  <font color="grey" size="-16";></font>
+                  <h6 style="color: gray;">date,place</h6>
+                    <p style="width:240px;height:100px;line-height: 17px;"><font size="2" color="grey";>
+                          Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+                  
+                    </p> 
+                </div>
+                
+            </div>
+            <div class="col-sm-4 shadowB">
+              <div class="hovereffect">
+                <img class="img-responsive" src="assets/images/boyshome.jpg" alt="sample" style="width: 350px;height: 150px;">
+                <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
+                        <h2 style=" width: 250px;">DONATE</h2>
+
+                </div>
+              </div>
+                <div class="text" align="left" style="margin-top: 20px;">
+                  <font size="2";><strong>Boys home</strong></font>
+                  <font color="grey" size="-16";></font>
+                  <h6 style="color: gray;">date,place</h6>
+                    <p style="width:240px;height:100px;line-height: 17px;"><font size="2" color="grey";>
+                          Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+                  
+                    </p> 
+                </div>
               
-          </div>
-          <div class="col-sm-4 shadowB">
-            <div class="hovereffect">
-              <img class="img-responsive" src="assets/images/boyshome.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
-                      <h2 style=" width: 250px;">DONATE</h2>
-
-              </div>
             </div>
-              <div class="text" align="left" style="margin-top: 20px;">
-                <font size="2";><strong>Boys home</strong></font>
-                <font color="grey" size="-16";></font>
-                <h6 style="color: gray;">date,place</h6>
-                  <p style="width:240px;height:100px;line-height: 17px;"><font size="2" color="grey";>
-                        Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-                
-                  </p> 
+            <div class="col-sm-4">
+              <div class="hovereffect">
+                <img class="img-responsive" src="assets/images/girlshome.jpg" alt="sample" style="width: 350px;height: 150px;">
+                <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
+                        <h2 style=" width: 250px;">DONATE</h2>
+
+                </div>
               </div>
+                <div class="text" align="left" style="margin-top: 20px;">
+                  <font size="2";><strong>Home for girls</strong></font>
+                  <font color="grey" size="-16";></font>
+                  <h6 style="color: gray;">date,place</h6>
+                    <p style="width:240px;height:100px;line-height: 17px;"><font size="2" color="grey";>
+                          Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+                  
+                    </p> 
+                </div>
+                  
+            </div>
             
-          </div>
-          <div class="col-sm-4">
-            <div class="hovereffect">
-              <img class="img-responsive" src="assets/images/girlshome.jpg" alt="sample" style="width: 350px;height: 150px;">
-              <div class="overlay11" style="margin-top: -100px;width: 315px;height: 35px;">
-                      <h2 style=" width: 250px;">DONATE</h2>
+        </div>
 
-              </div>
-            </div>
-              <div class="text" align="left" style="margin-top: 20px;">
-                <font size="2";><strong>Home for girls</strong></font>
-                <font color="grey" size="-16";></font>
-                <h6 style="color: gray;">date,place</h6>
-                  <p style="width:240px;height:100px;line-height: 17px;"><font size="2" color="grey";>
-                        Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-                
-                  </p> 
-              </div>
-                
-          </div>
-          
-          </div>
-
-          <script>
-            loadtablerole("carehome",1);
-          </script>
-    </div>
-
-
-    <div class="col-sm-3" style="padding-right: 0px;padding-left: 0px; ">
-      <div class="container_home" style="width:100%;/*border:solid*/;height: auto;/*box-sizing: border-box;*/background-color:#ECECEC;padding:30px 20px;    margin-top: -20px;">
-        <!-- <br> -->
-      <div class="block">
-      <b style="float:left;font-size: 17px;font-weight: 700;">NEWS & UPDATES</b>
-    
-      
-      <h6 style="padding-top: 8px;"><p><a href="#" style="opacity: .38; ">LOAD MORE</a></p></h6>
-      <br>
-      <hr style="margin-top: auto;
-      margin-bottom: auto;
-      border-style: inset;
-      border-width: 1px;">
-     </div>
-  
-     
-     <br>
-    <div class="text">
-    <h4>heading 1</h4>
-      <small style="color: gray;">22 jan 2019</small>
-      <p style="color: gray;"><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</small></p>
-    </div>
-    <br>
-    
-    <div  class="text">
-    <h4>heading 1</h4>
-      <small style="color: gray;">22 jan 2019</small>
-      <p style="color: gray;"><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</small></p>
-    </div>
-    <br>
-
-    <div class="text">
-    <h4>heading 1</h4>
-      <small style="color: gray;">22 jan 2019</small>
-      <p style="color: gray;"><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</small></p>
-    </div>
-    <div class="text">
-    <h4>heading 1</h4>
-      <small style="color: gray;">22 jan 2019</small>
-      <p style="color: gray;"><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</small></p>
-    </div>
-  </div>
-
-
-      <!--  <p style="width:240px;height:100px;"><font size="-18" color="grey";>
-                  Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
-          
-            </p>  -->
-
-      
-    </div>
-  </div>
-       
-
-</div>
-
-<!-- <div class="centered" style="border:solid; background-image: url('images/transparent.jpg');">
-      <center><br><img src="images/8.png" alt="gh" ></center></br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est loabot
-  </p>
-      
-  
-      <div >
-        
-
-        <h5><center><a href="#" style="text-decoration: none;">LEARM MORE</a></center></h5>
+            <script>
+              loadtablerole("carehome",1);
+            </script>
       </div>
-  </div>  -->
-  <!-- task 4 -->
-
-
-<!-- <div class="container" style="width:80%;text-align: center;padding-top: 30px; /*border:solid*/; margin-bottom: 24px;">
-    <img src="assets/images/transparent.jpg" class="img-responsive" style="opacity:0.1;padding: 0px;height:400px;width: 100%;">
-    <div class="centered" style="padding-top:40px; /*border:solid*/;">
-      <center ><img src="assets/images/8.png" alt="gh" style="height: 40px;" ></center>
-      <br>
-      <p style="color: gray; padding: 0px 20px; line-height: 35px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est loabot
-      </p>
+      <div class="col-sm-3" style="padding-right: 0px;padding-left: 0px; ">
+        <div class="container_home" style="width:100%;/*border:solid*/;height: auto;/*box-sizing: border-box;*/background-color:#ECECEC;padding:30px 20px;    margin-top: -20px;">
+          <!-- <br> -->
+        <div class="block">
+        <b style="float:left;font-size: 17px;font-weight: 700;">NEWS & UPDATES</b>
+      
         
-      <h3><small><a href="about.html" style="color: gray;">LEARN MORE</a></small></h3>
-       
-    </div> 
-  </div> -->
+        <h6 style="padding-top: 8px;"><p><a href="cate_listing.html?type=news&pg_no=1" style="opacity: .38; ">LOAD MORE</a></p></h6>
+        <br>
+        <hr style="margin-top: auto;
+        margin-bottom: auto;
+        border-style: inset;
+        border-width: 1px;">
+      </div>
+    
+      
+      <br>
+      <div class="text">
+      <h4>New Budget Proposed</h4>
+        <small style="color: gray;">22 jan 2019</small>
+        <p style="color: gray;"><small>Pursuant to countless discussion spanning over several months, the new bugdet has been proposed. Interestingly, this new budget seemingly encourages entrepreneurial success</small></p>
+      </div>
+      <br>
+      
+      <div  class="text">
+      <h4>Thechikkottu Ramachandran Steals The Show</h4>
+        <small style="color: gray;">22 jan 2019</small>
+        <p style="color: gray;"><small>To the delight of all "Aana Premikal", Thechikkottu Ramachandran has been granted permission to hoist the Thidambu during the onset of the Thrissur Pooram. Although this has raised several eyebrows, it has most certainly won over the hearts of several Thrissurians.</small></p>
+      </div>
+      <br>
+
+      <div class="text">
+      <h4>DIC Website Launched</h4>
+        <small style="color: gray;">22 jan 2019</small>
+        <p style="color: gray;"><small>District Industries Center, Thrissur in association with Fab Studioz and Roninaks Ventures has launced their website as part of the ease of doing business initiative. The website wes launched in by Anupama IAS, District Collector, Thrissur.</small></p>
+      </div>
+      <div class="text">
+      <h4>Oushadhi, A Sports Haven</h4>
+        <small style="color: gray;">22 jan 2019</small>
+        <p style="color: gray;"><small>Oushadhi Sports Hospital, Asia's first of it's kind is an ayurveda sports hospital and rehabilitation center. It aims to provide minimum cost treatment for sports related injuries and diseases and is intended to develop Sports in the State.</small></p>
+      </div>
+    </div>
+
+
+        <!--  <p style="width:240px;height:100px;"><font size="-18" color="grey";>
+                    Elderly  care  emphasizes the social and personal   requirements  of senior  citizens who  need some assistance   with daily activities  and health care, but  who  desire to age  with .</font>
+            
+              </p>  -->
+
+        
+      </div>
+    </div>
+  </div>
   <div class="container_home" style="width:80%;text-align: center; /*border:solid*/; margin-bottom: 24px; height: auto; ">
     <!-- <img src="assets/images/transparent.jpg" class="img-responsive" style="opacity:0.1;padding: 0px;height:100%;width: 100%;"> -->
    <div class="image-container">
@@ -535,7 +492,7 @@ a:hover{
   </div>
 
   <div class="dvBeAVol">
-    <a href="forms.html?cat_type=registration">READY TO HELP?  BE A VOLUNTEER</a>
+    <a href="forms.html?cat_type=register">READY TO HELP?  BE A VOLUNTEER</a>
   </div>
 
 
