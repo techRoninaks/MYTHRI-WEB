@@ -120,7 +120,7 @@
     <center> 
       <h4 id="tabTitle"><STRONG>
         <font color="black">
-          <a href="cate_listing.html?cat_type=janananma&pg_no=1" id="tabJana" class="tabs">JANA NANMA &nbsp</a>
+          <a href="cate_listing.html?cat_type=janananma&pg_no=1" id="tabJana" class="tabs">NANMA &nbsp</a>
           <a href="cate_listing.html?cat_type=donate&pg_no=1" class="active" id="tabDonate">DONATE &nbsp</a>
           <a href="cate_listing.html?cat_type=volunteer&pg_no=1" id="tabVolunteer" class="tabs">VOLUNTEER &nbsp</a>
         </font>
@@ -129,12 +129,10 @@
     </center>
   </ul>
   <div id="divBreadCrumbs" style="margin-left: 5%; margin-right: 5%; vertical-align: middle; margin-top: 0px;">
-      <p class="spnBreadCrumbs"><a href="home.html" class="spnBreadCrumbs">HOME</a> > INITIATIVES</p>
-      <hr/>
+      <p class="spnBreadCrumbs"><a href="home.html" class="spnBreadCrumbs" style="margin: 0px;">HOME</a> > INITIATIVES</p>
+      <hr style="margin-top:2px;"/>
   </div>
 <!-- <hr  style="background-color: #716666; border-width: 0; color: #645d5d; height: 1px; line-height: 0; text-align: left; width: 75%; color: #7c8288; opacity: 0.82; margin-top: -19px;"/> -->
-<br>
-<br>
 
 <!-- <div class="container">
   <div class="row">
@@ -573,12 +571,14 @@
       $('#tabJana').removeClass().addClass('tabs');
       $('#tabDonate').removeClass().addClass('active');
       $('#tabVolunteer').removeClass().addClass('tabs');
+      document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>INITIATIVES</a> > DONATE</p><hr style=margin-top:2px;/>";
       loadtablerole("donate",1);
       break;
     }
     case "care_centers":{
       $('#title').text('Care Centers');
       $('#tabTitle').hide();
+      document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > CARE CENTERS</p><hr style=margin-top:2px;/>";
       loadtablerole("care",1);
       break;
     }
@@ -587,26 +587,30 @@
       $('#tabJana').removeClass().addClass('tabs');
       $('#tabDonate').removeClass().addClass('tabs');
       $('#tabVolunteer').removeClass().addClass('active');
+      document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>INITIATIVES</a> > VOLUNTEER</p><hr style=margin-top:2px;/>";
       loadtablerole("volunteer",1);
       break;
     }
     case "janananma":{
-      $('#title').text('Jana Nanma');
+      $('#title').text('Nanma');
       $('#tabJana').removeClass().addClass('active');
       $('#tabDonate').removeClass().addClass('tabs');
       $('#tabVolunteer').removeClass().addClass('tabs');
+      document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>INITIATIVES</a> > NANMA</p><hr style=margin-top:2px;/>";
       loadtablerole("janananma",1);
       break;
     }
     case "events":{
       $('#title').text('Events');
       $('#tabTitle').hide();
+      document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > EVENTS</p><hr style=margin-top:2px;/>";
       loadtablerole("events",1);
       break;
     }
     case "news":{
       $('#title').text('News');
       $('#tabTitle').hide();
+      document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > NEWS</p><hr style=margin-top:2px;/>";
       loadtablerole("news",1);
       break;
     }
