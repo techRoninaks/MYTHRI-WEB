@@ -18,8 +18,7 @@
     </label>
   </div>
   <input type="checkbox" id="nav-check">
-  <div class="nav-links" style="right:0px; position: absolute;">
-
+  <div class="nav-links" style="right:0px; position: absolute; z-index: 15;">
     <a href="home.html" style="font-size: 15px;font-weight: 700">HOME</a>
     <a href="about.html" style="font-size: 15px;font-weight: 700">ABOUT</a>
     <div class="dropdown">
@@ -29,29 +28,21 @@
           <a href="cate_listing.html?cat_type=donate&pg_no=1">Donate</a>
           <a href="cate_listing.html?cat_type=volunteer&pg_no=1">Volunteer</a>    
         </div>
-      </div>
-
-
+    </div>
     <a href="cate_listing.html?cat_type=events&pg_no=1" style="font-size: 15px;font-weight: 700">EVENTS</a>
     <a href="cate_listing.html?cat_type=care_centers&pg_no=1" style="font-size: 15px;font-weight: 700">CARE CENTERS</a>
-
-
     <div class="dropdown">
-      <button class="dropbtn glyphicon glyphicon-th" style="font-size: 21px;" id="icon" onclick="toggleBTN();">
-      
+      <button class="dropbtn glyphicon glyphicon-th" style="font-size: 21px;" id="icon" onclick="toggleBTN();">   
       </button>
       <div class="dropdown-content dropdown-menuCustom " id="dropmenu">
         <a href="forms.html?cat_type=volunteer">Volunteer Signup</a>
         <a href="forms.html?cat_type=raise_your_voice">Raise your voice</a>
         <a href="#">FAQ</a>
-        <a href="contact.html">Contact Us</a>
-        
+        <a href="contact.html">Contact Us</a> 
       </div>
     </div>
-   
-
+  </div>
 </div>
-
 <style type="text/css">
   /* .panel-default>.panel-heading {
     color: #333;

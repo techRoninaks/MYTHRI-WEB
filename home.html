@@ -249,7 +249,8 @@ a:hover{
 }
 @media (max-width:554px) {
   .btn{
-    width:24%;
+    width:50%;
+    left: 50%;
   }
 }
 </style>
@@ -260,13 +261,13 @@ a:hover{
   <img src="assets/images/homepage_title.jpg" class="img-responsive" style="width: 100%;height: 268px;">
 
 
-  <button class="btn" style="top: 120px;" onclick='changeLocation("volunteer");'><b>VOLUNTEER</b></button>
+  <button class="btn" id="btnHomeVol" style="top: 160px;" onclick='changeLocation("volunteer");'><b>VOLUNTEER</b></button>
   <br>
-  <button class="btn" style="top: 190px;" onclick='changeLocation("donate");'><b>DONATE</b></button>
+  <button class="btn" id="btnHomeDon" style="top: 230px;" onclick='changeLocation("donate");'><b>DONATE</b></button>
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-9" style="padding-left: 50px;" >
+      <div class="col-sm-9 listPadding">
         <br>
       <!--  <br> -->
         <div class="row">
@@ -502,6 +503,8 @@ a:hover{
 <script type="text/javascript">
   includeHTML();
   toggleHeaders();
+  if(getCookie("mob") == "true")
+    mobView();
   var qryMobView = "";
   var qryStrings = getQueryString();
   qryStrings.forEach(element => {
@@ -510,6 +513,7 @@ a:hover{
       if(qryMobView == "1"){
         setCookie("mob","true");
         toggleHeaders();
+        mobView();
       }
     }
   });
@@ -524,6 +528,9 @@ a:hover{
         break;
       }
     }
+  }
+  function mobView(){
+
   }
 </script>
 </html> 
