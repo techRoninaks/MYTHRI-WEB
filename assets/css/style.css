@@ -15,18 +15,21 @@
 }
 
 .header{
-    position: fixed;
     top: 0px;
     width: 100%;
     z-index: 20;
 }
-
+.listPadding{
+    padding-left: 50px;
+    padding-right: 50px;
+}
 .spnBreadCrumbs{
     color: #00000061;
     font-size: .8rem initial;
     font-family: defaultBarlowBold !important;
     text-decoration: none;
   }
+
 .spnBreadCrumbs :hover{
     color: #00000099 !important;
 }
@@ -286,13 +289,14 @@ a:hover{
 }
 @media only screen and (max-width: 584px) {
     .gallery {
-      width: 60%;
-      margin: 6px 110px;
+      width: 80%;
+      margin: 6px 35px;
     }
     .galleryHome {
-        width: 50%;
-        margin: 12px 106px;
+        width: 80%;
+        margin: 12px 35px;
       }
+    
 }
 @media (max-width:1200px) {
 }
