@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+<head>
+    	<meta charset="utf-8" />
+    	<link rel="icon" type="image/png" href="assets/img/favicon.ico"/>
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    	<title>Manage Initiatives - Mythri Admin</title>
+
+
+    	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta name="viewport" content="width=device-width" />
+
+
+        <!-- Bootstrap core CSS     -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+        <!-- Animation library for notifications   -->
+        <link href="assets/css/animate.min.css" rel="stylesheet"/>
+        <link href="assets/css/searchTab.css" rel="stylesheet" />
+        <!--  Light Bootstrap Table core CSS    -->
+        <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+
+
+        <!--  CSS for Demo Purpose, don't include it in your project     -->
+        <link href="assets/css/demo.css" rel="stylesheet" />
+
+        <!--  CSS Style for Adding Initiatives  -->
+        <link href="assets/css/add_initiatives.css" rel="stylesheet" />
+
+
+
+        <!--     Fonts and icons     -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'/>
+        <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+        <script src="assets/js/scripts.js" type="text/javascript"></script>
+        <style>
+        .td{
+            white-space:pre-wrap;
+            
+            word-wrap:break-word;
+        }
+        .table {
+        border-collapse:collapse;
+        table-layout:fixed;
+        }
+
+        </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg"><!--w3-include-html="sidenav.html"-->
+    </div>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-default navbar-fixed"><!--w3-include-html="header.html"-->
+        </nav>
+
+    <div class="content">
+    <div class="container-fluid">
+    <div class="card">
+            <div class="header" id="divsearch">
+                <h4 class="title">Manage Initiatives</h4>
+                <p class="category">Add/Edit/Delete/Search Initiatives</p>
+            <div class="topnav" style="padding-top: 6px;">
+                <form enctype="multipart/form-data" action="javascript:searchInitiative()" method="post">
+                        <div class="row">
+                        <div class="col-md-12">
+
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Initiative Type</label>
+                            <select name="in_type" id="selinType" class="form-control"></select>
+                        </div>
+                        </div>
+                                    
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Event Name</label>
+                            <input type="text" name="ev_name" id="inpeventName" class="form-control" onkeypress="return runScript(event)" />
+                        </div>
+                        </div>
+
+                        </div>
+                        </div>
+                                    
+                        <div class="row">
+                        <div class="col-md-12">
+
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date From</label>
+                            <input type="date" name="Start" id="dateStart" class="form-control" />
+                        </div>
+                        </div>
+
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date To</label>
+                            <input type="date" name="End" id="dateEnd" class="form-control"/>
+                        </div>
+                        </div>
+
+                        </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-md-12">
+                        <div class="form-group">
+                            <button  type="button" id="btnaddnew" class="btn btn-info btn-fill" style="margin-left:780px;"  onclick="toggleTabs('addInitiatives')">ADD NEW</button>
+                            <input type="submit" class="btn btn-info btn-fill pull-right" style="margin-right: 10px;" id="btnsearch" value="SEARCH"/>
+                        </div>
+                        </div>
+                        </div>
+                </form>
+            </div>
+            </div>
+<div class="content table-responsive table-full-width" id="divinitiativesTable">
+</div>
+
+<div style="padding:2rem;display: none;" id="divaddInitiatives">
+    <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title" id="headerinit"></h4>
+                    
+                </div>
+            <div class="content">
+                <form  enctype="multipart/form-data" method="post" action="javascript:dataUpdate('updateinitiatives')" name="initiative" id="frminitiative">
+                        <div class="row">
+
+                        <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Initiative Type</label><p style="display:inline;color:red;">*</p>
+                            <select  id="selInitTypeName" class="form-control formStyle" required></select><span style="color:#F30;" id="spantype"><i></i></span>
+                        </div>
+                        </div>
+                                                
+                        </div>
+
+                        <div class="row">
+
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                <label>Event Name</label><p style="display:inline;color:red;">*</p>
+                                <input type="text" class="form-control" id="inpevname" placeholder="Event Name" required><span style="color:#F30;" id="spanname"><i></i></span>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                <label>Event Venue</label><p style="display:inline;color:red;">*</p>
+                                <input type="text" class="form-control" placeholder="Event Venue" id="inpevvenue"  required><span style="color:#F30;" id="spanvenue"><i></i></span>
+                        </div>
+                        </div>
+
+                        </div>
+
+                                        
+                        <div class="row">
+
+                        <div class="col-md-4">
+                        <div class="form-group">
+                                <label>Date</label><p style="display:inline;color:red;">*</p>
+                                <input type="datetime-local" class="form-control" placeholder="Date" id="dateevent" required><span style="color:#F30;" id="spandate"><i></i></span>
+                        </div>
+                        </div>
+
+                        <div class="col-md-4">
+                        <div class="form-group">
+                                <label>Contact No</label><p style="display:inline;color:red;">*</p>
+                                <input type="number" class="form-control" placeholder="Contact No" id="inpcontact" onchange="length_validation()" required><span style="color:#F30;" id="spanno"><i></i></span>      
+                                                    
+                        </div>
+                        </div>
+
+                        <div class="col-md-4">
+                        <div class="form-group">
+                                <label>Image</label><p style="display:inline;color:red;">*</p>
+                                <input type="file" class="form-control" placeholder="Choose Image to Upload" id="imageEvent" accept="image/*" src=''>
+                        </div>
+                        </div>
+
+                        </div>
+                        <div class="row">
+
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                <label>Requirements Met</label><p style="display:inline;color:red;">*</p>
+                                <input type="number" class="form-control" placeholder="Requirements Met" id="inpRequireMet"   required><span style="color:#F30;" id="spanmet"><i></i></span>
+                        </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                <label>Total Requirements</label><p style="display:inline;color:red;">*</p>
+                                <input type="number" class="form-control" placeholder="Total Requirements" id="inpRequireTotal" required><span style="color:#F30;" id="spantotal"><i></i></span>
+                        </div>
+                        </div>
+                        
+                        </div>
+                        <div class="row">
+                                            
+                        <div class="col-md-12">
+                        <div class="form-group">
+                                <label>Description</label><p style="display:inline;color:red;">*</p>
+                                <textarea rows="5" class="form-control" placeholder="Here can be your description" rows="2" id="inpDescribe"  required></textarea><span style="color:#F30;" id="spandes"><i></i></span>
+                        </div>
+                        </div>
+
+                        </div>
+                        <div class="row">
+
+                        <div class="col-md-12">
+                        <div class="form-group">
+                                <input  type="button" class="btn btn-info btn-fill pull-right" value="ADD INITIATIVES" id="btnaddInit" style="margin-right:10px;" onclick="javascript:addInitiative()" />
+                                        
+                                <button type="submit" style="display:inline; margin-right:10px;" class="btn btn-info btn-fill pull-right"  value="Submit" id="btnupdate">UPDATE</button>
+                                		
+                                <button type="button" class="btn btn-info btn-fill pull-right" id="btncancel" value="Cancel" onclick="cancelFunc()" style="margin-right:10px;">CANCEL</button>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="clearfix"></div>
+                </form>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+                   <!-- <div style="padding:2rem;display:none;" id="editInitiatives">
+                        <form enctype="multipart/form-data" action="javascript:dataUpdate('updateinitiatives')" method="post">
+                            <label>Event Name</label><p style="display:inline;color:red;">*</p>
+                            <input type="text" class="form-control formStyle" placeholder="Event Name" id="eventName" required/><br>
+                            <label>Initiative Type</label><p style="display:inline;color:red;">*</p>
+                            <select name="init_type" id="typeName" class="form-control formStyle"></select><br><br>
+                            <label>Venue</label><p style="display:inline;color:red;">*</p>
+                            <input type="text" class="form-control formStyle" placeholder="Venue" id="venueName" required/><br>
+                            <label>Date</label><p style="display:inline;color:red;">*</p><br>
+                           <input type="datetime-local" class="form-control formStyle" placeholder="Date" id="curDate" required/><br>
+                            
+                            <label>Requirements Met</label><p style="display:inline;color:red;">*</p>
+                            <input type="text" class="form-control formStyle" placeholder="Requirements Met" id="metRequire" required/><br>
+                            
+                            <label>Total Requirements</label><p style="display:inline;color:red;">*</p>
+                            <input type="text" class="form-control formStyle" placeholder="Total Requirements" id="totalRequire" required/><br>
+                            <label>Contact No</label><p style="display:inline;color:red;">*</p>
+                            <input type="text" class="form-control formStyle" placeholder="Contact No" id="contactNo" onchange="length_validation1()" required/><span style="color:#F30;" id="error-no1"><i></i></span><br>
+                            <label>Description</label><p style="display:inline;color:red;">*</p>
+                            <textarea rows="5" class="form-control" placeholder="Here can be your description" id="eventDes"/></textarea>
+                            <label>Select image to upload:</label>
+                            <input type="file" name="fileToUpload" id="imageUpload" class="form-control formStyle" accept="image/*" src=''/>
+                            <br>
+                            <button type="submit" style="display:inline" class="btn btn-secondary-outline form-control"  value="Submit" id="submitbutton">UPLOAD</button>
+                            <button type="button" class="btn btn-secondary-outline form-control" id="cancel" value="Cancel" onclick="cancelFunc()">CANCEL</button>
+                            </form>
+                    </div>-->
+    </div>
+    </div>
+    </div>
+
+    <footer class="footer"><!--w3-include-html="footer.html"-->
+    </footer>
+
+
+    </div>
+</div>
+
+
+</body>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Charts Plugin -->
+	<script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="assets/js/demo.js"></script>
+    <script type="text/javascript">
+        var userId = "";
+        var globCopy = "";
+        var globCopy2 = "";
+        $(document).ready(function(){
+         //    if(!checkCookie("empId")){
+         //        cancelFunc(-1);
+         //    }
+        	// userId = getCookie("empId");
+        	// if(!checkCookie("initiativeManage")){
+        	//     window.location.replace("dashboard.html");
+        	// }
+
+    	});
+    	window.onload = function(){
+           // setTimeout(function(){
+           //     activateSideNav();
+           // }, 10);
+           // setTimeout(function(){
+           //     loadProfile();
+           // }, 100);
+        };
+        includeHTML();
+        document.getElementById("imageEvent").addEventListener("change", readFile);
+        document.getElementById("imageEvent").addEventListener("change", readFile1);
+
+
+    function readFile1() 
+    {
+
+        if (this.files && this.files[0]) 
+        {
+
+         var FR= new FileReader();
+
+         FR.addEventListener("load", function(e) {
+         postimage = e.target.result;
+         
+         });
+
+         FR.readAsDataURL( this.files[0] );
+      }
+    }
+
+        showData();
+        function toggleTabs(type){
+            switch(type){
+                case "editInitiatives":
+                    $('#divinitiativesTable').hide();
+                    //$('#editInitiatives').hide();
+                    $("#divaddInitiatives").show();
+                    $("#btnupdate").show();
+                    $("#btnaddInit").hide();
+                    $("#headerinit").text("EDIT INITIATIVES");
+                    $("#divsearch").hide();
+
+                break;
+                case "addInitiatives":
+                    $("#divinitiativesTable").hide();
+                    //$("#editInitiatives").hide();
+                    $("#divaddInitiatives").show();
+                    $("#btnupdate").hide();
+                    $("#btnaddInit").show();
+                    $("#headerinit").text("ADD INITIATIVES");
+                    $("#divsearch").hide();
+
+                    break;
+            }
+        }
+        function showData() {
+            
+		            $.ajax({
+		                type: 'GET',
+		                dataType:'json',
+		                url: 'assets/php/getInitiatives.php', 
+		                success: function(responseData) {
+		                    if(responseData.data.success == "successful"){
+		                        var response = responseData.data.result;
+		                        globCopy2 = response;
+		                        var tabHeader = "<table class='table table-hover table-striped'><thead><th>ID</th><th>Type</th><th>Name</th><th>Venue</th><th>Date</th><th>Requirements  Met</th><th>Total Requirements</th><th>Contact No</th><th>Edit/Delete</th></thead>";
+		                        var tabCategories = tabHeader;
+		                        response.forEach(element => {
+		                            tabCategories = tabCategories + buildHtml("divinitiativesTable", element);
+		                        });
+		                        tabCategories = tabCategories + "</table>";
+		                        document.getElementById("divinitiativesTable").innerHTML = tabCategories;
+		                    }else{
+		                        $.notify({icon: 'pe-7s-info',message: "Something Went Wrong!"},{type: 'info',timer: 4000});
+		                        // window.location = window.location.origin;
+		                    }
+		                },
+		                error: function(XMLHttpRequest, textStatus, errorThrown) {
+		                        $.notify({icon: 'pe-7s-info',message: "Something Went Wrong!"},{type: 'info',timer: 4000});
+		                    // window.location = window.location.origin;
+		                }
+		            });
+				           /* $.ajax({
+		                	type: 'GET',
+		                	dataType:'json',
+		                	url: 'assets/php/getInitType.php',
+		                	success:function(responseData) {
+		                        var optionCategories = "<option value=''>Select</option>";
+		                            if(responseData.data.success == "successful"){
+		                                var response = responseData.data.result;
+		                                response.forEach(element => {
+		                                optionCategories = optionCategories + buildHtml("typeName", element);
+		                            });
+		                            document.getElementById("typeName").innerHTML = optionCategories;
+		                            } else {
+		                                demo.showNotification('top','center', 'Something went wrong', 4);
+		                                // window.location = window.location.origin;
+		                            }
+		                },
+		                error: function(XMLHttpRequest, textStatus, errorThrown) {
+		                    demo.showNotification('top','center', 'Something went wrong', 4);
+		                    // window.location = window.location.origin;
+		                }
+		            });*/
+
+                    $.ajax({
+                        type: 'GET',
+                        dataType:'json',
+                        url: 'assets/php/getInitType.php',
+                        success:function(responseData) {
+                                var optionCategories = "<option value=>Select</option>";
+                                    if(responseData.data.success == "successful"){
+                                        var response = responseData.data.result;
+                                        response.forEach(element => {
+                                        optionCategories = optionCategories + buildHtml("selinType", element);
+                                    });
+                                    document.getElementById("selinType").innerHTML = optionCategories;
+                                    } else {
+                                        demo.showNotification('top','center', 'Something went wrong', 4);
+                                        // window.location = window.location.origin;
+                                    }
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            demo.showNotification('top','center', 'Something went wrong', 4);
+                            // window.location = window.location.origin;
+                        }
+                    });
+
+                    $.ajax({
+                                type: 'GET',
+                                dataType:'json',
+                                url: 'assets/php/getInitType.php',
+                                success:function(responseData) {
+                                    var optionCategories = "<option value=''>Select</option>";
+                                        if(responseData.data.success == "successful"){
+                                            var response = responseData.data.result;
+                                            response.forEach(element => {
+                                            optionCategories = optionCategories + buildHtml("selInitTypeName", element);
+                                        });
+                                        document.getElementById("selInitTypeName").innerHTML = optionCategories;
+                                        } else {
+                                            demo.showNotification('top','center', 'Something went wrong', 4);
+                                            // window.location = window.location.origin;
+                                        }
+                                },
+                                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                    demo.showNotification('top','center', 'Something went wrong', 4);
+                                    // window.location = window.location.origin;
+                                }
+                            });
+
+        }
+        
+        function searchInitiative(){
+            initType=document.getElementById("selinType").value;
+            evname=document.getElementById("inpeventName").value;
+            startDate = document.getElementById("dateStart").value;
+            endDate = document.getElementById("dateEnd").value;
+           // alert("initType:"+initType);
+           // alert("evname:"+evname);
+           // alert("startDate:"+startDate);
+           // alert("endDate:"+endDate);
+            
+            if((startDate !== "" || endDate !== "") && (evname =="" && initType =="")){
+               
+                    $.ajax({
+                        type: 'POST',
+                        dataType:'json',
+                        data:({sDate:startDate,eDate:endDate}),
+                        url: 'assets/php/srchByDate.php', 
+                        success: function(responseData) {
+                            if(responseData.data.success == "successful"){
+                                var response = responseData.data.result;
+                                globCopy2 = response;
+                                var tabHeader = "<table class='table table-hover table-striped'><thead><th>ID</th><th>Type</th><th>Name</th><th>Venue</th><th>Date</th><th>Requirements  Met</th><th>Total Requirements</th><th>Contact No</th><th>Edit/Delete</th></thead>";
+                                var tabCategories = tabHeader;
+                                response.forEach(element => {
+                                    tabCategories = tabCategories + buildHtml("divinitiativesTable", element);
+                                });
+                                tabCategories = tabCategories + "</table>";
+                                document.getElementById("divinitiativesTable").innerHTML = tabCategories;
+                                $.notify({icon: 'pe-7s-info',message: "Search Successful!"},{type: 'info',timer: 4000});
+                            }else{
+                                $.notify({icon: 'pe-7s-info',message: "Match Not Found!"},{type: 'info',timer: 4000});
+                                //window.location = window.location.origin;
+                            }
+                            //location.reload();
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                $.notify({icon: 'pe-7s-info',message: "Something Went Wrong!"},{type: 'info',timer: 4000});
+                            // window.location = window.location.origin;
+                        }
+                    });
+            } else if(((startDate == "" && endDate == "") && evname !=="" && initType =="")){
+                    $.ajax({
+                    type: 'POST',
+                    dataType:'json',
+                    data:({eventName:evname}),
+                    url: 'assets/php/srchEvent.php', 
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            var response = responseData.data.result;
+                            globCopy2 = response;
+                            var tabHeader = "<table class='table table-hover table-striped'><thead><th>ID</th><th>Type</th><th>Name</th><th>Venue</th><th>Date</th><th>Requirements  Met</th><th>Total Requirements</th><th>Contact No</th><th>Edit/Delete</th></thead>";
+                            var tabCategories = tabHeader;
+                            response.forEach(element => {
+                                tabCategories = tabCategories + buildHtml("divinitiativesTable", element);
+                            });
+                            tabCategories = tabCategories + "</table>";
+                            document.getElementById("divinitiativesTable").innerHTML = tabCategories;
+                            $.notify({icon: 'pe-7s-info',message: "Search Successful!"},{type: 'info',timer: 4000});
+                        }else{
+                            $.notify({icon: 'pe-7s-info',message: "Match Not Found!"},{type: 'info',timer: 4000});
+                            // window.location = window.location.origin;
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            $.notify({icon: 'pe-7s-info',message: "Something Went Wrong!"},{type: 'info',timer: 4000});
+                        // window.location = window.location.origin;
+                    }
+                    });
+            }else if(((startDate == "" && endDate == "") && evname =="" && initType !=="")){
+                    $.ajax({
+                    type: 'POST',
+                    dataType:'json',
+                    data:({inType:initType}),
+                    url: 'assets/php/srchInitType.php', 
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            var response = responseData.data.result;
+                            globCopy2 = response;
+                            var tabHeader = "<table class='table table-hover table-striped'><thead><th>ID</th><th>Type</th><th>Name</th><th>Venue</th><th>Date</th><th>Requirements  Met</th><th>Total Requirements</th><th>Contact No</th><th>Edit/Delete</th></thead>";
+                            var tabCategories = tabHeader;
+                            response.forEach(element => {
+                                tabCategories = tabCategories + buildHtml("divinitiativesTable", element);
+                            });
+                            tabCategories = tabCategories + "</table>";
+                            document.getElementById("divinitiativesTable").innerHTML = tabCategories;
+                            $.notify({icon: 'pe-7s-info',message: "Search Successful!"},{type: 'info',timer: 4000});
+                        }else{
+                            $.notify({icon: 'pe-7s-info',message: "Match Not Found!"},{type: 'info',timer: 4000});
+                            // window.location = window.location.origin;
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            $.notify({icon: 'pe-7s-info',message: "Something Went Wrong!"},{type: 'info',timer: 4000});
+                        // window.location = window.location.origin;
+                    }
+                    });
+                    
+            } 
+             else if(((startDate !== "" || endDate !== "") && evname !=="" && initType !=="")){
+                    $.ajax({
+                    type: 'POST',
+                    dataType:'json',
+                    data:({sDate:startDate,eDate:endDate,eventName:evname,inType:initType}),
+                    url: 'assets/php/srchDateNameType.php', 
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            var response = responseData.data.result;
+                            globCopy2 = response;
+                            var tabHeader = "<table class='table table-hover table-striped'><thead><th>ID</th><th>Type</th><th>Name</th><th>Venue</th><th>Date</th><th>Requirements  Met</th><th>Total Requirements</th><th>Contact No</th><th>Edit/Delete</th></thead>";
+                            var tabCategories = tabHeader;
+                            response.forEach(element => {
+                                tabCategories = tabCategories + buildHtml("divinitiativesTable", element);
+                            });
+                            tabCategories = tabCategories + "</table>";
+                            document.getElementById("divinitiativesTable").innerHTML = tabCategories;
+                            $.notify({icon: 'pe-7s-info',message: "Search Successful!"},{type: 'info',timer: 4000});
+                        }else{
+                             
+                             $.notify({icon: 'pe-7s-info',message: "Match Not Found!"},{type: 'info',timer: 4000});
+                             //alert("Match Not Found ");
+                            // window.location = window.location.origin;
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        //demo.showNotification('top','center', 'Something went wrong', 4);
+                            $.notify({icon: 'pe-7s-info',message: "Something Went Wrong!"},{type: 'info',timer: 4000});
+                        //alert("Something went Wrong");
+                        // window.location = window.location.origin;
+                    }
+                    });
+                    
+            }else if(((startDate !== "" || endDate !== "") && evname !=="" && initType =="")){
+                    $.ajax({
+                    type: 'POST',
+                    dataType:'json',
+                    data:({sDate:startDate,eDate:endDate,eventName:evname}),
+                    url: 'assets/php/srchDateName.php', 
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            var response = responseData.data.result;
+                            globCopy2 = response;
+                            var tabHeader = "<table class='table table-hover table-striped'><thead><th>ID</th><th>Type</th><th>Name</th><th>Venue</th><th>Date</th><th>Requirements  Met</th><th>Total Requirements</th><th>Contact No</th><th>Edit/Delete</th></thead>";
+                            var tabCategories = tabHeader;
+                            response.forEach(element => {
+                                tabCategories = tabCategories + buildHtml("divinitiativesTable", element);
+                            });
+                            tabCategories = tabCategories + "</table>";
+                            document.getElementById("divinitiativesTable").innerHTML = tabCategories;
+                            $.notify({icon: 'pe-7s-info',message: "Search Successful!"},{type: 'info',timer: 4000});
+                        }else{
+                            $.notify({icon: 'pe-7s-info',message: "Match Not Found!"},{type: 'info',timer: 4000});
+                            // window.location = window.location.origin;
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            $.notify({icon: 'pe-7s-info',message: "Something Went Wrong!"},{type: 'info',timer: 4000});
+                        // window.location = window.location.origin;
+                    }
+                    });
+                    
+            } 
+            else if(((startDate !== "" || endDate !== "" )&& evname =="" && initType !=="")){
+                    $.ajax({
+                    type: 'POST',
+                    dataType:'json',
+                    data:({sDate:startDate,eDate:endDate,inType:initType}),
+                    url: 'assets/php/srchDateType.php', 
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            var response = responseData.data.result;
+                            globCopy2 = response;
+                            var tabHeader = "<table class='table table-hover table-striped'><thead><th>ID</th><th>Type</th><th>Name</th><th>Venue</th><th>Date</th><th>Requirements  Met</th><th>Total Requirements</th><th>Contact No</th><th>Edit/Delete</th></thead>";
+                            var tabCategories = tabHeader;
+                            response.forEach(element => {
+                                tabCategories = tabCategories + buildHtml("divinitiativesTable", element);
+                            });
+                            tabCategories = tabCategories + "</table>";
+                            document.getElementById("divinitiativesTable").innerHTML = tabCategories;
+                            $.notify({icon: 'pe-7s-info',message: "Search Successful!"},{type: 'info',timer: 4000});
+                        }else{
+                            $.notify({icon: 'pe-7s-info',message: "Match Not Found!"},{type: 'info',timer: 4000});
+                            // window.location = window.location.origin;
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            $.notify({icon: 'pe-7s-info',message: "Something Went Wrong!"},{type: 'info',timer: 4000});
+                        // window.location = window.location.origin;
+                    }
+                    });
+                    
+            }
+            else if(((startDate == "" && endDate == "" )&& evname !=="" && initType !=="")){
+                    $.ajax({
+                    type: 'POST',
+                    dataType:'json',
+                    data:({eventName:evname,inType:initType}),
+                    url: 'assets/php/srchNameType.php', 
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                            var response = responseData.data.result;
+                            globCopy2 = response;
+                            var tabHeader = "<table class='table table-hover table-striped'><thead><th>ID</th><th>Type</th><th>Name</th><th>Venue</th><th>Date</th><th>Requirements  Met</th><th>Total Requirements</th><th>Contact No</th><th>Edit/Delete</th></thead>";
+                            var tabCategories = tabHeader;
+                            response.forEach(element => {
+                                tabCategories = tabCategories + buildHtml("divinitiativesTable", element);
+                            });
+                            tabCategories = tabCategories + "</table>";
+                            document.getElementById("divinitiativesTable").innerHTML = tabCategories;
+                            $.notify({icon: 'pe-7s-info',message: "Search Successful!"},{type: 'info',timer: 4000});
+                        }else{
+                            $.notify({icon: 'pe-7s-info',message: "Match Not Found!"},{type: 'info',timer: 4000});
+                            // window.location = window.location.origin;
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            $.notify({icon: 'pe-7s-info',message: "Something Went Wrong!"},{type: 'info',timer: 4000});
+                        // window.location = window.location.origin;
+                    }
+                    });
+                    
+            }
+            
+            else {
+            	           $.notify({icon: 'pe-7s-info',message: "No Items Selected!"},{type: 'info',timer: 4000});
+            	 
+             //alert("Sorry, Match not found!");
+            }
+        }
+
+
+
+        // function for Adding Initiatives
+
+ function addInitiative()
+   {
+
+            initType=document.getElementById("selInitTypeName").value;
+            evName=document.getElementById("inpevname").value;
+            evVenue = document.getElementById("inpevvenue").value;
+            evDate = document.getElementById("dateevent").value;
+            evContactNo=document.getElementById("inpcontact").value;
+            evImage=postimage;
+            evRequireMet=document.getElementById("inpRequireMet").value;
+            evRequireTotal=document.getElementById("inpRequireTotal").value;
+            evDescribe=document.getElementById("inpDescribe").value;
+            
+            if(initType=="")
+            {
+            	document.getElementById("spantype").innerHTML="Must be fill out";
+            }
+            else if(evName=="")
+            {
+            	document.getElementById("spantype").innerHTML="";
+            	document.getElementById("spanname").innerHTML="Must be fill out";
+            }
+            else if(evVenue=="")
+            {
+            	document.getElementById("spanname").innerHTML="";
+            	document.getElementById("spantype").innerHTML="";
+            	document.getElementById("spanvenue").innerHTML="Must be fill out";
+            }
+            else if(evDate=="")
+            {
+            	document.getElementById("spanvenue").innerHTML="";
+
+            	document.getElementById("spanname").innerHTML="";
+            	document.getElementById("spantype").innerHTML="";
+            	document.getElementById("spandate").innerHTML="Must be fill out";
+            }
+            else if(evContactNo=="")
+            {
+            	document.getElementById("spanvenue").innerHTML="";
+              	document.getElementById("spanname").innerHTML="";
+            	document.getElementById("spantype").innerHTML="";
+            	document.getElementById("spandate").innerHTML="";
+            	document.getElementById("spanno").innerHTML="Must be fill out";
+            }
+            else if(evRequireMet=="")
+            {
+            	document.getElementById("spanno").innerHTML="";
+            	document.getElementById("spanvenue").innerHTML="";
+              	document.getElementById("spanname").innerHTML="";
+            	document.getElementById("spantype").innerHTML="";
+            	document.getElementById("spandate").innerHTML="";
+            	
+            
+            	document.getElementById("spanmet").innerHTML="Must be fill out";
+            }
+            else if(evRequireTotal=="")
+            {
+            	document.getElementById("spanmet").innerHTML="";
+            	document.getElementById("spanno").innerHTML="";
+            	document.getElementById("spanvenue").innerHTML="";
+              	document.getElementById("spanname").innerHTML="";
+            	document.getElementById("spantype").innerHTML="";
+            	document.getElementById("spandate").innerHTML="";
+            	
+            	document.getElementById("spantotal").innerHTML="Must be fill out";
+            }
+            else if(evDescribe=="")
+            {
+            		document.getElementById("spantotal").innerHTML="";
+            		document.getElementById("spanmet").innerHTML="";
+            	document.getElementById("spanno").innerHTML="";
+            	document.getElementById("spanvenue").innerHTML="";
+              	document.getElementById("spanname").innerHTML="";
+            	document.getElementById("spantype").innerHTML="";
+            	document.getElementById("spandate").innerHTML="";
+            	
+            	document.getElementById("spandes").innerHTML="Must be fill out";
+            }
+            else
+            {
+            	document.getElementById("spandes").innerHTML="";
+            	document.getElementById("spantype").innerHTML="";
+            	document.getElementById("spanmet").innerHTML="";
+            	document.getElementById("spantotal").innerHTML="";
+            	document.getElementById("spandate").innerHTML="";
+            	document.getElementById("spanvenue").innerHTML="";
+            	document.getElementById("spanname").innerHTML="";
+            	
+
+            
+            
+
+             
+            // alert("initType:"+initType);
+            
+                $.ajax({
+                    type: 'POST',
+                    dataType:'json',
+                    data:({iType:initType,Name:evName,Venue:evVenue,Date:evDate,ContactNo:evContactNo,RequireMet:evRequireMet,RequireTotal:evRequireTotal,Describe:evDescribe,Image:evImage}),
+                    url: 'assets/php/add_initiatives.php', 
+                    success: function(responseData) {
+                        if(responseData.data.success == "successful"){
+                             $.notify({icon: 'pe-7s-info',message: " Data Added Successfully!"},{type: 'info',timer: 4000});
+                             
+                            //alert("Added Successfully!");
+                        }
+                        else if(responseData.data.success == "duplicate"){
+                            $.notify({icon: 'pe-7s-info',message: " Data Already Exists!"},{type: 'info',timer: 4000});
+                            //alert("Data Already Exists");
+                        }
+                        else{
+                            demo.showNotification('top','center', 'Added Failed!', 4);
+                            // window.location = window.location.origin;
+                           // alert("Data Entry Failed");
+                        }
+                      //location.reload('addInitiatives');  
+                      document.getElementById("frminitiative").reset();
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        demo.showNotification('top','center', 'Something went wrong', 4);
+                        alert("Something went wrong");
+                        // window.location = window.location.origin;
+                        document.getElementById("frminitiative").reset();
+                    }
+                    	
+
+                });
+                //location.reload();
+            }
+        }
+            
+
+
+
+
+        
+        function buildHtml(template, data){
+            var htmlString = "";
+            var pageName = "'initiative_views'";
+            var premiumImg = "";
+            switch(template){
+                case "divinitiativesTable":
+                    
+                    htmlString = "<tr><td>" + data.id + "</td><td>"+ data.type + "</td><td>" + data.name + "</td><td>"+ data.venue+"</td><td>"+data.date + "</td><td>" + data.metRequire + "</td><td>" + data.totRequire + "</td><td>" + data.contact + "</td><td><img src='assets/img/edit-button.png' onclick="+"toggleTabs('editInitiatives');fetchData('"+data.id+"','fetchInitiatives')"+">&emsp;<img src='assets/img/delete-button.png' onclick="+"deleteData('"+data.id+"','deleteInitiatives')"+"></td></tr>";
+                break;
+                /*case "typeName":
+                    htmlString = "<option value='"+data.type+"'>" + data.type + "</option>";
+                break;*/
+                case "selinType":
+                    htmlString = "<option value='"+data.type+"'>" + data.type + "</option>";
+                break;
+                case "selInitTypeName":
+                    htmlString = "<option value='"+data.type+"'>" + data.type + "</option>";
+                break;
+            }
+            return htmlString;
+        }
+       /* function fetchType(){
+            var typeSelected = document.getElementById("").value;
+            for(i = 0; i<globCopy.length; i++){
+                if(globCopy[i].name == typeSelected){
+                    document.getElementById("unionName").value = globCopy[i].union;
+                    break;
+                }
+            }
+             onchange="fetchType()"
+              onchange="fetchType()"
+        }*/
+         function runScript(e)
+         {
+             	if(e.KeyCode==13)
+             	{
+             		searchInitiative();
+             		return false;
+             	}
+         }
+         function length_validation()
+         {
+            var contact_No= document.getElementById("inpcontact").value;
+            var len=10;
+                 if(!((contact_No).length==len))
+                 {
+                //alert("Enter valid Contact No");
+                document.getElementById("spanno").innerHTML="Plz..Enter Valid Contact No";
+                 }
+                 else
+                 {
+                    document.getElementById("spanno").innerHTML="";
+                 }
+
+         }
+
+         function length_validation1()
+         {
+             var contact_No= document.getElementById("contactNo").value;
+             var len=10;
+                 if(!((contact_No).length==len))
+                 {
+                //alert("Enter valid Contact No");
+                document.getElementById("spanno1").innerHTML="Plz..Enter Valid Contact No";
+                 }
+                 else
+                 {
+                    document.getElementById("spanno1").innerHTML="";
+                 }
+
+         }
+ 
+  	</script>
+
+</html>
