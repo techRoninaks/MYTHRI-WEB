@@ -94,6 +94,7 @@ function loadProfile(){
 function cancelFunc(val=0){
     setCookie("userOnEdit");
     setCookie("roleOnEdit"); 
+    setCookie("initiative_viewsOnEdit");
     if(val !== 0){
         setCookie("inpId");
         setCookie("empId");
@@ -108,6 +109,7 @@ function cancelFunc(val=0){
         setCookie("inputNews");
         setCookie("inputEmp");
         setCookie("inputCare");
+        setCookie("initiativeManage");
         window.location.replace(page);
     } else {
         window.location.reload();
@@ -124,11 +126,13 @@ function dataUpdate(pageName){
     var formData = new FormData();
     switch(pageName){
         case 'volunteer': phpFile = "updateVolunteer";
-                    break;
+            break;
         case 'user': phpFile = "updateUser";
-                    break;
+            break;
         case 'role': phpFile = "updateRole";
-                    break;
+            break;
+        case 'updateinitiatives': phpFile = "updateinitiatives";
+            break;
     }
     if(confirm("Confirm Upload?")){
         if(pageName == 'volunteer'){
@@ -166,10 +170,20 @@ function dataUpdate(pageName){
                 }
             }
             myObj = {"inputRolename":data[0],"inputVol":data[1],"inputRole":data[2],"inputEnqu":data[3],"inputNews":data[4],"inputInit":data[5],"inputEmp":data[6],"inputCare":data[7],"cookieName":prevName};
-        }     
+        }else if(pageName == 'updateinitiatives'){
+            data[0] = document.getElementById("inpevname").value;
+            data[1] = document.getElementById("selInitTypeName").value;
+            data[2] = document.getElementById("inpevvenue").value;
+            data[3] = document.getElementById("dateevent").value;
+            data[4] = document.getElementById("inpRequireMet").value;
+            data[5] = document.getElementById("inpRequireTotal").value;
+            data[6] = document.getElementById("inpcontact").value;
+            data[7] = document.getElementById("inpDescribe").value;
+            prevName = getCookie("initiative_viewsOnEdit");
+            myObj = {"eventName":data[0],"typeName":data[1],"venueName":data[2],"curDate":data[3],"metRequire":data[4],"totalRequire":data[5],"contactNo":data[6],"eventDes":data[7],"initiative_viewsOnEdit":prevName,"image":postimage};
+        }    
         var jSONObj = JSON.stringify(myObj);
-        
-        // console.log("-> "+jSONObj);
+       
         xhr =  new XMLHttpRequest();
         this.responseType = 'text';
         xhr.onreadystatechange  =  function() {
@@ -202,11 +216,13 @@ function fetchData(id,pageName){
     var phpFile = "";
     switch(pageName){
         case 'volunteer': phpFile = "fetchVolunteer";
-                    break;
+            break;
         case 'user': phpFile = "fetchUser";
-                    break;
+            break;
         case 'role': phpFile = "fetchRole";
-                    break;
+            break;
+        case 'fetchInitiatives': phpFile = "fetchInitiatives";
+            break;
     }
     var params = 'id='+id;
     
@@ -266,6 +282,17 @@ function fetchData(id,pageName){
                             document.getElementById("inputEmp").checked = myObj.inputEmp;
                             document.getElementById("inputCare").checked = myObj.inputCare;
                             setCookie("roleOnEdit",myObj.inputRolename);
+                        }else if(pageName == "fetchInitiatives"){
+                            document.getElementById("inpevname").value = myObj.eventName;
+                            document.getElementById("selInitTypeName").value = myObj.typeName;
+                            document.getElementById("inpevvenue").value = myObj.venueName;
+                            document.getElementById("dateevent").value = myObj.curDate;
+                            document.getElementById("inpRequireMet").value = myObj.metRequire;
+                            document.getElementById("inpRequireTotal").value = myObj.totalRequire;
+                            document.getElementById("inpcontact").value = myObj.contactNo;
+                            document.getElementById("inpDescribe").value = myObj.eventDes;
+                            //document.getElementById("imageUpload").value = myObj.imageUpload;
+                            setCookie("initiative_viewsOnEdit",id);
                         }
             } else {
                 alert('Edit Failed!');
@@ -286,11 +313,13 @@ function deleteData(id,pageName){
         var phpFile = "";
         switch(pageName){
             case 'volunteer': phpFile = "deleteVolunteer";
-                        break;
+                break;
             case 'user': phpFile = "deleteUser";
-                        break;
+                break;
             case 'role': phpFile = "deleteRole";
-                        break;     
+                break;
+            case 'deleteInitiatives': phpFile = "deleteInitiatives";
+                break;
         }
         var xhr =  new XMLHttpRequest();
         var params = 'id='+id;
