@@ -1,5 +1,5 @@
 <?php
-    include("C:/xampp/htdocs/mythri/init.php");
+    include("init.php");
     $success = "unsuccessful";
     $sDate = $_POST["sDate"];
     $eDate = $_POST["eDate"];

@@ -1,5 +1,5 @@
 <?php
-    include("C:/xampp/htdocs/mythri/init.php");
+    include("init.php");
     $success = "unsuccessful";
     $evName = $_POST["eventName"];
     $inType = $_POST["inType"];

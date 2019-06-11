@@ -1,5 +1,5 @@
 <?php
-    include("C:/xampp/htdocs/mythri/init.php");
+    include("init.php");
     $success = "unsuccessful";
     $sql_query = "select * from tbl_event  order by event_id desc;";
     $result = mysqli_query($conn, $sql_query);

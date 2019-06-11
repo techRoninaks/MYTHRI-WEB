@@ -1,5 +1,5 @@
 <?php
-    include("C:/xampp/htdocs/mythri/init.php");
+    include("init.php");
     header("Content-Type: application/json; charset=UTF-8");
 	
 	$id = $_POST["id"];

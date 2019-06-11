@@ -1,5 +1,5 @@
 <?php
-    include("C:/xampp/htdocs/mythri/init.php");
+    include("init.php");
     $success = "unsuccessful";
     $evName = $_POST["eventName"];
     $sql_query = "SELECT * FROM  tbl_event WHERE event_name LIKE '$evName%' OR event_name='$evName'  ORDER BY event_date DESC;";

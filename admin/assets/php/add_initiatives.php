@@ -1,6 +1,6 @@
 <?php
 //session_start();
-include("C:/xampp/htdocs/mythri/init.php");
+include("init.php");
 $success = "unsuccessful";
     $initType = $_POST["iType"];
     $eName = $_POST["Name"];
