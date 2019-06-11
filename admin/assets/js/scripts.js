@@ -93,13 +93,21 @@ function loadProfile(){
 }
 function cancelFunc(val=0){
     setCookie("userOnEdit");
-    
-    
+    setCookie("roleOnEdit"); 
     if(val !== 0){
         setCookie("inpId");
-        
-        //  var page = window.location.protocol+"//"+window.location.hostname+"\htdocs\newwork\login\login.html";
-        // var page = "login/login.html";
+        setCookie("empId");
+        setCookie("empName");
+        setCookie("isAdmin");
+        setCookie("role");
+        setCookie("inputRolename");
+        setCookie("inputVol");
+        setCookie("inputRole");
+        setCookie("inputEnqu");
+        setCookie("inputInit");
+        setCookie("inputNews");
+        setCookie("inputEmp");
+        setCookie("inputCare");
         window.location.replace(page);
     } else {
         window.location.reload();
@@ -117,7 +125,10 @@ function dataUpdate(pageName){
     switch(pageName){
         case 'volunteer': phpFile = "updateVolunteer";
                     break;
-        
+        case 'user': phpFile = "updateUser";
+                    break;
+        case 'role': phpFile = "updateRole";
+                    break;
     }
     if(confirm("Confirm Upload?")){
         if(pageName == 'volunteer'){
@@ -131,12 +142,37 @@ function dataUpdate(pageName){
             data[7] =  document.getElementById("inpRate").value;
             prevName = getCookie("userOnEdit");
             myObj = {"inpId":data[0],"inpName":data[1],"inpEmail":data[2],"inpContact":data[3],"inpOccupation":data[4],"inpLocation":data[5],"inpPassword":data[6],"inpRate":data[7],"cookieName":prevName};
-        }         var jSONObj = JSON.stringify(myObj);
+        }else if(pageName == 'user'){
+            data[1] =  document.getElementById("inputName").value;
+            data[2] =  document.getElementById("inputEmail").value;
+            data[3] =  document.getElementById("inputPhone").value;
+            data[4] =  document.getElementById("inputPassword").value;
+            data[5] =  document.getElementById("inputRole").value;
+            prevName = getCookie("userOnEdit");
+            myObj = {"inputName":data[1],"inputEmail":data[2],"inputPhone":data[3],"inputPassword":data[4],"inputRole":data[5],"cookieName":prevName};
+        }else if(pageName == 'role'){
+            data[0] = document.getElementById("inputRolename").value;
+            data[1] = document.getElementById("inputVol").checked;
+            data[2] = document.getElementById("inputRole").checked;
+            data[3] = document.getElementById("inputEnqu").checked;
+            data[4] = document.getElementById("inputNews").checked;
+            data[5] = document.getElementById("inputInit").checked;
+            data[6] = document.getElementById("inputEmp").checked;
+            data[7] = document.getElementById("inputCare").checked;
+            prevName = getCookie("roleOnEdit");
+            for(i = 1;i<=7;i++){
+                if(data[i] === false){
+                    data[i] = 0;
+                }
+            }
+            myObj = {"inputRolename":data[0],"inputVol":data[1],"inputRole":data[2],"inputEnqu":data[3],"inputNews":data[4],"inputInit":data[5],"inputEmp":data[6],"inputCare":data[7],"cookieName":prevName};
+        }     
+        var jSONObj = JSON.stringify(myObj);
         
         // console.log("-> "+jSONObj);
         xhr =  new XMLHttpRequest();
         this.responseType = 'text';
-           xhr.onreadystatechange  =  function() {
+        xhr.onreadystatechange  =  function() {
             var ourData = xhr.response;
             if (this.readyState == 4 && this.status == 200) {
                 if(xhr.responseText == '1'){
@@ -167,7 +203,10 @@ function fetchData(id,pageName){
     switch(pageName){
         case 'volunteer': phpFile = "fetchVolunteer";
                     break;
-      
+        case 'user': phpFile = "fetchUser";
+                    break;
+        case 'role': phpFile = "fetchRole";
+                    break;
     }
     var params = 'id='+id;
     
@@ -177,18 +216,57 @@ function fetchData(id,pageName){
                     var myObj = JSON.parse(xhr.responseText);
                     if(xhr.responseText !== "0"){
                         if(pageName == "volunteer"){
-                        document.getElementById("inpId").value = myObj.inpId;
-                        document.getElementById("inpId").disabled=true;
-                        document.getElementById("inpName").value = myObj.inpName;
-                        document.getElementById("inpEmail").value = myObj.inpEmail;
-                        document.getElementById("inpEmail").disabled=true;
-                        document.getElementById("inpContact").value = myObj.inpContact;
-                        document.getElementById("inpOccupation").value = myObj.inpOccupation;
-                        document.getElementById("inpLocation").value = myObj.inpLocation;
-                        document.getElementById("inpPassword").value =  myObj.inpPassword;
-                        document.getElementById("inpRate").value = myObj.inpRate;
-                        setCookie("userOnEdit",myObj.inpId);
-                        } 
+                            document.getElementById("inpId").value = myObj.inpId;
+                            document.getElementById("inpId").disabled=true;
+                            document.getElementById("inpName").value = myObj.inpName;
+                            document.getElementById("inpEmail").value = myObj.inpEmail;
+                            document.getElementById("inpEmail").disabled=true;
+                            document.getElementById("inpContact").value = myObj.inpContact;
+                            document.getElementById("inpOccupation").value = myObj.inpOccupation;
+                            document.getElementById("inpLocation").value = myObj.inpLocation;
+                            document.getElementById("inpPassword").value =  myObj.inpPassword;
+                            document.getElementById("inpRate").value = myObj.inpRate;
+                            setCookie("userOnEdit",myObj.inpId);
+                        }else if(pageName == "user"){
+                            document.getElementById("inputName").value = myObj.inputName;
+                            document.getElementById("inputEmail").value = myObj.inputEmail;
+                            document.getElementById("inputPhone").value = myObj.inputPhone;
+                            document.getElementById("inputPassword").value =  myObj.inputPassword;
+                            document.getElementById("inputRole").value = myObj.inputRole;
+                            setCookie("userOnEdit",myObj.inputEmail);  
+                        }else if(pageName == "role"){
+                            if(myObj.inputVol == 0 || myObj.inputVol == ""){
+                                myObj.inputVol = false;
+                            }
+                            if(myObj.inputRole == 0 || myObj.inputRole == ""){
+                                myObj.inputRole = false;
+                            }
+                            if(myObj.inputEnqu == 0 || myObj.inputEnqu == ""){
+                                myObj.inputEnqu = false;
+                            }
+                            if(myObj.inputNews == 0 || myObj.inputNews == ""){
+                                myObj.inputNews = false;
+                            }
+                            if(myObj.inputInit == 0 || myObj.inputInit == ""){
+                                myObj.inputInit = false;
+                            }
+                            if(myObj.inputEmp == 0 || myObj.inputEmp == ""){
+                                myObj.inputEmp = false;
+                            }
+                            if(myObj.inputCare == 0 || myObj.inputCare == ""){
+                                myObj.inputCare = false;
+                            }
+                            document.getElementById("inputRolename").value = myObj.inputRolename;
+                            document.getElementById("inputRolename").disabled=true;
+                            document.getElementById("inputVol").checked = myObj.inputVol;
+                            document.getElementById("inputRole").checked = myObj.inputRole;
+                            document.getElementById("inputEnqu").checked = myObj.inputEnqu;
+                            document.getElementById("inputNews").checked = myObj.inputNews;
+                            document.getElementById("inputInit").checked = myObj.inputInit;
+                            document.getElementById("inputEmp").checked = myObj.inputEmp;
+                            document.getElementById("inputCare").checked = myObj.inputCare;
+                            setCookie("roleOnEdit",myObj.inputRolename);
+                        }
             } else {
                 alert('Edit Failed!');
             }
@@ -207,10 +285,12 @@ function deleteData(id,pageName){
     if(confirm(confirmTxt)){
         var phpFile = "";
         switch(pageName){
-           
             case 'volunteer': phpFile = "deleteVolunteer";
                         break;
-           
+            case 'user': phpFile = "deleteUser";
+                        break;
+            case 'role': phpFile = "deleteRole";
+                        break;     
         }
         var xhr =  new XMLHttpRequest();
         var params = 'id='+id;
