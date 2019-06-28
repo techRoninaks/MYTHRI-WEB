@@ -120,6 +120,20 @@
       color:rgb(100,100,100);
       font-family: defaultBarlowBold;
     }
+    @media (max-width:500px) {
+      #dvDescription{
+        margin-left:8px;
+        margin-right:8px;
+      }
+      #dvMainContent{
+        margin-left:8px;
+        margin-right:8px;
+      }
+      #dvImage{
+        margin-left:0px;
+        margin-right:0px;
+      }
+    }
   </style>
 
 </head>
@@ -142,9 +156,8 @@
     if($qtype=="care_centers")
     {
 
-      $sql = "SELECT * FROM tbl_carectr where cc_id=$evid";
-      $result =mysqli_query($conn,$sql);
-
+      $sql = "SELECT cc.*,(select min(cc.cc_id) from tbl_carectr cc where cc.cc_id > $evid) AS NXT, (select max(cc.cc_id) from tbl_carectr cc where cc.cc_id < $evid) AS PREV FROM tbl_carectr cc where cc_id=$evid";
+      $result=mysqli_query($conn,$sql);
       while($row=mysqli_fetch_array($result)){
         $venue=$row['cc_venue'];
         $title=$row['cc_name'];
@@ -153,15 +166,28 @@
         $id=$row['cc_id'];
         $des=$row['cc_des'];
         $image=$row['cc_img'];
+        $prev = $row['PREV'];
+        $next = $row['NXT'];
       }
     }
-    
+    else if($qtype=="news"){
+      $sql = "SELECT n.*,(select min(n.news_id) from tbl_news n where n.news_id > $evid) AS NXT, (select max(n.news_id) from tbl_news n where n.news_id < $evid) AS PREV FROM tbl_news n where n.news_id=$evid";
+      $result=mysqli_query($conn,$sql);
+      while($row=mysqli_fetch_array($result)){
+      $title=$row['news_title'];        
+      $date=$row['news_date'];
+      $id=$row['news_id'];
+      $image=$row['news_img'];
+      $des=$row['news_des'];
+      $prev = $row['PREV'];
+      $next = $row['NXT'];
+      }
+    }
     else 
     {
       $sql = "SELECT e.*,(select min(e.event_id) from tbl_event e where e.event_id > $evid and e.ev_id = (select et.ev_id from tbl_evtype et where et.ev_type='$qtype')) AS NXT, (select max(e.event_id) from tbl_event e where e.event_id < $evid and e.ev_id = (select et.ev_id from tbl_evtype et where et.ev_type='$qtype')) AS PREV FROM tbl_event e where event_id=$evid";
       $result=mysqli_query($conn,$sql);
       while($row=mysqli_fetch_array($result)){
-      
       $title=$row['event_name'];        
       $venue=$row['event_venue'];
       $date=$row['event_date'];
@@ -190,11 +216,13 @@
       echo "<a href='cate_listing.html?cat_type=donate&pg_no=1' class='spnBreadCrumbs'>INITIATIVES</a> > <a href='cate_listing.html?cat_type=janananma&pg_no=1' class='spnBreadCrumbs'>NANMA</a>";
     }else if($qtype == "events"){
       echo "<a href='cate_listing.html?cat_type=events&pg_no=1' class='spnBreadCrumbs'>EVENTS</a>";
+    }else if($qtype == "news"){
+      echo "<a href='cate_listing.html?cat_type=news&pg_no=1' class='spnBreadCrumbs'>EVENTS</a>";
     }?> > <?php echo strtoupper($title) ?> </p>
     <hr/>
   </div>
   <div class="content_listing" >
-    <div class="row">
+    <div class="row" id="dvMainContent">
       <div class="column" style="background-color:white;" >
         <h3><strong style="font-size: 18px;color: #000000;opacity:82%; font-family: defaultBarlowBold !important;" id="heading">
           <?php echo strtoupper($title) ?></strong></h3>
@@ -202,7 +230,7 @@
           <h5 class="content-text" id="venue" style="display:inline;"><strong id="place" style="display:inline;" >VENUE:</strong><strong><?php echo $venue ?></strong> </h5>
             <h5 class="content-text" id="date" ><strong id="dates" style="display:inline;">DATE:</strong><strong style="text-transform: uppercase"><?php echo date('d M Y',strtotime($date)) ?></strong> </h5>
           <h5 class="content-text" id="strength"><strong> STRENGTH : <?php echo $strength ?></strong> </h4>
-          <h5 class="content-text" id="contact"><strong> CONTACT:<?php echo $contact ?></strong> </h4>
+  <h5 class="content-text" id="contact"><strong><?php if($qtype!="news"){echo "CONTACT: ".$contact;}?></strong></h4>
         </div>
       </div>
       <div class="column" style="background-color:white;padding-left:40px" >
@@ -237,7 +265,7 @@
         </div>
     </div>
     
-    <div class="row">
+    <div class="row" id="dvImage">
       <img src="<?php echo $image ?>" alt="download1.jpg"  align="center" class="img-main">
     </div>
     <div align="center" style="margin: 20px;">
@@ -248,7 +276,7 @@
         <strong>VOLUNTEER</strong>
         </button>
     </div>
-    <div class="row">
+    <div class="row" id="dvDescription">
       <p align="justify"  id="des" style="color:rgb(120,120,120);line-height:150%;font-size:1.3rem; "><?php echo $des ?></p>
     </div>
     <br>
@@ -325,14 +353,12 @@
         $('#title').text('Donate');
         $('#strength').css('display', 'none');
         $('#volunteer').css('display', 'none');
-        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>INITIATIVES</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>DONATE</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
         qryEvId = 1;
         break;
       }
       case "janananma":{
         $('#title').text('Janananma');
         $('#strength').css('display', 'none');
-        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>INITIATIVES</a> > <a href=cate_listing.html?cat_type=janananma&pg_no=1 class=spnBreadCrumbs style=margin:0px;>JANANANMA</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
         qryEvId = 2;
         break;
       }
@@ -342,14 +368,12 @@
         $('#date').css('display', 'none');
         $('#place').css('display', 'none');
         $('#progress').css('display', 'none');
-        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=care_centers&pg_no=1 class=spnBreadCrumbs style=margin:0px;>CARE CENTERS</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
         qryEvId = 3;
         break;
       }
       case "events":{
         $('#title').text('Events');
         $('#strength').css('display', 'none');
-        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=events&pg_no=1 class=spnBreadCrumbs style=margin:0px;>DONATE</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
         document.getElementById("heading").innerHTML = "A DAY FOR SPECIAL ONES";
         qryEvId = 4;
         break;
@@ -359,8 +383,17 @@
         $('#strength').css('display', 'none');
         $('#donate').css('display', 'none');
         $('#progress').css('display', 'none');
-        //document.getElementById("divBreadCrumbs").innerHTML = "<p class=spnBreadCrumbs><a href=home.html class=spnBreadCrumbs style=margin:0px;>HOME</a> > <a href=cate_listing.html?cat_type=donate&pg_no=1 class=spnBreadCrumbs style=margin:0px;>INITIATIVES</a> > <a href=cate_listing.html?cat_type=volunteer&pg_no=1 class=spnBreadCrumbs style=margin:0px;>VOLUNTEER</a> > " + <?php echo $title ?> +"</p><hr style=margin-top:2px;/>";
         qryEvId = 5;
+        break;
+      }
+      case "news":{
+        $('#title').text('News');
+        $('#strength').css('display', 'none');
+        $('#volunteer').css('display', 'none');
+        $('#donate').css('display', 'none');
+        $('#progress').css('display', 'none');
+        $('#place').css('display', 'none');
+        qryEvId = 1;
         break;
       }
     }
