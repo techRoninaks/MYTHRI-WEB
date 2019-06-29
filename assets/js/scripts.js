@@ -51,7 +51,7 @@ function getQueryString(){
   return [];
 }
 
-function loadtablerole(caller, page){
+function loadtablerole(caller, page = 1){
   var xhr =  new XMLHttpRequest();
   this.responseType = 'text';
   xhr.onreadystatechange  =  function() {
@@ -59,7 +59,9 @@ function loadtablerole(caller, page){
       var ourData = xhr.response;
       if (this.readyState == 4 && this.status == 200) {//if result successful
         var myObj = JSON.parse(this.responseText);
-        
+        if(window.location.href.toLowerCase().includes("cate_listing.html")){
+          pagination(page, myObj[0].total_pages);
+        }
         switch (caller){
           case "janananma":
             janaload(myObj);
@@ -83,6 +85,7 @@ function loadtablerole(caller, page){
             eventload(myObj);
             break;
           case "news":
+            newsload(myObj);
             break;
           default:
             // homeload(myObj);
@@ -94,17 +97,17 @@ function loadtablerole(caller, page){
 
   switch(caller){
     case "janananma":
-      xhr.open("GET", "assets/php/getjana.php", true);
+      xhr.open("GET", "assets/php/getjana.php?page=" + page, true);
       xhr.setRequestHeader("Content-type", "text/plain");
       xhr.send();
       break;
     case "donate":
-      xhr.open("GET", "assets/php/getdonate.php", true);
+      xhr.open("GET", "assets/php/getdonate.php?page=" + page, true);
       xhr.setRequestHeader("Content-type", "text/plain");
       xhr.send();
       break;
     case "volunteer":
-      xhr.open("GET", "assets/php/getvolunteer.php", true);
+      xhr.open("GET", "assets/php/getvolunteer.php?page=" + page, true);
       xhr.setRequestHeader("Content-type", "text/plain");
       xhr.send();
       break;
@@ -114,7 +117,7 @@ function loadtablerole(caller, page){
       xhr.send();
       break;
     case "care":
-      xhr.open("GET", "assets/php/getcare.php", true);
+      xhr.open("GET", "assets/php/getcare.php?page=" + page, true);
       xhr.setRequestHeader("Content-type", "text/plain");
       xhr.send();
       break;
@@ -124,12 +127,12 @@ function loadtablerole(caller, page){
       xhr.send();
       break;
     case "events":
-      xhr.open("GET", "assets/php/getevents.php", true);
+      xhr.open("GET", "assets/php/getevents.php?page=" + page, true);
       xhr.setRequestHeader("Content-type", "text/plain");
       xhr.send();
       break;
     case "news":
-      xhr.open("GET", "assets/php/getnews.php", true);
+      xhr.open("GET", "assets/php/getnews.php?page=" + page, true);
       xhr.setRequestHeader("Content-type", "text/plain");
       xhr.send();
       break;
@@ -214,19 +217,19 @@ function donateload(array){
     }
     
   document.getElementById('row1').innerHTML = htmltemp; 
-  }
+}
 
-  function eventload(array){
-    var data2 = "";
-    var htmltemp ="";
-    
-    for(i = 1; i<array.length; i++){
-      var data = array[i];
-      htmltemp = htmltemp + templateEvents(data, "events");
-      }
-      
-    document.getElementById('row1').innerHTML = htmltemp; 
+function eventload(array){
+  var data2 = "";
+  var htmltemp ="";
+  
+  for(i = 1; i<array.length; i++){
+    var data = array[i];
+    htmltemp = htmltemp + templateEvents(data, "events");
     }
+    
+  document.getElementById('row1').innerHTML = htmltemp; 
+}
 
 function volunteerload(array){
   var data2 = "";
@@ -238,9 +241,19 @@ function volunteerload(array){
     }
     
   document.getElementById('row1').innerHTML = htmltemp; 
-  }
+}
 
-
+function newsload(array){
+  var data2 = "";
+  var htmltemp ="";
+  
+  for(i = 1; i<array.length; i++){
+    var data = array[i];
+    htmltemp = htmltemp + templateNews(data, "news");
+    }
+    
+  document.getElementById('row1').innerHTML = htmltemp; 
+}
 function on() {
   document.getElementById("overlay1").style.display = "block";
 }
@@ -252,6 +265,9 @@ function off() {
 } 
 
 function templateDonVol(data, type){
+  var requirements = data["event_requirement"].split("!~");
+  var total = requirements[1];
+  var needed = requirements[0];
   var template ="";
   template +=  "<div class= gallery  id= donatetemp >"+
   "<a class= noa  href= forms.html?cat_type="+type+"&ev_id="+data["event_id"] +" style=width:100%;>"+
@@ -273,13 +289,15 @@ function templateDonVol(data, type){
         +data["event_des"]+
          "</font></p>"+
     "</div>"+
-    "</a>"+ (type == "donate" ?
-    "<strong>Need Rs.12,000 more of Rs.40,000</strong>" : "<strong>Need 12 more of 40</strong>")+
-    "<div class= progressbar >"+
-      "<div class= progressbarx >"+
-      "</div>"+
-    "</div>"+
-    "</div>";
+    "</a>";
+    if(type == "donate"){
+      template += "<strong>Need Rs."+ needed +" more of Rs."+ total +"</strong>"+
+      "<div class= progressbar >"+
+      "<div class=  progressbarx  style='width:"+ (total == 0 ? 100 : (Number(needed)/Number(total))*100) +"%'>"+
+        "</div>"+
+      "</div>";
+    }
+    template += "</div>";
     return template;
 }
 
@@ -309,6 +327,9 @@ function templateEvents(data, type){
 }
 
 function templateJana(data, type){
+  var requirements = data["event_requirement"].split("!~");
+  var total = requirements[1];
+  var needed = requirements[0];
   var template = "";
   template += "<div class= gallery  id= donatetemp >"+
   "<a class= noa  href= individual-listing.php?type="+type+"&ev_id="+data["event_id"] +" style:100%>"+
@@ -327,10 +348,10 @@ function templateJana(data, type){
         +data["event_des"]+
          "</font></p>"+
     "</div>"+
-    "<strong>Need Rs 1200 more of Rs. 4000</strong>"+
-    "<div class= progressbar >"+
-      "<div class= progressbarx >"+
-      "</div>"+
+    "<strong>Need Rs."+ needed +" more of Rs."+ total +"</strong>"+
+    "<div class=  progressbar  >"+
+    "<div class=  progressbarx  style='width:"+ (total == 0 ? 100 : (Number(needed)/Number(total))*100) +"%'>"+
+    "</div>"+
     "</div>"+
     "<div id= overlay1 >"+
     "<div >"+
@@ -361,11 +382,6 @@ function templateCare(data, type){
         +data["cc_des"]+
          "</font></p>"+
     "</div>"+
-    "<strong>Need Rs.12,000 more of Rs.40,000</strong>"+
-    "<div class= progressbar >"+
-      "<div class= progressbarx >"+
-      "</div>"+
-    "</div>"+
     "<div id= overlay1 >"+
     "<div >"+
      "<div class= hovertext  click= off() ><a class= hovertext  href=  home.html > Read more</a></div>"+
@@ -380,6 +396,9 @@ function templateCare(data, type){
 
 
 function templateHomeJana(data, type){
+  var requirements = data["event_requirement"].split("!~");
+  var total = requirements[1];
+  var needed = requirements[0];
   var template = ""; 
   template += "<div class= galleryHome  id= shadowB  >"+
   "<a class= noa href= individual-listing.php?type="+type+"&ev_id="+data["event_id"] +" style=width:100%>"+
@@ -397,9 +416,9 @@ function templateHomeJana(data, type){
   +data["event_des"]+
    "</font></p>"+
 "</div>"+
-"<strong>Need Rs 1200 more of Rs. 4000</strong>"+
+"<strong>Need Rs."+ needed +" more of Rs."+ total +"</strong>"+
 "<div class=  progressbar  >"+
-"<div class=  progressbarx  >"+
+"<div class=  progressbarx  style='width:"+ (total == 0 ? 100 : (Number(needed)/Number(total))*100) +"%'>"+
 "</div>"+
 "</div>"+
 "</a>"+
@@ -410,6 +429,9 @@ return template;
 }
 
 function templateHomeDoVol(data, type){
+  var requirements = data["event_requirement"].split("!~");
+  var total = requirements[1];
+  var needed = requirements[0];
   var template = ""; 
   template += "<div class= galleryHome id= shadowB >"+
   "<a class= noa  href= forms.html?cat_type="+type+"&ev_id="+data["event_id"] +" style=width:100%>"+
@@ -430,9 +452,9 @@ function templateHomeDoVol(data, type){
    "</font></p>"+
 "</div>"+
 "</a>"+
-"<strong>Need Rs 1200 more of Rs. 4000</strong>"+
+"<strong>Need Rs."+ needed +" more of Rs."+ total +"</strong>"+
 "<div class=  progressbar  >"+
-"<div class=  progressbarx  >"+
+"<div class=  progressbarx  style='width:"+ (total == 0 ? 100 : (Number(needed)/Number(total))*100) +"%'>"+
 "</div>"+
 "</div>"+
 "</div>"  ;
@@ -458,16 +480,36 @@ function templateHomeCare(data, type){
   +data["cc_des"]+
    "</font></p>"+
 "</div>"+
-"<strong>Need Rs 1200 more of Rs. 4000</strong>"+
-"<div class=  progressbar  >"+
-"<div class=  progressbarx  >"+
-"</div>"+
-"</div>"+
 "</a>"+
 "</div>";
 
 // console.log(template+"\n");
 return template;
+}
+
+function templateNews(data, type){
+  var template ="";
+  template +=  "<div class= gallery  id= donatetemp >"+
+  "<a class= noa  href= individual-listing.php?type="+type+"&ev_id="+data["news_id"] +" style=width:100%;>"+
+    "<div class= container1 >"+
+    " <img class= img-responsive   src= "+ data["news_img"] +"   alt=sample   style= width:100%;height:150px;>"+
+        "<div class=  overlay  >"+
+          "<div class=  text1  >"+"Read More"+""+
+          "</div>"+
+        "</div>"+
+    "</div>"+
+    "<br>"+
+    "<div class=  text   align=  left  >"+         
+      "<font style=  font-size:14; ><strong>"+data["news_title"]+"</strong></font>"+
+      // "<font color= grey   size= -16 ;>"+
+        "<h6 style=height:13px;color:gray;width:100%;>"+data["news_date"]+"</h6>"+
+        "<p style=  width:100%;height:80px;line-height:17px;font-family:defaultBarlow;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;><font size= 2  color= grey ;>"
+        +data["news_des"]+
+         "</font></p>"+
+    "</div>"+
+    "</a>"+
+    "</div>";
+    return template;
 }
 
 function loadProfile(id,editCon = null){

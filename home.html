@@ -241,10 +241,15 @@ a:hover{
   .btn{
     width:20%;
   }
+  
 }
 @media (max-width:675px) {
   .btn{
     width:22%;
+    display: none;
+  }
+  #imgBanner{
+    display: none;
   }
 }
 @media (max-width:554px) {
@@ -258,7 +263,7 @@ a:hover{
 
 <body>
   <div id="header" w3-include-html="head1.html" class="header"></div>
-  <img src="assets/images/homepage_title.jpg" class="img-responsive" style="width: 100%;height: 268px;">
+  <img src="assets/images/homepage_title.jpg" class="img-responsive" style="width: 100%;height: 268px;" id="imgBanner">
 
 
   <button class="btn" id="btnHomeVol" style="top: 160px;" onclick='changeLocation("volunteer");'><b>VOLUNTEER</b></button>
@@ -428,7 +433,7 @@ a:hover{
         <b style="float:left;font-size: 17px;font-weight: 700;">NEWS & UPDATES</b>
       
         
-        <h6 style="padding-top: 8px;"><p><a href="cate_listing.html?type=news&pg_no=1" style="opacity: .38; ">LOAD MORE</a></p></h6>
+        <h6 style="padding-top: 8px;"><p><a href="cate_listing.html?cat_type=news&pg_no=1" style="opacity: .38; ">LOAD MORE</a></p></h6>
         <br>
         <hr style="margin-top: auto;
         margin-bottom: auto;
