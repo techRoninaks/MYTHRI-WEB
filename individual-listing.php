@@ -195,12 +195,16 @@
       $id=$row['event_id'];
       $image=$row['event_img'];
       $des=$row['event_des'];
-      $total=$row['event_total'];
-      $needed=$row['event_needed'];
       $prev = $row['PREV'];
       $next = $row['NXT'];
-      $aa=$total-$needed;
-      $progress=round(($aa/$total)*100,1);
+      $requirement=$row['event_requirement'];
+      $requirementSplit=explode('!~',$requirement);
+      $total=$requirementSplit[1];
+      $satisfied=$requirementSplit[0];
+      $progress=100;
+      if($total != 0){
+        $progress=round(($satisfied/$total)*100,1);
+      }
 
       }
     }       
@@ -217,7 +221,7 @@
     }else if($qtype == "events"){
       echo "<a href='cate_listing.html?cat_type=events&pg_no=1' class='spnBreadCrumbs'>EVENTS</a>";
     }else if($qtype == "news"){
-      echo "<a href='cate_listing.html?cat_type=news&pg_no=1' class='spnBreadCrumbs'>EVENTS</a>";
+      echo "<a href='cate_listing.html?cat_type=news&pg_no=1' class='spnBreadCrumbs'>NEWS</a>";
     }?> > <?php echo strtoupper($title) ?> </p>
     <hr/>
   </div>
@@ -228,9 +232,9 @@
           <?php echo strtoupper($title) ?></strong></h3>
         <div class="content1" style="margin-top:24px;">
           <h5 class="content-text" id="venue" style="display:inline;"><strong id="place" style="display:inline;" >VENUE:</strong><strong><?php echo $venue ?></strong> </h5>
-            <h5 class="content-text" id="date" ><strong id="dates" style="display:inline;">DATE:</strong><strong style="text-transform: uppercase"><?php echo date('d M Y',strtotime($date)) ?></strong> </h5>
+          <h5 class="content-text" id="date" ><strong id="dates" style="display:inline;">DATE:</strong><strong style="text-transform: uppercase"><?php echo date('d M Y',strtotime($date)) ?></strong> </h5>
           <h5 class="content-text" id="strength"><strong> STRENGTH : <?php echo $strength ?></strong> </h4>
-  <h5 class="content-text" id="contact"><strong><?php if($qtype!="news"){echo "CONTACT: ".$contact;}?></strong></h4>
+          <h5 class="content-text" id="contact"><strong><?php if($qtype!="news"){echo "CONTACT: ".$contact;}?></strong></h4>
         </div>
       </div>
       <div class="column" style="background-color:white;padding-left:40px" >
@@ -255,14 +259,11 @@
         <br>
         <div class="absolute" id="progress">
           <p style="line-height:18px; text-align:right;" class="content-text">
-            <strong>Need Rs.1200 more of Rs.4000</strong> 
+            <strong><?php if($total !=0){ echo "Need Rs.".$satisfied." more of Rs.".$total;}else{echo "";}?></strong> 
           </p>
-          <div class="outter" >
-            <div class="inner" style="width:30%;">
-            </div>
+          <?php if($total !=0){echo"<div class='outter'><div class='inner' style='width:$progress%;'></div></div>";}?>
         </div>
-        </div>
-        </div>
+      </div>
     </div>
     
     <div class="row" id="dvImage">
@@ -287,8 +288,6 @@
   {
     header("Location:error.php?error-code=404");
   }
-
- 
   ?>
 
   <div id="footer" w3-include-html="footer.html" style="margin-top: 24px;"></div>
@@ -297,12 +296,6 @@
   </script>
 </body>
 </html>
-<?php
-  $total=54000;
-  $need=36000;
-  $aa=$total-$need;
-  $person=round(($aa/$total)*100,1);
-?>
 <style type="text/css">
   .outter {
 
