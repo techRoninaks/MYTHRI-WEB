@@ -1,6 +1,6 @@
 <header>
 
-<div class="nav" style="height: 67px;width:100%;">
+<div class="nav" style="height: 67px;width:100%;display:inline-block;position:fixed;z-index:99;top:0;">
   <div class="nav-header">
     <div class="nav-title">
       <a href="home.html"><img src="assets/images/mythrissurtypographywhite-min.png" style="width:200px;height:100px;object-fit: contain;padding-bottom:50px;"></a>
@@ -11,10 +11,6 @@
       <span style="margin-top:8px;"></span>
       <span></span>
       <span></span>
-      <!-- <span></span>
-      <span></span>
-      <span></span>
-      <span></span> -->
     </label>
   </div>
   <input type="checkbox" id="nav-check">
@@ -35,7 +31,7 @@
       <button class="dropbtn glyphicon glyphicon-th" style="font-size: 21px;" id="icon" onclick="toggleBTN();">   
       </button>
       <div class="dropdown-content dropdown-menuCustom " id="dropmenu">
-        <a href="forms.html?cat_type=volunteer">Volunteer Signup</a>
+        <a onclick="toggleProfile();" id="aProfile">Volunteer</a>
         <a href="forms.html?cat_type=raise_your_voice">Raise your voice</a>
         <a href="#">FAQ</a>
         <a href="contact.html">Contact Us</a> 
@@ -43,28 +39,7 @@
     </div>
   </div>
 </div>
-<style type="text/css">
-  /* .panel-default>.panel-heading {
-    color: #333;
-    background-color: #060606;
-    border-color: #ddd;
-  }
 
- .bs-example{
-      margin: 10px;
-    
-  
-  
-  
-  border: none;
-    }
-    .panel-title .glyphicon{
-        font-size: 25px;
-           color: #808080;
-          
-
-    } */
-</style>
 <script>
 
   function toggleBTN(){
@@ -81,19 +56,6 @@
       document.getElementById('icon').classList.add("glyphicon-remove");
     }
   }
-    // $(document).ready(function(){
-    //     // Add minus icon for collapse element which is open by default
-    //     $(".collapse.in").each(function(){
-    //       $(this).siblings(".panel-heading").find(".glyphicon").addClass("glyphicon-remove").removeClass("glyphicon-plus");
-    //     });
-        
-    //     // Toggle plus minus icon on show hide of collapse element
-    //     $(".collapse").on('show.bs.collapse', function(){
-    //       $(this).parent().find(".glyphicon").removeClass("glyphicon-th").addClass("glyphicon-remove");
-    //     }).on('hide.bs.collapse', function(){
-    //       $(this).parent().find(".glyphicon").removeClass("glyphicon-remove").addClass("glyphicon-th");
-    //     });
-    // });
 </script>
 </header>
 

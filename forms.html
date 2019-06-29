@@ -60,7 +60,7 @@
 
 <body >
     <div id="header" w3-include-html="head1.html"></div>
-    <div style="margin-top: 30px;">
+    <div style="margin-top: 100px;">
         <center> 
         <h4 id="tabTitle" style = "font-family:defaultBarlowBold;color:#333333;">VOLUNTEER SIGN UP</h4>
         </center>
@@ -69,7 +69,7 @@
         <div class="spnBreadCrumbs" style = "float:left;margin-left:5%;"><a href="home.html" class="spnBreadCrumbs">HOME</a> ><div style="display:inline;" id="currentPage">&emsp;VOLUNTEER SIGN UP</div></div>
     </div>
     <hr/>
-    <div style = "text-align:center;">
+    <div style = "text-align:center;" id="dvReg">
         <h5 style = "font-family:defaultBarlowBold;color:#bababa;" id="hSignIn">ALREADY A MEMBER ? 
         <a class="hyperLinkText" href = "forms.html?cat_type=login" id="aSignIn">SIGN IN</a></h5>
         <h5 style = "display:none;font-family:defaultBarlowBold;color:#bababa;" id="hSignUp">NOT A MEMBER ? 
@@ -170,6 +170,13 @@
             window.location.replace('error.html');
         }
         function showForm(){
+            var userId = parseInt(getCookie("userId"));
+            var isLogged = parseInt(getCookie("isLogged"));
+            var loggedIn = false;
+            if(!isNaN(userId)&&!isNaN(isLogged)){
+                $('#dvReg').hide();
+                loggedIn = true;
+            }
             switch(qryCatType){
                 case "register":
                     $('#signUpForm').show();
@@ -192,12 +199,22 @@
                     $('#currentPage').text('LOGIN');
                 break;
                 case "volunteer":
-                    $('#signUpForm').show();
-                    $('#loginForm').hide();
-                    $('#enquiryForm').hide();
-                    $('#title').text('Volunteer | MyThrissur');
-                    $('#tabTitle').text('VOLUNTEER SIGN UP');
-                    $('#currentPage').text('VOLUNTEER SIGN UP');
+                    if(loggedIn){
+                        $('#signUpForm').hide();
+                        $('#loginForm').hide();
+                        $('#enquiryForm').show();
+                        $('#title').text('Volunteer Form | MyThrissur');
+                        $('#tabTitle').text('VOLUNTEER FORM');
+                        $('#currentPage').text('VOLUNTEER');
+                    } else {
+                        $('#signUpForm').show();
+                        $('#loginForm').hide();
+                        $('#enquiryForm').hide();
+                        $('#title').text('Volunteer | MyThrissur');
+                        $('#tabTitle').text('VOLUNTEER SIGN UP');
+                        $('#currentPage').text('VOLUNTEER SIGN UP');
+                    }
+                    getFormData();
                 break;
                 case "donate":
                     $('#signUpForm').hide();
@@ -232,6 +249,7 @@
         }
         
         $(document).ready(function(){
+            
             $('#signUpForm').submit(function(event){
                 event.preventDefault();
                 var data = [];
@@ -334,6 +352,7 @@
             var userId = parseInt(getCookie("userId"));
             var isLogged = parseInt(getCookie("isLogged"));
             if(!isNaN(userId)&&!isNaN(isLogged)){
+                $('#dvReg').hide();
                 $.ajax({
                     type: 'POST',
                         dataType: 'json',
@@ -342,9 +361,9 @@
                         success: function(responseData) {
                         if(responseData.data.success == "successful"){
                             var response = responseData.data.result;
-                            $('#inpEnqUsername').val(response[0]);
-                            $('#inpEnqEmail').val(response[1]);
-                            $('#inpEnqPhone').val(response[2]);
+                            $('#inpEnqUsername').val(response["user_name"]);
+                            $('#inpEnqEmail').val(response["user_email"]);
+                            $('#inpEnqPhone').val(response["user_phone"]);
                         }}
                 });
             }

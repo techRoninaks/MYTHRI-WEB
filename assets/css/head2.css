@@ -11,6 +11,7 @@ body {
   height: 83px;
   width: 100%;
   background-color: white;
+  transition:all 1200ms;
 }
 
 #img3{
@@ -50,7 +51,7 @@ body {
 }
 
 .nav > .nav-links > a:hover {
- color: #000000;
+ color: #d0d0d0;
   /* transform: scale(1.1); */
 }
 
@@ -104,7 +105,7 @@ body {
   }
 }
 .dropbtn {
-  background-color:white;
+  background-color:inherit;
   color: #808080;
   padding: 16px;
   font-size: 20px;
