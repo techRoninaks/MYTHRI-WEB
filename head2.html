@@ -1,59 +1,65 @@
 <header>
-<div class="nav" style="  height: 67px;">
-  <div class="nav-header">
-    <div class="nav-title">
-     
-       <img src="assets/images/mythrissurlogoandtypography-min.png" style="width:240px;
-  height:120px;object-fit: contain;padding-bottom: 70px;">
-
-    </div>
-  </div>
-  <div class="nav-btn">
-    <label for="nav-check">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-  </div>
-  <input type="checkbox" id="nav-check">
-  <div class="nav-links" style="right:0px; position: absolute; z-index: 15;">
+    <div class="nav" style="height:67px;position:fixed;z-index:999;top:0;" id="whiteHeader">
+      <div class="nav-header">
+        <div class="nav-title">
+         
+           <img src="assets/images/mythrissurlogoandtypography-min.png" style="width:240px;
+      height:120px;object-fit: contain;padding-bottom: 70px;" id="headerImage">
     
-    <a href="home.html" style="font-size: 15px;font-weight: 700">HOME</a>
-    <a href="about.html" style="font-size: 15px;font-weight: 700">ABOUT US</a>
-    <div class="dropdown">
-      <button class="dropbtn" style="font-size: 15px;font-weight: 700">INITIATIVES</button>
-      <div class="dropdown-content">
-          <a href="cate_listing.html?cat_type=janananma&pg_no=1">Nanma</a>
-          <a href="cate_listing.html?cat_type=donate&pg_no=1">Donate</a>
-          <a href="cate_listing.html?cat_type=volunteer&pg_no=1">Volunteer</a>
-       
+        </div>
+      </div>
+      <div class="nav-btn">
+        <label for="nav-check">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+      <input type="checkbox" id="nav-check">
+      <div class="nav-links" style="right:0px; position: absolute; z-index: 15;" id="dvNavContent">
+        
+        <a href="home.html" style="font-size: 15px;font-weight: 700">HOME</a>
+        <a href="about.html" style="font-size: 15px;font-weight: 700">ABOUT US</a>
+        <div class="dropdown">
+          <button class="dropbtn" style="font-size: 15px;font-weight: 700">INITIATIVES</button>
+          <div class="dropdown-content">
+              <a href="cate_listing.html?cat_type=janananma&pg_no=1">Nanma</a>
+              <a href="cate_listing.html?cat_type=donate&pg_no=1">Donate</a>
+              <a href="cate_listing.html?cat_type=volunteer&pg_no=1">Volunteer</a>
+           
+          </div>
+        </div>
+        <a href="cate_listing.html?cat_type=events&pg_no=1" style="font-size: 15px;font-weight: 700">EVENTS</a>
+        <a href="cate_listing.html?cat_type=care_centers&pg_no=1" style="font-size: 15px;font-weight: 700">CARE CENTERS</a>
+    
+        <div class="dropdown">
+            <button class="dropbtn glyphicon glyphicon-th" style="font-size: 20px;font-weight: 700" id="icon" onclick="toggleBTN();">
+            
+            </button>
+            <div class="dropdown-content dropdown-menuCustom " id="dropmenu">
+              <a onclick="toggleProfile();" id="aProfile">Volunteer</a>
+              <a href="forms.html?cat_type=raise_your_voice">Raise your voice</a>
+              <a href="#">FAQ</a>
+              <a href="contact.html">Contact Us</a>
+              
+            </div>
+        </div>
+    
       </div>
     </div>
-    <a href="cate_listing.html?cat_type=events&pg_no=1" style="font-size: 15px;font-weight: 700">EVENTS</a>
-    <a href="cate_listing.html?cat_type=care_centers&pg_no=1" style="font-size: 15px;font-weight: 700">CARE CENTERS</a>
-
-    <div class="dropdown">
-        <button class="dropbtn glyphicon glyphicon-th" style="font-size: 20px;font-weight: 700" id="icon" onclick="toggleBTN();">
-        
-        </button>
-        <div class="dropdown-content dropdown-menuCustom " id="dropmenu">
-          <a href="forms.html?cat_type=volunteer">Volunteer Signup</a>
-          <a href="forms.html?cat_type=raise_your_voice">Raise your voice</a>
-          <a href="#">FAQ</a>
-          <a href="contact.html">Contact Us</a>
-          
-        </div>
-    </div>
-
-  </div>
-</div>
 <style type="text/css">
   
-
+    .blackHead{
+        background:black !important;
+        transition:all 1000ms;
+    }
+    .dropContent::hover{
+        color:#f2f2f2;
+    }
  .bs-example{
       margin: 10px;
      
@@ -73,29 +79,25 @@
     /*border-color: #ddd;*/
   }
 
-
-
-
 </style>
 <script>
 
-function toggleBTN(){
-    console.log("in func");
-    var element = document.getElementById('dropmenu');
-    if(element.classList.contains("show")){
-      document.getElementById('dropmenu').classList.remove("show");
-      document.getElementById('icon').classList.add("glyphicon-th");
-      document.getElementById('icon').classList.remove("glyphicon-remove");
-    }
-    else{
-      document.getElementById('dropmenu').classList.add("show");
-      document.getElementById('icon').classList.remove("glyphicon-th");
-      document.getElementById('icon').classList.add("glyphicon-remove");
-    }
-  }
+    function toggleBTN(){
+        console.log("in func");
+        var element = document.getElementById('dropmenu');
+        if(element.classList.contains("show")){
+          document.getElementById('dropmenu').classList.remove("show");
+          document.getElementById('icon').classList.add("glyphicon-th");
+          document.getElementById('icon').classList.remove("glyphicon-remove");
+        }
+        else{
+          document.getElementById('dropmenu').classList.add("show");
+          document.getElementById('icon').classList.remove("glyphicon-th");
+          document.getElementById('icon').classList.add("glyphicon-remove");
+        }
+      }
+    
 
 </script>
-  </div>
-</div>
 </header>
 

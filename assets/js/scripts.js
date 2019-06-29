@@ -514,30 +514,30 @@ function templateNews(data, type){
 
 function loadProfile(id,editCon = null){
     
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        var myObj = JSON.parse(this.responseText);
-        
-            if(editCon === null){
-                document.getElementById("userName").innerHTML = myObj.userName;
-                document.getElementById("userJob").innerHTML = myObj.userJob;
-                document.getElementById("userMail").innerHTML = myObj.userMail;
-                document.getElementById("userLoc").innerHTML = myObj.userLoc;
-                document.getElementById("userPhone").innerHTML = myObj.userPhone;
-                document.getElementById("userRating").innerHTML = myObj.userRating;
-            } else {
-                document.getElementById("editName").value = myObj.userName;
-                document.getElementById("editJob").value = myObj.userJob;
-                document.getElementById("editMail").innerHTML = myObj.userMail;
-                document.getElementById("editLoc").value = myObj.userLoc;
-                document.getElementById("editPhone").value = myObj.userPhone;
-            }
-        } 
-    };
-    xmlhttp.open("POST", "assets/php/fetchProfile.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("id="+id);
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      var myObj = JSON.parse(this.responseText);
+      
+          if(editCon === null){
+              document.getElementById("userName").innerHTML = myObj.userName;
+              document.getElementById("userJob").innerHTML = myObj.userJob;
+              document.getElementById("userMail").innerHTML = myObj.userMail;
+              document.getElementById("userLoc").innerHTML = myObj.userLoc;
+              document.getElementById("userPhone").innerHTML = myObj.userPhone;
+              document.getElementById("userRating").innerHTML = myObj.ehRating;
+          } else {
+              document.getElementById("editName").value = myObj.userName;
+              document.getElementById("editJob").value = myObj.userJob;
+              document.getElementById("editMail").innerHTML = myObj.userMail;
+              document.getElementById("editLoc").value = myObj.userLoc;
+              document.getElementById("editPhone").value = myObj.userPhone;
+          }
+      } 
+  };
+  xmlhttp.open("POST", "assets/php/fetchProfile.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send("id="+id);
 }
 
 function editProfile(){
@@ -553,7 +553,7 @@ function editProfile(){
           } else {
             y.style.display = "none";
           }
-        var id = getCookie("userId=");
+        var id = getCookie("userId");
         loadProfile(id,1);
 }
 
@@ -565,7 +565,7 @@ function updateProfile(){
         data[1] =  document.getElementById("editJob").value;
         data[2] =  document.getElementById("editPhone").value;
         data[3] =  document.getElementById("editLoc").value;
-        data[4] =  getCookie("userId=");
+        data[4] =  getCookie("userId");
         var myObj = {"newName":data[0],"newJob":data[1],"newPhone":data[2],"newLoc":data[3],"userId":data[4]};
         var jSONObj = JSON.stringify(myObj);
         
@@ -607,24 +607,24 @@ function loadEvents(selectId = 0){
 }
 
 function loadActivity(){
-    var id = getCookie("userId=");
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myObj = JSON.parse(this.responseText);
-            var actTable = "";
-            for(i = 0; i< myObj.length; i++){
-                actTable += '<tr id="'+myObj[i].evId+'"><td>'+myObj[i].eveName+'</td><tr><td style = "font-size:1rem;">'+myObj[i].eveDate+'</td></tr></tr>';
-            }
-            document.getElementById("tbActivityContent").innerHTML = actTable;
-            document.getElementById("userRating").innerHTML = myObj[0].ehRating;
-            document.getElementById("dvActivityCount").innerHTML = myObj[0].count;
-        }
-    };
-    xmlhttp.open("POST", "assets/php/fetchActivity.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  var id = getCookie("userId");
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          var myObj = JSON.parse(this.responseText);
+          var actTable = "";
+          for(i = 0; i< myObj.length; i++){
+              actTable += '<tr id="'+myObj[i].evId+'"><td><a href="individual-listing.php?type='+myObj[i].catType+'&ev_id='+myObj[i].eventId+'">'+myObj[i].eveName+'</a></td><tr><td style = "font-size:1rem;">'+myObj[i].eveDate+'</td></tr></tr>';
+          }
+          document.getElementById("tbActivityContent").innerHTML = actTable;
+          
+          document.getElementById("dvActivityCount").innerHTML = myObj[0].count;
+      }
+  };
+  xmlhttp.open("POST", "assets/php/fetchActivity.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xmlhttp.send("id="+id);
+  xmlhttp.send("id="+id);
 }
 
 // La Cookie Section
@@ -670,4 +670,31 @@ function toggleHeaders(){
     $('#header').hide();
     $('#footer').hide();
   }
+}
+function toggleProfile(){
+  var isLogged =  parseInt(getCookie("isLogged"));
+  var userId =  parseInt(getCookie("userId"));
+  if(!isNaN(isLogged)&&!isNaN(userId)){
+      $('#aProfile').attr("href","profile.html");
+  } else {
+      $('#aProfile').attr("href","forms.html?cat_type=volunteer");
+  }
+}
+
+function fetchNews(){
+
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          var myObj = JSON.parse(this.responseText);
+          var newsCards = "";
+          for(i = 1; i< myObj.length && i <= 4; i++){
+            newsCards += "<a href='individual-listing.php?type=news&ev_id="+myObj[i].news_id+"'><div class='text' id="+myObj[i].news_id+"><h4>"+myObj[i].news_title+"</h4><small style='color: gray;'>"+myObj[i].news_date+"</small><p style='color: gray;'><small>"+myObj[i].news_des+"</small></p></div></a><br>";
+          }
+          document.getElementById("newsCard").innerHTML = newsCards;
+      } 
+    };
+xmlhttp.open("GET", "assets/php/getnews.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send();
 }
